@@ -3,7 +3,7 @@
     src: url('../../../../Polices/Roboto-Regular.ttf')
 }
 
-#menu {
+p-menubar {
     font-family: "Roboto"; 
     background-color: rgb(78, 78, 78);
 }

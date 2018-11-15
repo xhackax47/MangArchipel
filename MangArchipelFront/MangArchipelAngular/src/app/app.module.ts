@@ -17,6 +17,10 @@ const roads: Route = [
   { path: '', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginFormComponent}
+  // { path: 'product', component: ProductComponent},
+  // { path: 'search', component: SearchComponent},
+  // { path: 'profile', component: ProfileComponent},
+  // { path: 'orders', component: OrdersComponent},
 ];
 
 @NgModule({
