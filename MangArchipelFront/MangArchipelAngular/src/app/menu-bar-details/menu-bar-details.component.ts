@@ -14,15 +14,14 @@ export class MenuBarDetailsComponent implements OnInit {
   ngOnInit() {
     this.items = [
       { label: 'Categorie' },
-      { label: 'panier' },
       {
         label: 'Mon compte',
         items: [
-          { label: 'profil' },
-          { label: 'mes commandes' }
+          { label: 'Profil' },
+          { label: 'Mes commandes' }
         ]
       },
-      { label: 'se déconnecter' }
+      { label: 'Panier' }
     ];
   }
 
