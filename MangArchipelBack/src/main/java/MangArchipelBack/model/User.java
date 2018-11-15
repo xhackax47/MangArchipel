@@ -6,6 +6,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "MANGARCHIPEL_USER")
@@ -22,8 +24,24 @@ public class User implements Serializable , UserDetails {
 
     private String username;
 
-    private String password;
+  
 
+	private String password;
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "userid"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
+    
+    public Set<Role> getRoles() {
+  		return roles;
+  	}
+
+  	public void setRoles(Set<Role> roles) {
+  		this.roles = roles;
+  	}
     public Integer getUserId() {
         return userId;
     }
