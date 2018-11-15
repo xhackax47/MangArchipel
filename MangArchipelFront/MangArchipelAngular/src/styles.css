@@ -24,7 +24,11 @@ h1{
 font-family:  yozakura;
 }
 
-p-menubar
+p-menubar .ui-menubar
 {
-    font-family: roboto ;
+    font-family: roboto !important;
+    background-color:  aliceblue !important;
+}
+.ui-menuitem-text {
+    color: rgba(78, 78, 78,1) !important;
 }
