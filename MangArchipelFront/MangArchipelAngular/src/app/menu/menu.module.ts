@@ -7,7 +7,7 @@ import { MenubarModule } from 'primeng/components/menubar/menubar';
   declarations: [MenuComponent],
   imports: [
     CommonModule,
-    MenubarModule
+    MenubarModule,
   ]
 })
 export class MenuModule { }

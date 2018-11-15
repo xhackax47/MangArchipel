@@ -13,10 +13,12 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.items = [{
-      label: 'Produits'
+      label: 'Produits',
+      routerLink: '/'
     },
     {
-      label: 'Panier'
+      label: 'Panier',
+      routerLink: '/cart'
     }];
   }
 
