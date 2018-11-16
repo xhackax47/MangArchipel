@@ -2,12 +2,12 @@
 @font-face
 {
     font-family: yozakura;
-    src:url('./../../Polices/yokasura/YOZAKURA-Regular.otf');
+    src:url('./../../Police/yokasura/YOZAKURA-Regular.otf');
 }
 @font-face
 {
      font-family: roboto;
-     src:url('./../../Polices/roboto/Roboto-Medium.ttf');
+     src:url('./../../Police/roboto/Roboto-Medium.ttf');
 }
 body
 {
