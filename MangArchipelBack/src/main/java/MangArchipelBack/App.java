@@ -1,4 +1,4 @@
-package fr.dtaingenierie.MangArchipel;
+package MangArchipelBack;
 
 /**
  * Hello world!
