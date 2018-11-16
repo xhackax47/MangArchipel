@@ -11,5 +11,7 @@ import MangArchipelBack.model.Product;
 public interface ProductRepository extends JpaRepository<Product, Long>{
 	
     Product findByProductName(String productName);
-
+    Product findByBrand(String brand);
+    Product findByPrice(Double price);
+    Product findByProductType(String productType);
 }

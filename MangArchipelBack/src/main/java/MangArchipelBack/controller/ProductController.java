@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import MangArchipelBack.model.Product;
@@ -29,8 +30,13 @@ public class ProductController {
 	
 	@CrossOrigin("*")
     @GetMapping("/")
-	public Collection<Product> getProducts() {
-		return pService.getAllProducts();
+	public Collection<Product> getProducts(
+			@RequestParam(required = false) String productName, 
+			@RequestParam(required = false) String brand,
+			@RequestParam(required = false) Double price,
+			@RequestParam(required = false) String productType,
+			@RequestParam(required = false) Integer stock) {
+		return pService.getProducts(productName, brand, price, productType, stock);
 	}
 	
 	@CrossOrigin("*")
@@ -40,13 +46,7 @@ public class ProductController {
 	}
 	
 	@CrossOrigin("*")
-    @GetMapping("/product/{productName}")
-	public Product getProductByName(@PathVariable String productName) {
-		return pService.findbyName(productName);
-	}
-	
-	@CrossOrigin("*")
-    @GetMapping("/stock/{id}")
+    @GetMapping("/{id}/stock")
 	public Integer getStockByProduct(@PathVariable Long id) {
 		Product product = pService.getProduct(id);
 		return product.getStock();

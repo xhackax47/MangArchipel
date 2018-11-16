@@ -41,10 +41,24 @@ public class ProductServiceImpl implements ProductService {
 		pRepo.deleteById(id);
 	}
 	
+	@Override
+	public Product findByProductName(String productName) {
+		return pRepo.findByProductName(productName);
+	}
 
 	@Override
-	public Product findbyName(String name) {
-		return pRepo.findByProductName(name);
+	public Product findByBrand(String brand) {
+		return pRepo.findByBrand(brand);
+	}
+
+	@Override
+	public Product findByPrice(Double price) {
+		return pRepo.findByPrice(price);
+	}
+
+	@Override
+	public Product findByProductType(String productType) {
+		return pRepo.findByProductType(productType);
 	}
 
 	@Override
@@ -52,5 +66,9 @@ public class ProductServiceImpl implements ProductService {
 		return product.getStock();
 	}
 
+	@Override
+	public Collection<Product> getProducts(String productName, String brand, Double price, String productType, Integer stock) {
+		return pRepo.findAll();
+	}
 
 }

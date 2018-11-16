@@ -9,10 +9,16 @@ import java.util.Collection;
 @Validated
 public interface ProductService {
 
-    public Collection<Product> getAllProducts();
-    public Product getProduct(Long id);
-    public Product findbyName(String name);
-    public Integer getStock(Product product);
-    public Product save(Product product);
-    public void delete(Long id);
+    Collection<Product> getAllProducts();
+	Collection<Product> getProducts(String productName, String brand, Double price, String productType, Integer stock);
+    Product getProduct(Long id);
+    Integer getStock(Product product);
+    
+    Product findByProductName(String productName);
+    Product findByBrand(String brand);
+    Product findByPrice(Double price);
+    Product findByProductType(String productType);
+    
+    Product save(Product product);
+    void delete(Long id);
 }
