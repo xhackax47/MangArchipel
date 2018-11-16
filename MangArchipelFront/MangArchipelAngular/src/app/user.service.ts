@@ -9,7 +9,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class UserService {
 
-  url = 'localhost:8098';
+  url = 'http://localhost:8098';
   constructor(private http: HttpClient) { }
   getUserByLogin(login: string, password: string): Observable<User> {
     return this.http.get<User>(this.url + '/login');
