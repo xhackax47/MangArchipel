@@ -1,7 +1,6 @@
 package MangArchipelBack.controller;
 
 import java.util.Collection;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -17,46 +16,46 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import MangArchipelBack.exception.ResourceNotFoundException;
 import MangArchipelBack.model.Product;
-import MangArchipelBack.repository.ProductRepository;
+import MangArchipelBack.services.security.ProductService;
 
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
 	
-	@Autowired
-	private ProductRepository pRepo;
+	@Autowired 
+	private ProductService pService;
+	
 	
 	@CrossOrigin("*")
     @GetMapping("/")
-	public Collection<Product> getAllProducts() {
-		return pRepo.findAll();
+	public Collection<Product> getProducts() {
+		return pService.getAllProducts();
 	}
 	
 	@CrossOrigin("*")
-    @GetMapping("/product/{id}")
-	public Optional<Product> getProductById(@PathVariable Long id) {
-		return pRepo.findById(id);
+    @GetMapping("/{id}")
+	public Product getProductById(@PathVariable Long id) {
+		return pService.getProduct(id);
 	}
 	
     @Secured({"ROLE_ADMIN"})
 	@CrossOrigin("*")
 	@PostMapping("/") 
 	public Product createProduct(@RequestBody Product p){
-		return pRepo.save(p);		
+		return pService.save(p);		
 	}
 	
     @Secured({"ROLE_ADMIN"})
 	@CrossOrigin("*")
 	@PutMapping("/{id}") 
 	public Product updateProduct(@PathVariable(value="id") Long id, @Valid @RequestBody Product p) {
-		Product product = pRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Produit", "id", id));
+		Product product = pService.getProduct(id);
 		product.setBrand(p.getBrand());
 		product.setProductName(p.getProductName());
 		product.setProductType(p.getProductType());
 		product.setPrice(p.getPrice());
-		Product pUpdate = pRepo.save(product);
+		Product pUpdate = pService.save(product);
 		return pUpdate;
 	}
 	
@@ -64,7 +63,7 @@ public class ProductController {
 	@CrossOrigin("*")
 	@DeleteMapping("/{id}") 
 	public void deleteProduct(@PathVariable Long id) {
-		pRepo.deleteById(id);
+		pService.delete(id);
 	}
 	
 }
