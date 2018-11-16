@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,12 +40,14 @@ public class ProductController {
 		return pRepo.findById(id);
 	}
 	
+    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin("*")
 	@PostMapping("/") 
 	public Product createProduct(@RequestBody Product p){
 		return pRepo.save(p);		
 	}
 	
+    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin("*")
 	@PutMapping("/{id}") 
 	public Product updateProduct(@PathVariable(value="id") Long id, @Valid @RequestBody Product p) {
@@ -57,6 +60,7 @@ public class ProductController {
 		return pUpdate;
 	}
 	
+    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin("*")
 	@DeleteMapping("/{id}") 
 	public void deleteProduct(@PathVariable Long id) {
