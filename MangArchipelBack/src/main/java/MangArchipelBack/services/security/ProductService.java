@@ -11,6 +11,8 @@ public interface ProductService {
 
     public Collection<Product> getAllProducts();
     public Product getProduct(Long id);
+    public Product findbyName(String name);
+    public Integer getStock(Product product);
     public Product save(Product product);
     public void delete(Long id);
 }

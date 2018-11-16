@@ -31,15 +31,19 @@ public class Product {
 	@Column(name="TYPE")
 	private String productType;
 	
+	@Column(name="STOCK")
+	private Integer stock;
+	
 	public Product() {}
 
-	public Product(Long id, String productName, String brand, Double price, String productType) {
+	public Product(Long id, String productName, String brand, Double price, String productType, Integer stock) {
 		super();
 		this.id = id;
 		this.productName = productName;
 		this.brand = brand;
 		this.price = price;
 		this.productType = productType;
+		this.stock = stock;
 	}
 
 	public Long getId() {
@@ -80,6 +84,14 @@ public class Product {
 
 	public void setProductType(String productType) {
 		this.productType = productType;
+	}
+
+	public Integer getStock() {
+		return stock;
+	}
+
+	public void setStock(Integer stock) {
+		this.stock = stock;
 	}
 	
 }

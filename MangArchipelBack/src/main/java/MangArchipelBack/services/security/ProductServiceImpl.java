@@ -40,5 +40,17 @@ public class ProductServiceImpl implements ProductService {
 	public void delete(Long id) {
 		pRepo.deleteById(id);
 	}
+	
+
+	@Override
+	public Product findbyName(String name) {
+		return pRepo.findByProductName(name);
+	}
+
+	@Override
+	public Integer getStock(Product product) {
+		return product.getStock();
+	}
+
 
 }

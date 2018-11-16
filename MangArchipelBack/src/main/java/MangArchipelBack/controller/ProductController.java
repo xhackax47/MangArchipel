@@ -39,14 +39,27 @@ public class ProductController {
 		return pService.getProduct(id);
 	}
 	
-    @Secured({"ROLE_ADMIN"})
+	@CrossOrigin("*")
+    @GetMapping("/product/{productName}")
+	public Product getProductByName(@PathVariable String productName) {
+		return pService.findbyName(productName);
+	}
+	
+	@CrossOrigin("*")
+    @GetMapping("/stock/{id}")
+	public Integer getStockByProduct(@PathVariable Long id) {
+		Product product = pService.getProduct(id);
+		return product.getStock();
+	}
+	
+//    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin("*")
 	@PostMapping("/") 
 	public Product createProduct(@RequestBody Product p){
 		return pService.save(p);		
 	}
 	
-    @Secured({"ROLE_ADMIN"})
+//    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin("*")
 	@PutMapping("/{id}") 
 	public Product updateProduct(@PathVariable(value="id") Long id, @Valid @RequestBody Product p) {
@@ -55,11 +68,12 @@ public class ProductController {
 		product.setProductName(p.getProductName());
 		product.setProductType(p.getProductType());
 		product.setPrice(p.getPrice());
+		product.setStock(p.getStock());
 		Product pUpdate = pService.save(product);
 		return pUpdate;
 	}
 	
-    @Secured({"ROLE_ADMIN"})
+//    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin("*")
 	@DeleteMapping("/{id}") 
 	public void deleteProduct(@PathVariable Long id) {
