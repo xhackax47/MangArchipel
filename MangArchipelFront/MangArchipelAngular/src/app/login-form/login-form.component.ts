@@ -22,7 +22,7 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit() {
     console.log('coucou');
-    this.service.loging(this.model);
+    this.service.loging(this.model).subscribe();
 
     /*
     this.service.getUserByLogin(this.model.login).subscribe(
