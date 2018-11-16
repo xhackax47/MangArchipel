@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "MANGARCHIPEL_PRODUCT")
@@ -15,12 +16,15 @@ public class Product {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotNull(message = "Le nom du produit est requis.")
 	@Column(name="NAME")
 	private String productName;
 	
+	@NotNull(message = "La marque du produit est requise.")
 	@Column(name="BRAND")
 	private String brand;
 	
+	@NotNull(message = "Le prix du produit est requis.")
 	@Column(name="PRICE")
 	private Double price;
 	
