@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face
+{
+    font-family: yozakura;
+    src:url('./../../Police/yokasura/YOZAKURA-Regular.otf');
+}
+@font-face
+{
+     font-family: roboto;
+     src:url('./../../Police/roboto/Roboto-Medium.ttf');
+}
+body
+{
+    background-color: rgba(234,78,78);
+   font-family:  roboto;
+}
+#nameSite
+{
+    font-family: yozakura;
+    color: aliceblue;
+  
+}
+h1{
+font-family:  yozakura;
+}
+
+p-menubar .ui-menubar
+{
+    font-family: roboto !important;
+    background-color:  aliceblue !important;
+}
+.ui-menuitem-text {
+    color: rgba(78, 78, 78,1) !important;
+}
