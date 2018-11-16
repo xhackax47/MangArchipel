@@ -1,10 +1,10 @@
 <form (ngSubmit)="onSubmit()">
   <div>
     <label>Login : </label>
-    <input type="text" placeholder="Login" name="log" id="log" required/></div>
+    <input type="text" placeholder="Login" name="log" id="log" required [(ngModel)]="model.login"/></div>
   <div>
     <label>Mot de passe : </label>
-    <input type="password" placeholder="Mot de passe" name="pass" id="pass" required [(ngModel)]="model.login"/>
+    <input type="password" placeholder="Mot de passe" name="pass" id="pass" required [(ngModel)]="model.password"/>
   </div>
   <button pButton type="submit">Connexion</button>
 </form>

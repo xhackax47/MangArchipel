@@ -3,17 +3,21 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import {MenubarModule} from 'primeng/menubar';
-
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
+import { HttpClientModule } from '@angular/common/http';
+
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { Route } from '@angular/router';
+
 import { ProductsComponent } from './products/products.component';
 import { CartComponent } from './cart/cart.component';
-import { LoginFormComponent } from './login-form/login-form.component';
 
-const roads: Route = [
+import { LoginFormComponent } from './login-form/login-form.component';
+import { FormsModule } from '@angular/forms';
+const roads: Routes = [
   { path: '', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginFormComponent}
@@ -37,6 +41,8 @@ const roads: Route = [
     AppRoutingModule,
     MenubarModule,
     RouterModule.forRoot(roads),
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,14 +15,14 @@ export class LoginFormComponent implements OnInit {
   loginform: LoginFormComponent;
   constructor(private service: UserService,
     private router: Router,
-  ) { }
+  ) { this.model = new User('', ''); }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    const login = this.loginform.model
-
+    console.log('coucou');
+    this.service.loging(this.model);
 
     /*
     this.service.getUserByLogin(this.model.login).subscribe(
@@ -30,7 +30,7 @@ export class LoginFormComponent implements OnInit {
         if (this.model.password === userRecu.password && sessionStorage.getItem('user') === null) {
           this.logged = true;
           sessionStorage.setItem('login', this.model.login);
-          this.router.navigate([''])
+          this.router.navigate(['/']);
         } else {
           this.logged = false;
         }
