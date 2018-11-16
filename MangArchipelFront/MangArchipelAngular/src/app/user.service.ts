@@ -20,6 +20,11 @@ export class UserService {
     // .pipe(catchError((err) => console.log(err)));
   }
 
+  logout(): Observable<User> {
+     return this.http.post<User>(this.url + '/logout', '');
+    // .pipe(catchError((err) => console.log(err)));
+  }
+
   getUser(): Observable<User> {
     return this.http.get<User>(this.url + '/user');
   }

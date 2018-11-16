@@ -56,4 +56,12 @@ public class UserController {
 		return user;
 	}
 
+	
+	@CrossOrigin(origins = "*")
+	@PostMapping("/logout")
+	// Connexion de compte utilisateur
+	public User logout(@Valid @RequestBody LoginRequest loginRequest) {
+		 SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false);
+		return null;
+	}
 }

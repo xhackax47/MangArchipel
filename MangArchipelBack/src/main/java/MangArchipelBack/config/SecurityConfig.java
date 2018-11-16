@@ -73,7 +73,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		@Override
 		public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response,
 				Authentication authentication) throws IOException, ServletException {
+			System.out.println("Disconnected");
 			response.setStatus(HttpServletResponse.SC_OK);
+
 		}
 	}
 
