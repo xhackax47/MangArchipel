@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
  *
  */
 @SpringBootApplication
-@EntityScan(basePackages = {"MangArchipelBack"}
+@EntityScan(basePackages = {"MangArchipelBack","MangArchipelBack.config"}
 )
 public class App 
 {

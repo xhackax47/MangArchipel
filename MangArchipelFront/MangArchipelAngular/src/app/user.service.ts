@@ -9,14 +9,14 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class UserService {
 
-  url = 'localhost:8098';
+  url = 'http://localhost:8098/api/users';
   constructor(private http: HttpClient) { }
   getUserByLogin(login: string, password: string): Observable<User> {
-    return this.http.get<User>(this.url + '/login');
+    return this.http.get<User>(this.url + login);
   }
 
   loging(user: User):  Observable<any[] |User> {
-    return this.http.post<User>(this.url, user).pipe(catchError(this.handleError('loging', [])));
+    return this.http.post<User>(this.url + '/login', user).pipe(catchError(this.handleError('loging', [])));
     // .pipe(catchError((err) => console.log(err)));
   }
 
