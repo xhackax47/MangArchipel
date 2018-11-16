@@ -26,8 +26,8 @@
               "./node_modules/primeicons/primeicons.css",
               "./node_modules/primeng/resources/themes/nova-light/theme.css" ,
               "./node_modules/primeng/resources/primeng.min.css",
-              "./app.component.css",
-              "src/styles.css"
+              "./src/styles.css",
+              "./src/app/checkbox-configurable/checkbox-configurable.css"
             ],
             "scripts": []
           },

@@ -9,13 +9,18 @@ import { MenubarModule } from 'primeng/menubar';
 import { MenuAdministrateurComponent } from './menu-administrateur/menu-administrateur.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { SearchProductComponent } from './search-product/search-product.component';
+import { CheckboxConfigurableComponent } from './checkbox-configurable/checkbox-configurable.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuBarDetailsComponent,
-    MenuAdministrateurComponent
+    MenuAdministrateurComponent,
+    SearchProductComponent,
+    CheckboxConfigurableComponent
   ],
   imports: [
     BrowserModule,
