@@ -1,13 +1,19 @@
+
 <!--The content below is only a placeholder and can be replaced.-->
 
 <div id="nameSite" style="text-align:center">
   <h1>
     {{ title }}
   </h1>
-  <app-menu-bar-details></app-menu-bar-details>
+  <div *ngIf="!logged">
+    <app-menu></app-menu>
+  </div>
+  <div *ngIf="logged && !admin">
+    <app-menu-bar-details></app-menu-bar-details>
+  </div>
+  <div *ngIf="logged && admin">
+    <app-menu-administrateur></app-menu-administrateur>
+  </div>
 </div>
-<div>
-  <app-menu-administrateur></app-menu-administrateur>
-  <app-search-product></app-search-product>
-  <router-outlet></router-outlet>
-</div>
+
+<router-outlet></router-outlet>

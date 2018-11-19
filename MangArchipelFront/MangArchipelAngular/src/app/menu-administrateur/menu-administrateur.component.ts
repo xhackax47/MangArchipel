@@ -11,7 +11,10 @@ export class MenuAdministrateurComponent implements OnInit {
   items: MenuItem[];
   ngOnInit() {
     this.items = [
-      { label: 'Categorie' },
+      {
+        label: 'Produits',
+        routerLink: '/'
+      },
       {
         label: 'Administration',
         items: [
