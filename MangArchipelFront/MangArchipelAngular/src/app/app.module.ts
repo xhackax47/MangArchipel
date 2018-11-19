@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MenubarModule} from 'primeng/menubar';
 import { AppRoutingModule } from './app-routing.module';
+import {DataTableModule} from 'primeng/datatable';
 
 import { MenuBarDetailsComponent } from './menu-bar-details/menu-bar-details.component';
 
@@ -23,11 +24,13 @@ import { MenuAdministrateurComponent } from './menu-administrateur/menu-administ
 
 import { LoginFormComponent } from './login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
+import { from } from 'rxjs';
+
 const roads: Routes = [
   { path: '', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginFormComponent},
-  { path: 'product', component: ProductDetailComponent},
+  { path: 'product/:id', component: ProductDetailComponent},
   // { path: 'search', component: SearchComponent},
   // { path: 'profile', component: ProfileComponent},
   // { path: 'orders', component: OrdersComponent},
@@ -52,7 +55,8 @@ const roads: Routes = [
     RouterModule.forRoot(roads),
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    DataTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

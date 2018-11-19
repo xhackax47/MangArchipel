@@ -1,7 +1,14 @@
-
-<ul *ngIf="productArray.length > 0">
-  <li *ngFor="let p of productArray">
-    <app-product-detail [product]="p"></app-product-detail>
+<!--<ul *ngIf="productArray.length > 0">
+  <li > 
+    <a id="product" routerLink="/product/{{p.id}}">
+    {{p.productName}}</a>
   </li>
 </ul>
 
+https://www.primefaces.org/primeng/#/datatable/selection-->
+<p-dataTable [value]="products" [paginator]="true" [rows]="20" [totalRecords]="productArray.length" (onLazyLoad)="load($event)" routerLink="/product/">
+  <p-header>Liste des produits</p-header>
+  <!--<p-column field="image"></p-column>-->
+  <p-column field="productName" header="Nom" >
+  </p-column>
+</p-dataTable>

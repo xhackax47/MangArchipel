@@ -23,46 +23,42 @@ import MangArchipelBack.services.security.ProductService;
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
-	
-	@Autowired 
+
+	@Autowired
 	private ProductService pService;
-	
-	
+
 	@CrossOrigin("*")
-    @GetMapping("/")
-	public Collection<Product> getProducts(
-			@RequestParam(required = false) String productName, 
-			@RequestParam(required = false) String brand,
-			@RequestParam(required = false) Double price,
-			@RequestParam(required = false) String productType,
-			@RequestParam(required = false) Integer stock) {
+	@GetMapping("/")
+	public Collection<Product> getProducts(@RequestParam(required = false) String productName,
+			@RequestParam(required = false) String brand, @RequestParam(required = false) Double price,
+			@RequestParam(required = false) String productType, @RequestParam(required = false) Integer stock) {
 		return pService.getProducts(productName, brand, price, productType, stock);
 	}
-	
+
 	@CrossOrigin("*")
-    @GetMapping("/{id}")
+	@GetMapping("/{id}")
 	public Product getProductById(@PathVariable Long id) {
 		return pService.getProduct(id);
 	}
-	
+
 	@CrossOrigin("*")
-    @GetMapping("/{id}/stock")
+	@GetMapping("/{id}/stock")
 	public Integer getStockByProduct(@PathVariable Long id) {
 		Product product = pService.getProduct(id);
 		return product.getStock();
 	}
-	
+
 //    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin("*")
-	@PostMapping("/") 
-	public Product createProduct(@RequestBody Product p){
-		return pService.save(p);		
+	@PostMapping("/")
+	public Product createProduct(@RequestBody Product p) {
+		return pService.save(p);
 	}
-	
+
 //    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin("*")
-	@PutMapping("/{id}") 
-	public Product updateProduct(@PathVariable(value="id") Long id, @Valid @RequestBody Product p) {
+	@PutMapping("/{id}")
+	public Product updateProduct(@PathVariable(value = "id") Long id, @Valid @RequestBody Product p) {
 		Product product = pService.getProduct(id);
 		product.setBrand(p.getBrand());
 		product.setProductName(p.getProductName());
@@ -72,12 +68,12 @@ public class ProductController {
 		Product pUpdate = pService.save(product);
 		return pUpdate;
 	}
-	
+
 //    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin("*")
-	@DeleteMapping("/{id}") 
+	@DeleteMapping("/{id}")
 	public void deleteProduct(@PathVariable Long id) {
 		pService.delete(id);
 	}
-	
+
 }
