@@ -13,15 +13,27 @@ export class MenuBarDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.items = [
-      { label: 'Categorie' },
+      {
+        label: 'Produits',
+        routerLink: '/'
+      },
       {
         label: 'Mon compte',
         items: [
-          { label: 'Profil' },
-          { label: 'Mes commandes' }
+          {
+            label: 'Profil',
+            routerLink: '/profile'
+          },
+          {
+            label: 'Mes commandes',
+            routerLink: '/orders'
+          }
         ]
       },
-      { label: 'Panier' }
+      {
+        label: 'Panier',
+        routerLink: '/cart'
+      }
     ];
   }
 

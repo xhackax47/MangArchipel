@@ -1,6 +1,8 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SearchProductComponent } from './search-product/search-product.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MenubarModule} from 'primeng/menubar';
@@ -18,16 +20,18 @@ import { Route } from '@angular/router';
 import { ProductsComponent } from './products/products.component';
 import { CartComponent } from './cart/cart.component';
 
+import {CheckboxModule} from 'primeng/checkbox';
 import { MenuAdministrateurComponent } from './menu-administrateur/menu-administrateur.component';
+
 
 import { LoginFormComponent } from './login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
 const roads: Routes = [
   { path: '', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'login', component: LoginFormComponent}
-  // { path: 'product', component: ProductComponent},
-  // { path: 'search', component: SearchComponent},
+  { path: 'login', component: LoginFormComponent},
+  { path: 'product', component: ProductDetailComponent},
+   { path: 'search', component: SearchProductComponent},
   // { path: 'profile', component: ProfileComponent},
   // { path: 'orders', component: OrdersComponent},
 ];
@@ -42,7 +46,8 @@ const roads: Routes = [
     CartComponent,
     LoginFormComponent,
     MenuBarDetailsComponent,
-    MenuAdministrateurComponent
+    MenuAdministrateurComponent,
+    SearchProductComponent
   ],
   imports: [
     BrowserModule,
@@ -51,9 +56,11 @@ const roads: Routes = [
     RouterModule.forRoot(roads),
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    CheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

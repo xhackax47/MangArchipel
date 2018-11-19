@@ -1,3 +1,4 @@
+
 /* You can add global styles to this file, and also import other style files */
 @font-face
 {
@@ -22,6 +23,7 @@ body
 }
 h1{
 font-family:  yozakura;
+text-align: center
 }
 
 p-menubar .ui-menubar
@@ -31,4 +33,9 @@ p-menubar .ui-menubar
 }
 .ui-menuitem-text {
     color: rgba(78, 78, 78,1) !important;
+}
+
+.ui-g
+{
+    text-align: center;
 }

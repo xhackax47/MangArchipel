@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -19,7 +18,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import com.jolbox.bonecp.BoneCPDataSource;
 
-import org.springframework.security.authentication.AuthenticationManager;
 
 
 @Configuration
@@ -72,6 +70,7 @@ public class AppConfig {
 		// Oh oh !
 //		properties.setProperty("hibernate.connection.provider_class", "org.hibernate.hikaricp.internal.HikariCPConnectionProvider");
 		//properties.setProperty("hibernate.temp.use_jdbc_metadata_defaults","false");
+		properties.setProperty("hibernate.enable_lazy_load_no_trans","true");
 		properties.setProperty("hibernate.show_sql", "true");
 		properties.setProperty("hibernate.format_sql", "true");
 		return properties;

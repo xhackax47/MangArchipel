@@ -1,0 +1,14 @@
+<h2>Rechercher un produit </h2>
+<form (ngSubmit)="onSubmit()" class="ui-g">
+  <p>Recherche:
+    <input type="text" id="search" name="search" />
+  </p><br />
+  <div class="ui-g-12" style="width:250px;margin-bottom:10px">
+    <br />
+    <p-checkbox name="group2" value="Type" label="Type" inputId="type"></p-checkbox>
+    <br />
+    <p-checkbox name="group2" value="Nom" label="Nom" inputId="nom"></p-checkbox>
+    <br />
+    <button pButton label="rechercher" type="submit">rechercher</button>
+  </div>
+</form>
