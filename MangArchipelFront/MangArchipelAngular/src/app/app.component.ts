@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'MangArchipel';
+  logged: boolean;
+  admin: boolean;
+
+  constructor() {
+    this.logged = true;
+    this.admin = true;
+  }
 }
+

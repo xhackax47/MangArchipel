@@ -1,0 +1,12 @@
+@font-face{
+    font-family: "Yozakura";
+    src: url('../../../Polices/YOZAKURA-Regular.otf')
+}
+
+h1 {
+    font-family: "Yozakura";
+    color: aliceblue
+}
+body {
+    background-color: rgb(234, 78, 78);
+}

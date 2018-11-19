@@ -1,0 +1,7 @@
+
+<ul *ngIf="productArray.length > 0">
+  <li *ngFor="let p of productArray">
+    <app-product-detail [product]="p"></app-product-detail>
+  </li>
+</ul>
+

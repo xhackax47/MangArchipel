@@ -1,3 +1,4 @@
+
 /* You can add global styles to this file, and also import other style files */
 @font-face
 {
@@ -34,7 +35,10 @@ p-menubar .ui-menubar
     color: rgba(78, 78, 78,1) !important;
 }
 
+<<<<<<< HEAD
 #ui-g
 {
     text-align: center;
 }
+=======
+>>>>>>> 001dc2c9b209740ddddde6901c5fcc5dbd9c84bd
