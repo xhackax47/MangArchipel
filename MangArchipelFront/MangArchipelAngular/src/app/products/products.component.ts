@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class ProductsComponent implements OnInit {
 
+  product: Product;
   productArray: Array<Product>;
   products: Product[];
 
@@ -26,12 +27,13 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  load(event: LazyLoadEvent) {
-    setTimeout(() => {
-      if (this.productArray) {
-        this.products = this.productArray.slice(event.first, (event.first + event.rows));
-      }
-    }, 250);
+  onRowSelect(event) {
+    this.router.navigate(['product', this.product.id])
+}
+
+
+  pageChanged(event) {
+    this.products = this.productArray.slice(event.first, event.first + event.rows);
   }
 
 }
