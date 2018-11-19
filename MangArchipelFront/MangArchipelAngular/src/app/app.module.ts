@@ -19,11 +19,9 @@ import { Route } from '@angular/router';
 
 import { ProductsComponent } from './products/products.component';
 import { CartComponent } from './cart/cart.component';
+
 import {CheckboxModule} from 'primeng/checkbox';
 import { MenuAdministrateurComponent } from './menu-administrateur/menu-administrateur.component';
-
-
-
 
 
 import { LoginFormComponent } from './login-form/login-form.component';
