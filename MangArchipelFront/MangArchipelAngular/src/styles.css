@@ -23,6 +23,7 @@ body
 }
 h1{
 font-family:  yozakura;
+text-align: center
 }
 
 p-menubar .ui-menubar
@@ -34,3 +35,7 @@ p-menubar .ui-menubar
     color: rgba(78, 78, 78,1) !important;
 }
 
+.ui-g
+{
+    text-align: center;
+}
