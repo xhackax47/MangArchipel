@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
@@ -43,3 +44,4 @@ export class LoginFormComponent implements OnInit {
     this.service.logout().subscribe();
   }
 }
+
