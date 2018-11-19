@@ -33,7 +33,7 @@ const roads: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginFormComponent},
   { path: 'product', component: ProductDetailComponent},
-  // { path: 'search', component: SearchComponent},
+   { path: 'search', component: SearchProductComponent},
   // { path: 'profile', component: ProfileComponent},
   // { path: 'orders', component: OrdersComponent},
 ];
@@ -58,7 +58,8 @@ const roads: Routes = [
     RouterModule.forRoot(roads),
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    CheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
