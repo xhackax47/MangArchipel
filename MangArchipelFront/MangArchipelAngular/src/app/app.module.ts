@@ -22,14 +22,17 @@ import { CartComponent } from './cart/cart.component';
 
 import { MenuAdministrateurComponent } from './menu-administrateur/menu-administrateur.component';
 
+import { MatCheckboxModule} from '@angular/material';
 
 import { LoginFormComponent } from './login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
+import { AddProductComponent } from './add-product/add-product.component';
 const roads: Routes = [
   { path: '', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginFormComponent},
   { path: 'product', component: ProductDetailComponent},
+  { path: 'products', component: ProductsComponent},
   // { path: 'search', component: SearchComponent},
   // { path: 'profile', component: ProfileComponent},
   // { path: 'orders', component: OrdersComponent},
@@ -46,7 +49,8 @@ const roads: Routes = [
     LoginFormComponent,
     MenuBarDetailsComponent,
     MenuAdministrateurComponent,
-    SearchProductComponent
+    SearchProductComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +59,8 @@ const roads: Routes = [
     RouterModule.forRoot(roads),
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,6 +5,7 @@ export class Product {
     brand: string;
     price: number;
     productType: string;
+    description: string;
 
     constructor(name?: string, brand?: string,
         price?: number, type?: string) {

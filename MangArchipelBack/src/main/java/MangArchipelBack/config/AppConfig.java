@@ -65,7 +65,7 @@ public class AppConfig {
 
 	Properties additionalProperties() {
 		Properties properties = new Properties();
-		properties.setProperty("hibernate.hbm2ddl.auto", "update");
+		properties.setProperty("hibernate.hbm2ddl.auto", "create");
 		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL9Dialect");
 		// Oh oh !
 //		properties.setProperty("hibernate.connection.provider_class", "org.hibernate.hikaricp.internal.HikariCPConnectionProvider");

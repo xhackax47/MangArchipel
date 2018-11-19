@@ -34,6 +34,12 @@ public class Product {
 	@Column(name="STOCK")
 	private Integer stock;
 	
+	@Column(name="DESCRIPTIF")
+	private String descriptitf;
+	
+	@Column(name="IMAGE")
+	private String image;
+	
 	public Product() {}
 
 	public Product(Long id, String productName, String brand, Double price, String productType, Integer stock) {

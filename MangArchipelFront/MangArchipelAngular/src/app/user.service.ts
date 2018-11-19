@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { User } from './user';
@@ -41,4 +40,3 @@ export class UserService {
     };
   }
 }
-
