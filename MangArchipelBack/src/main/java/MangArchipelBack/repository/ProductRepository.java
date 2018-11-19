@@ -1,5 +1,7 @@
 package MangArchipelBack.repository;
 
+import java.util.Collection;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,8 +12,8 @@ import MangArchipelBack.model.Product;
 @Transactional
 public interface ProductRepository extends JpaRepository<Product, Long>{
 	
-    Product findByProductName(String productName);
-    Product findByBrand(String brand);
-    Product findByPrice(Double price);
-    Product findByProductType(String productType);
+    Collection<Product> findByProductName(String productName);
+    Collection<Product> findByBrand(String brand);
+    Collection<Product> findByPrice(Double price);
+    Collection<Product> findByProductType(String productType);
 }
