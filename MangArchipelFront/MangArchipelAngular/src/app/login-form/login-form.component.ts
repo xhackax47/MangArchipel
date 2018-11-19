@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
@@ -37,4 +38,10 @@ export class LoginFormComponent implements OnInit {
       });
       */
   }
+
+  logout() {
+    console.log('tentative de déconecction');
+    this.service.logout().subscribe();
+  }
 }
+

@@ -70,6 +70,7 @@ public class AppConfig {
 		// Oh oh !
 //		properties.setProperty("hibernate.connection.provider_class", "org.hibernate.hikaricp.internal.HikariCPConnectionProvider");
 		//properties.setProperty("hibernate.temp.use_jdbc_metadata_defaults","false");
+		properties.setProperty("hibernate.enable_lazy_load_no_trans","true");
 		properties.setProperty("hibernate.show_sql", "true");
 		properties.setProperty("hibernate.format_sql", "true");
 		return properties;
