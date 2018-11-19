@@ -27,8 +27,8 @@ public class ProductController {
 	@Autowired 
 	private ProductService pService;
 	
-	
-	@CrossOrigin("*")
+// Obtenir produit par productName ET/OU brand ET/OU price ET/OU productType ET/OU stock
+	@CrossOrigin(origins = "*")
     @GetMapping("/")
 	public Collection<Product> getProducts(
 			@RequestParam(required = false) String productName, 
@@ -36,31 +36,35 @@ public class ProductController {
 			@RequestParam(required = false) Double price,
 			@RequestParam(required = false) String productType,
 			@RequestParam(required = false) Integer stock) {
-		return pService.getProducts(productName, brand, price, productType, stock);
+		return pService.searchProducts(productName, brand, price, productType, stock);
 	}
 	
-	@CrossOrigin("*")
+// Obtenir un produit par son ID
+	@CrossOrigin(origins = "*")
     @GetMapping("/{id}")
 	public Product getProductById(@PathVariable Long id) {
 		return pService.getProduct(id);
 	}
 	
-	@CrossOrigin("*")
+// Obtenir le stock d'un produit par son ID
+	@CrossOrigin(origins = "*")
     @GetMapping("/{id}/stock")
 	public Integer getStockByProduct(@PathVariable Long id) {
 		Product product = pService.getProduct(id);
 		return product.getStock();
 	}
 	
+// Créer un produit	
 //    @Secured({"ROLE_ADMIN"})
-	@CrossOrigin("*")
+	@CrossOrigin(origins = "*")
 	@PostMapping("/") 
 	public Product createProduct(@RequestBody Product p){
 		return pService.save(p);		
 	}
 	
+// Mettre à jour / Modifier un produit
 //    @Secured({"ROLE_ADMIN"})
-	@CrossOrigin("*")
+	@CrossOrigin(origins = "*")
 	@PutMapping("/{id}") 
 	public Product updateProduct(@PathVariable(value="id") Long id, @Valid @RequestBody Product p) {
 		Product product = pService.getProduct(id);
@@ -73,8 +77,9 @@ public class ProductController {
 		return pUpdate;
 	}
 	
+// Supprimer un produit
 //    @Secured({"ROLE_ADMIN"})
-	@CrossOrigin("*")
+	@CrossOrigin(origins = "*")
 	@DeleteMapping("/{id}") 
 	public void deleteProduct(@PathVariable Long id) {
 		pService.delete(id);

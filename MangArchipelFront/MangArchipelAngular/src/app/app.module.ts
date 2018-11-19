@@ -20,6 +20,7 @@ import { Route } from '@angular/router';
 import { ProductsComponent } from './products/products.component';
 import { CartComponent } from './cart/cart.component';
 
+import {CheckboxModule} from 'primeng/checkbox';
 import { MenuAdministrateurComponent } from './menu-administrateur/menu-administrateur.component';
 
 
@@ -30,7 +31,7 @@ const roads: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginFormComponent},
   { path: 'product', component: ProductDetailComponent},
-  // { path: 'search', component: SearchComponent},
+   { path: 'search', component: SearchProductComponent},
   // { path: 'profile', component: ProfileComponent},
   // { path: 'orders', component: OrdersComponent},
 ];
@@ -55,7 +56,8 @@ const roads: Routes = [
     RouterModule.forRoot(roads),
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    CheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

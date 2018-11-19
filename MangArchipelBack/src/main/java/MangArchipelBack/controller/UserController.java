@@ -1,3 +1,4 @@
+
 package MangArchipelBack.controller;
 
 import javax.validation.Valid;
@@ -33,7 +34,7 @@ public class UserController {
   @GetMapping("/user")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<User> getUser(){
-    	if(SecurityContextHolder.getContext().getAuthentication().isAuthenticated() {
+    	if(SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
     		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     		 return  new ResponseEntity<User>(user, HttpStatus.OK);
     	}else {
