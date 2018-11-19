@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
@@ -22,7 +23,7 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit() {
     console.log('coucou');
-    this.service.loging(this.model);
+    this.service.loging(this.model).subscribe();
 
     /*
     this.service.getUserByLogin(this.model.login).subscribe(
@@ -37,4 +38,10 @@ export class LoginFormComponent implements OnInit {
       });
       */
   }
+
+  logout() {
+    console.log('tentative de déconecction');
+    this.service.logout().subscribe();
+  }
 }
+

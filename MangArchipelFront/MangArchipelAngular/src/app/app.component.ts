@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 
 @Component({
@@ -15,3 +16,4 @@ export class AppComponent {
     this.admin = true;
   }
 }
+

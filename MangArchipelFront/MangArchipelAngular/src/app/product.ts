@@ -1,3 +1,4 @@
+
 export class Product {
     id: number;
     productName: string;
@@ -13,3 +14,4 @@ export class Product {
         this.productType = type;
     }
 }
+
