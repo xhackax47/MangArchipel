@@ -33,3 +33,8 @@ p-menubar .ui-menubar
 .ui-menuitem-text {
     color: rgba(78, 78, 78,1) !important;
 }
+
+#ui-g
+{
+    text-align: center;
+}

@@ -10,8 +10,8 @@ import { MenuAdministrateurComponent } from './menu-administrateur/menu-administ
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { SearchProductComponent } from './search-product/search-product.component';
-import { CheckboxConfigurableComponent } from './checkbox-configurable/checkbox-configurable.component';
 
+import {CheckboxModule} from 'primeng/checkbox';
 
 
 @NgModule({
@@ -19,14 +19,14 @@ import { CheckboxConfigurableComponent } from './checkbox-configurable/checkbox-
     AppComponent,
     MenuBarDetailsComponent,
     MenuAdministrateurComponent,
-    SearchProductComponent,
-    CheckboxConfigurableComponent
+    SearchProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MenubarModule,
-    NgbModule
+    NgbModule,
+    CheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

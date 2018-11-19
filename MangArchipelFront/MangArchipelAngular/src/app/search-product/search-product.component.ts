@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {CheckboxModule} from 'primeng/checkbox';
 @Component({
   selector: 'app-search-product',
   templateUrl: './search-product.component.html',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchProductComponent implements OnInit {
 
+  checkValue: any;
   constructor() { }
 
   ngOnInit() {
