@@ -17,6 +17,7 @@ import { CartComponent } from './cart/cart.component';
 
 import { LoginFormComponent } from './login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
+import { AddProductComponent } from './add-product/add-product.component';
 const roads: Routes = [
   { path: '', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
@@ -34,7 +35,8 @@ const roads: Routes = [
     ProductDetailComponent,
     ProductsComponent,
     CartComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

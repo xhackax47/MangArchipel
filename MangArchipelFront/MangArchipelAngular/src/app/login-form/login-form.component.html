@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()">
+<form *ngIf="!logged" (ngSubmit)="onSubmit()">
   <div>
     <label>Login : </label>
     <input type="text" placeholder="Login" name="log" id="log" required [(ngModel)]="model.username"/></div>
@@ -10,4 +10,4 @@
 
 </form>
 
-<button pButton (click)="logout()">Déconnexion</button>
+<button *ngIf="logged" pButton (click)="logout()">Déconnexion</button>

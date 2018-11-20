@@ -15,8 +15,8 @@ export class UserService {
     return this.http.get<User>(this.url + login);
   }
 
-  loging(user: User):  Observable<any[] |User> {
-    return this.http.post<User>(this.url + '/login', user).pipe(catchError(this.handleError('loging', [])));
+  loging(user: User):  Observable<User> {
+    return this.http.post<User>(this.url + '/login', user);
     // .pipe(catchError((err) => console.log(err)));
   }
 
