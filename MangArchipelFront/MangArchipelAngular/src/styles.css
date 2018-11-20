@@ -73,6 +73,14 @@ h2 {
     text-align: center;
 }
 
+.p-grid {
+    background-color: azure;
+}
+
+h2 {
+    text-align: center;
+}
+
 #stock {
     color: green;
 }
