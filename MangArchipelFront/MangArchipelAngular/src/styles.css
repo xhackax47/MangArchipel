@@ -56,9 +56,9 @@ label{
 {
   /*background-color: aliceblue;
   */
-    margin-right: 25%;
-    margin-top: 10%;
-height: 20em;
+    
+ height: 12em;
+ 
 }
 .button
 {
@@ -67,14 +67,7 @@ height: 20em;
 .p-grid 
 {
     background-color: azure;
-}
-
-h2 {
-    text-align: center;
-}
-
-.p-grid {
-    background-color: azure;
+    height: 10%;
 }
 
 h2 {

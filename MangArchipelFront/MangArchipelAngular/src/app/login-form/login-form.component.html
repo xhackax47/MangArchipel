@@ -1,6 +1,7 @@
 <br/>
-<div class="p-grid ">
-  <div class="p-col-6 p-offset-3 logg">
+<div class="p-grid logg">
+  <div class="p-col-3"></div>
+  <div class="p-col-6  ">
     <form *ngIf="!logged" (ngSubmit)="onSubmit()" class="p-col-align-center">
       <h2>Se connecter</h2>
       <div class="p-col-5 p-offset-4">
@@ -22,5 +23,6 @@
       </div>
     </form>
   </div>
+  <div class="p-col-3"></div>
   <button *ngIf="logged" pButton (click)="logout()">Déconnexion</button>
 </div>
