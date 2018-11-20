@@ -1,0 +1,26 @@
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label>Nom : </label>
+    <input type="text" placeholder="Nom" name="Nom" id="Nom" required [(ngModel)]="model.productName"/></div>
+  <div>
+      <label>Marque : </label>
+      <input type="text" placeholder="Marque" name="Brand" id="Brand" required [(ngModel)]="model.brand"/></div>
+      <div>
+          <label>Product Type : </label>
+          <input type="text" placeholder="Product type" name="productType" id="productType" required [(ngModel)]="model.productType"/></div>
+      <div>
+    <label> Prix : </label>
+    <input type="text" placeholder="Prix" name="Prix" id="Prix" required [(ngModel)]="model.price"/>
+  </div>
+    <div>
+    <label> Image : </label>
+    <input type="image" placeholder="Image" name="Image" id="Image" required [(ngModel)]="model.image"/>
+  </div>
+    <div>
+    <label> Descriptitf : </label>
+    <input type="text" placeholder="Descriptitf" name="Descriptitf" id="Descriptitf" required [(ngModel)]="model.descriptitf"/>
+  </div>
+  
+  <button pButton type="submit">Ajouter un produit</button>
+
+</form>

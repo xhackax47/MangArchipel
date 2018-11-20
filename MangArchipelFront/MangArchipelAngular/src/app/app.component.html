@@ -1,7 +1,8 @@
+
 <!--The content below is only a placeholder and can be replaced.-->
 
  
-    <div id="nameSite" >
+    <div id="nameSite"  >
       <h1 class="first">
         {{ title }}
       </h1>
@@ -14,9 +15,7 @@
       <div *ngIf="logged && admin">
         <app-menu-administrateur></app-menu-administrateur>
       </div>
-    </div>
-    <div>
-      <app-search-product></app-search-product>
+      <br/>
     </div>
     <router-outlet></router-outlet>
 

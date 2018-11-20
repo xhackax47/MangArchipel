@@ -1,4 +1,4 @@
-package MangArchipelBack.services.security;
+package MangArchipelBack.services;
 
 import java.io.IOException;
 import javax.servlet.Filter;
