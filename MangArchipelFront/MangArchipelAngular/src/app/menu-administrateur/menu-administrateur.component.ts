@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
@@ -19,7 +18,10 @@ export class MenuAdministrateurComponent implements OnInit {
       {
         label: 'Administration',
         items: [
-          { label: 'Gestions des produits' },
+          {
+            label: 'Gestions des produits',
+            routerLink: '/admin/products'
+          },
           { label: 'Commandes' }
         ]
       }

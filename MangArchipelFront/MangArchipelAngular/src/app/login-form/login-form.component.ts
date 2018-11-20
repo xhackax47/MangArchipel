@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ export class LoginFormComponent implements OnInit {
   model: User;
   logged: Boolean;
   loginform: LoginFormComponent;
+ // @Output() envoi = new EventEmitter<User>();
   constructor(private service: UserService,
     private router: Router,
   ) {
@@ -40,8 +41,8 @@ export class LoginFormComponent implements OnInit {
       if (user.username !== undefined) {
         localStorage.setItem('USER', user.toString());
         this.logged = true;
+        // this.envoi.emit(user);
       }
-
     });
 
     /*
