@@ -60,6 +60,6 @@ h2 {
     text-align: center;
 }
 
-div > label {
+#stock {
     color: green;
 }
