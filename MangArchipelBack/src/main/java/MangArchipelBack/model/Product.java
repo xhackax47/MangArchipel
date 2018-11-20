@@ -37,8 +37,6 @@ public class Product {
 	@Column(name="DESCRIPTION",length=2000)
 	private String description;
 	
-	@Column(name="IMAGE")
-	private String image;
 
 	@Column(name="PICTURE")
 	private String picture;

@@ -9,11 +9,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.util.Objects;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
@@ -22,25 +23,29 @@ public class UserService implements UserDetailsService {
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+    
+    
+// Enregistrer user dans la BDD
+ 	public User save(User u) {
+ 		return userRepository.save(u);
+ 	}
+
+// Trouver user dans la BDD	via son ID
+ 	public User getUserById(Long id) {
+		return userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("Utilisateur non trouvé"));	
+ 	}
+ 	
+ 	
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-       /* Objects.requireNonNull(username);
-        Optional< User> user = userRepository.findUserWithName(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-
-        
-        return user;
-        */
     	
         Objects.requireNonNull(username);
         Optional< User> o = userRepository.findUserWithName(username);
-        System.out.println("TOTO2");
         if(o.isPresent()) {
         	 return o.get();
         }else {
-        	throw new UsernameNotFoundException("User not found");
+        	throw new UsernameNotFoundException("Utilisateur non trouvé");
         }
     }
 
