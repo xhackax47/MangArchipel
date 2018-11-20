@@ -1,4 +1,4 @@
-package MangArchipelBack.services.security;
+package MangArchipelBack.services;
 
 import org.springframework.validation.annotation.Validated;
 

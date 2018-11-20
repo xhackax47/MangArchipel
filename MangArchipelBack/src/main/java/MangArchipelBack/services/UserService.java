@@ -1,4 +1,4 @@
-package MangArchipelBack.services.security;
+package MangArchipelBack.services;
 
 
 import MangArchipelBack.model.User;
