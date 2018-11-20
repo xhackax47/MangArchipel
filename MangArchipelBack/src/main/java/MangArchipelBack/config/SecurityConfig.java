@@ -25,8 +25,8 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationSu
 import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import MangArchipelBack.services.security.AppAuthProvider;
-import MangArchipelBack.services.security.UserService;
+import MangArchipelBack.services.AppAuthProvider;
+import MangArchipelBack.services.UserService;
 
 @Configuration
 @EnableWebSecurity

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import MangArchipelBack.model.Product;
-import MangArchipelBack.services.security.ProductService;
+import MangArchipelBack.services.ProductService;
 
 @RestController
 @RequestMapping("/api/products")
