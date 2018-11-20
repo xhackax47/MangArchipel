@@ -24,9 +24,17 @@ public class User implements Serializable , UserDetails {
 
     private String username;
 
-  
-
 	private String password;
+	
+	private String firstName;
+	
+	private String lastName;
+	
+	private String adress;
+	
+	private String city;
+	
+	private Integer postalCode;
     
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
@@ -90,4 +98,46 @@ public class User implements Serializable , UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getAdress() {
+		return adress;
+	}
+
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public Integer getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(Integer postalCode) {
+		this.postalCode = postalCode;
+	}
+    
+    
 }

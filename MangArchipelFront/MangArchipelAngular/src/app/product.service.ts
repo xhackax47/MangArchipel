@@ -33,8 +33,7 @@ export class ProductService {
   }
 
   getProductBy(arrayProduct: Product[]): Observable<Product> {
-    console.log(arrayProduct);
-    return this.http.get<Product>(this.url + '/');
+    return this.http.get<Product>(this.url + '/' + arrayProduct);
   }
 
   addProduct(product: Product): Observable<Product> {
