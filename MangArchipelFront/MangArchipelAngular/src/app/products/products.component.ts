@@ -1,4 +1,5 @@
 
+
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
@@ -34,6 +35,14 @@ export class ProductsComponent implements OnInit {
 
   pageChanged(event) {
     this.products = this.productArray.slice(event.first, event.first + event.rows);
+  }
+
+  onClickParent(product: Product) {
+    console.log('product ajouté');
+    this.service.getProducts().subscribe(p => {
+      this.productArray = p;
+      this.products = this.productArray.slice(0, 20);
+    });
   }
 
 }
