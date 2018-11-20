@@ -31,4 +31,9 @@ export class ProductService {
     return this.http.get<Product>(this.url + id);
   }
 
+  getProductBy(arrayProduct: Product[]): Observable<Product> {
+    console.log(arrayProduct);
+    return this.http.get<Product>(this.url + '/');
+  }
+
 }
