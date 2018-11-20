@@ -35,7 +35,7 @@ public class Product {
 	private Integer stock;
 	
 	@Column(name="DESCRIPTIF")
-	private String descriptitf;
+	private String description;
 	
 	@Column(name="IMAGE")
 	private String image;
@@ -102,6 +102,48 @@ public class Product {
 
 	public void setStock(Integer stock) {
 		this.stock = stock;
+	}
+
+	/**
+	 * @return the descriptitf
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param descriptitf the descriptitf to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @return the image
+	 */
+	public String getImage() {
+		return image;
+	}
+
+	/**
+	 * @param image the image to set
+	 */
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	/**
+	 * @return the picture
+	 */
+	public String getPicture() {
+		return picture;
+	}
+
+	/**
+	 * @param picture the picture to set
+	 */
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 	
 }
