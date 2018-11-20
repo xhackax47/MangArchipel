@@ -30,6 +30,9 @@ import { MenuAdministrateurComponent } from './menu-administrateur/menu-administ
 import { LoginFormComponent } from './login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
 import { from } from 'rxjs';
+
+import { SearchProductComponent } from './search-product/search-product.component';
+
 import { AddProductComponent } from './add-product/add-product.component';
 
 const roads: Routes = [
@@ -40,6 +43,7 @@ const roads: Routes = [
 
   { path: 'product/:id', component: ProductDetailComponent},
   { path: 'search', component: SearchProductComponent},
+  { path: 'add-product', component: AddProductComponent}
   // { path: 'profile', component: ProfileComponent},
   // { path: 'orders', component: OrdersComponent},
 ];
