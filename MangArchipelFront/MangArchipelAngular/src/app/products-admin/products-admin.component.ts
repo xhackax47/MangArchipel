@@ -1,17 +1,14 @@
-
-
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
-import { LazyLoadEvent } from 'primeng/api';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-products-admin',
+  templateUrl: './products-admin.component.html',
+  styleUrls: ['./products-admin.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsAdminComponent implements OnInit {
 
   product: Product;
   productArray: Array<Product>;
@@ -37,5 +34,12 @@ export class ProductsComponent implements OnInit {
     this.products = this.productArray.slice(event.first, event.first + event.rows);
   }
 
-}
+  onClickParent(product: Product) {
+    console.log('product ajouté');
+    this.service.getProducts().subscribe(p => {
+      this.productArray = p;
+      this.products = this.productArray.slice(0, 20);
+    });
+  }
 
+}
