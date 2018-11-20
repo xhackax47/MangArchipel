@@ -3,6 +3,7 @@
 import { Component } from '@angular/core';
 import { UserService } from './user.service';
 import { of } from 'rxjs';
+import { User } from './user';
 
 @Component({
   selector: 'app-root',
@@ -15,10 +16,28 @@ export class AppComponent {
   admin: boolean;
 
   constructor(private userService: UserService) {
-    this.logged = true;
-    this.admin = true;
+    this.logged = false;
 
- //  Observable<string> o = of(localStorage.)
+    const u: User = JSON.parse(localStorage.getItem('USER'));
+    if (u !== null) {
+      this.logged = true;
+      if (u.username === 'ADMIN') {
+        this.admin = true;
+      }
+    }
+
+
+    userService.observeLog.subscribe(logged => {
+      this.logged = logged;
+      console.log(logged);
+      const u: User = JSON.parse(localStorage.getItem('USER'));
+      if (u !== null) {
+        if (u.username === 'ADMIN') {
+          this.admin = true;
+        }
+      }
+    }
+    );
   }
 
 
