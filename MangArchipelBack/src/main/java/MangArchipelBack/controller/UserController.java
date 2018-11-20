@@ -32,8 +32,8 @@ public class UserController {
 
   
 	@CrossOrigin(origins = "*")
-  @GetMapping("/user")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+	@GetMapping("/user")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public ResponseEntity<User> getUser(){
     	if(SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
     		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

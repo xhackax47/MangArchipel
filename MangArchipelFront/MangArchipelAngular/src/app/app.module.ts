@@ -31,17 +31,18 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
 import { from } from 'rxjs';
 import { AddProductComponent } from './add-product/add-product.component';
+import { ProductsAdminComponent } from './products-admin/products-admin.component';
 
 const roads: Routes = [
   { path: '', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginFormComponent},
   { path: 'products', component: ProductsComponent},
-
+  { path: 'admin/products', component: ProductsAdminComponent},
   { path: 'product/:id', component: ProductDetailComponent},
   { path: 'search', component: SearchProductComponent},
   // { path: 'profile', component: ProfileComponent},
-  // { path: 'orders', component: OrdersComponent},
+  // { path: 'admin/orders', component: OrdersComponent},
 ];
 
 
@@ -56,7 +57,8 @@ const roads: Routes = [
     MenuBarDetailsComponent,
     MenuAdministrateurComponent,
     SearchProductComponent,
-    AddProductComponent
+    AddProductComponent,
+    ProductsAdminComponent
 
   ],
   imports: [

@@ -34,11 +34,9 @@ public class Product {
 	@Column(name="STOCK")
 	private Integer stock;
 	
-	@Column(name="DESCRIPTIF")
-	private String descriptitf;
+	@Column(name="DESCRIPTION")
+	private String description;
 	
-	@Column(name="IMAGE")
-	private String image;
 
 	@Column(name="PICTURE")
 	private String picture;

@@ -26,17 +26,10 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-       /* Objects.requireNonNull(username);
-        Optional< User> user = userRepository.findUserWithName(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-
-        
-        return user;
-        */
     	
         Objects.requireNonNull(username);
         Optional< User> o = userRepository.findUserWithName(username);
-        System.out.println("TOTO2");
+        System.out.println("tentative de connection");
         if(o.isPresent()) {
         	 return o.get();
         }else {

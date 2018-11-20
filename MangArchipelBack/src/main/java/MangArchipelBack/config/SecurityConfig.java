@@ -47,17 +47,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.cors().and().csrf().disable().exceptionHandling()
-				.authenticationEntryPoint(new Http403ForbiddenEntryPoint() {
-				}).and().authenticationProvider(getProvider()).formLogin()
-				.successHandler(new AuthentificationLoginSuccessHandler())
-				.failureHandler(new SimpleUrlAuthenticationFailureHandler())
-				.failureHandler(new AuthenticationFailureHandler()).and().logout().logoutUrl("/api/users/logout")
-				.logoutSuccessHandler(new AuthentificationLogoutSuccessHandler()).invalidateHttpSession(true).and()
-				.authorizeRequests().antMatchers("/api/users/login").permitAll().anyRequest().anonymous()
-				.antMatchers("/api/users/logout").permitAll().anyRequest().anonymous()
-				.antMatchers("/api/users/user").permitAll().anyRequest().authenticated()
-				.antMatchers("/api/products").permitAll().anyRequest().anonymous()
+		http.cors()
+		.and()
+		.csrf()
+		.disable()
+		.exceptionHandling()
+		.authenticationEntryPoint(new Http403ForbiddenEntryPoint() {})
+		.and()
+		.authenticationProvider(getProvider())
+		.formLogin()
+		.successHandler(new AuthentificationLoginSuccessHandler())
+		.failureHandler(new SimpleUrlAuthenticationFailureHandler())
+		.failureHandler(new AuthenticationFailureHandler())
+		.and().logout().logoutUrl("/api/users/logout")
+		.logoutSuccessHandler(new AuthentificationLogoutSuccessHandler())
+		.invalidateHttpSession(true)
+		.and()
+		.authorizeRequests()
+		.antMatchers("/api/users/login").permitAll().anyRequest().anonymous()
+		.antMatchers("/api/users/logout").permitAll().anyRequest().anonymous()
+		.antMatchers("/api/users/user").permitAll().anyRequest().authenticated()
+		.antMatchers("/api/products").permitAll().anyRequest().anonymous()
 				;
 
 	}

@@ -1,0 +1,6 @@
+
+<p-dataTable [value]="products" [(selection)]="product" selectionMode="single" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="10" [headerCheckboxToggleAllPages]="true">
+  <p-column field="productName" header="Produits"></p-column>
+</p-dataTable>
+<app-add-product (envoi)="onClickParent($event)"></app-add-product>
+
