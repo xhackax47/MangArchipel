@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import {DataTableModule} from 'primeng/datatable';
 
 import { MenuBarDetailsComponent } from './menu-bar-details/menu-bar-details.component';
-import {CheckboxModule} from 'primeng/checkbox';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -27,6 +26,7 @@ import { MenuAdministrateurComponent } from './menu-administrateur/menu-administ
 import { LoginFormComponent } from './login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
 import { from } from 'rxjs';
+import { SearchProductComponent } from './search-product/search-product.component';
 
 const roads: Routes = [
   { path: '', component: ProductsComponent },
@@ -48,7 +48,8 @@ const roads: Routes = [
     CartComponent,
     LoginFormComponent,
     MenuBarDetailsComponent,
-    MenuAdministrateurComponent
+    MenuAdministrateurComponent,
+    SearchProductComponent
   ],
   imports: [
     BrowserModule,
