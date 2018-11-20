@@ -39,7 +39,10 @@ export class ProductsComponent implements OnInit {
 
   onClickParent(product: Product) {
     console.log('product ajouté');
-      this.productArray.push(product);
+    this.service.getProducts().subscribe(p => {
+      this.productArray = p;
+      this.products = this.productArray.slice(0, 20);
+    });
   }
 
 }

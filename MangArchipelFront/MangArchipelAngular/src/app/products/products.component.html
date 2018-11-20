@@ -1,13 +1,6 @@
-<<<<<<< HEAD
 
-<ul *ngIf="productArray.length > 0">
-  <li *ngFor="let p of productArray">
-    <app-product-detail [product]="p"></app-product-detail>
-  </li>
-</ul>
-<app-add-product (envoi)="onClickParent($event)"></app-add-product>
-=======
 <p-dataTable [value]="products" [(selection)]="product" selectionMode="single" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="10" [headerCheckboxToggleAllPages]="true">
     <p-column field="productName" header="Produits"></p-column>
 </p-dataTable>
->>>>>>> 2d71d9694e7bced0f656b66eef36dc578fc37a1f
+<app-add-product (envoi)="onClickParent($event)"></app-add-product>
+

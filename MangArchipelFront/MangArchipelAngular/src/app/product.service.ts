@@ -38,7 +38,7 @@ export class ProductService {
   }
 
   addProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(this.url + '/api/products/', product, this.httpOptions);
+    return this.http.post<Product>(this.url + '/', product, this.httpOptions);
   }
 
 }
