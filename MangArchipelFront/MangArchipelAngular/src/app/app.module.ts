@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SearchProductComponent } from './search-product/search-product.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MenubarModule} from 'primeng/menubar';

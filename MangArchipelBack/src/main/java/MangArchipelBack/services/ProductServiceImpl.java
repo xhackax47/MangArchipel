@@ -42,7 +42,7 @@ public class ProductServiceImpl implements ProductService {
 // Recherche de produits par critères
 	@Override
 	public List<Product> searchProducts(String productName, String brand, Double price, String productType,
-			Integer stock) {
+		Integer stock, String description) {
 		CriteriaBuilder builder = em.getCriteriaBuilder();
 		CriteriaQuery<Product> query = builder.createQuery(Product.class);
 		Root<Product> root = query.from(Product.class);
@@ -61,6 +61,10 @@ public class ProductServiceImpl implements ProductService {
 		}
 		if (!StringUtils.isEmpty(stock)) {
 			query.where(builder.equal(root.get("stock"), stock));
+		}
+
+		if (!StringUtils.isEmpty(description)) {
+			query.where(builder.equal(root.get("description"), description));
 		}
 		
 		TypedQuery<Product> userQuery = em.createQuery(query);
