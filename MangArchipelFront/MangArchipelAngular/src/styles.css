@@ -21,7 +21,7 @@ body
     color: aliceblue;
   
 }
-h1{
+h1,h2{
 font-family:  yozakura;
 text-align: center
 }
@@ -46,8 +46,20 @@ table {
 button{
     font-family: roboto;
 }
-.ui-g
+
+
+label{
+    text-align: center;
+}
+.logg
+{
+  /*background-color: aliceblue;
+  */
+    margin-right: 25%;
+    margin-top: 10%;
+height: 20em;
+}
+.button
 {
     text-align: center;
 }
-

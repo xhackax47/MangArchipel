@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from './product';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,7 @@ export class ProductService {
     headers: new HttpHeaders().set('Content-type', 'application/json')
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   getProducts(): Observable<Array<Product>> {
     return this.http.get<Array<Product>>(this.url + '/', this.httpOptions);
@@ -28,13 +30,15 @@ export class ProductService {
   }
 
   getProductsById(id: Number): Observable<Product> {
-    return this.http.get<Product>(this.url + id);
+    return this.http.get<Product>(this.url + '/' + id, this.httpOptions);
   }
 
 
-  getProductBy(): Observable<Product> {
-
-    return this.http.get<Product>(this.url + '/');
+  getProductBy(product: String): Observable<Product[]> {
+    if (!product.trim()) {
+      return of([]);
+    }
+    // return this.http.get<Product[]>
   }
 
 }
