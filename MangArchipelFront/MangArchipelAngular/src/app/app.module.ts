@@ -29,6 +29,8 @@ import { FormsModule } from '@angular/forms';
 import { from } from 'rxjs';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ProductsAdminComponent } from './products-admin/products-admin.component';
+import { SearchProductComponent } from './search-product/search-product.component';
+import {DataViewModule} from 'primeng/dataview';
 
 const roads: Routes = [
   { path: '', component: ProductsComponent },
@@ -66,7 +68,8 @@ const roads: Routes = [
     FormsModule,
     HttpClientModule,
     NgbModule,
-    DataTableModule
+    DataTableModule,
+    DataViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]

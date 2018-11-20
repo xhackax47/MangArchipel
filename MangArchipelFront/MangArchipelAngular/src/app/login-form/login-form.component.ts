@@ -14,7 +14,7 @@ export class LoginFormComponent implements OnInit {
   model: User;
   logged: Boolean;
   loginform: LoginFormComponent;
- // @Output() envoi = new EventEmitter<User>();
+  // @Output() envoi = new EventEmitter<User>();
   constructor(private service: UserService,
     private router: Router,
   ) {
@@ -39,8 +39,10 @@ export class LoginFormComponent implements OnInit {
     this.service.loging(this.model).subscribe(user => {
       console.log(user);
       if (user.username !== undefined) {
-        localStorage.setItem('USER', user.toString());
+        localStorage.setItem('USER', JSON.stringify(user));
         this.logged = true;
+        this.service.logged = true;
+        this.service.subjectLog.next(true);
         // this.envoi.emit(user);
       }
     });
@@ -64,6 +66,7 @@ export class LoginFormComponent implements OnInit {
     this.service.logout().subscribe(() => {
       this.logged = false;
       localStorage.removeItem('USER');
+      this.service.subjectLog.next(false);
     });
   }
 }

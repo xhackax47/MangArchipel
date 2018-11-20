@@ -1,8 +1,31 @@
-
-<p-dataTable [value]="products" [(selection)]="product" selectionMode="single" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="10" [headerCheckboxToggleAllPages]="true">
+<!--<p-dataTable [value]="products" [(selection)]="product" selectionMode="single" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="10" [headerCheckboxToggleAllPages]="true">
   <p-column field="productName" header="Produits"></p-column>
   <p-column  header="Actions"><button pButton (click)="activer()">Activer</button></p-column>
-  
-</p-dataTable>
-<app-add-product (envoi)="onClickParent($event)"></app-add-product>
 
+</p-dataTable>-->
+
+<p-dataView [value]="products" [paginator]="true" [rows]="10">
+  <p-header>
+    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+  </p-header>
+
+
+  <ng-template let-p pTemplate="gridItem">
+    <div class="ui-g-12 ui-md-3">
+      <div> {{p.productName}}</div>
+      <div> <button type="button" pButton><i class="pi pi-pencil"></i></button>
+        <button type="button" pButton><i class="pi pi-trash"></i></button>
+        <button type="button" pButton><i class="pi pi-lock"></i></button></div>
+
+    </div>
+
+  </ng-template>
+  <ng-template pTemplate="paginatorleft" let-state>
+    <button type="button" pButton icon="fa-refresh"></button>
+  </ng-template>
+  <ng-template pTemplate="paginatorright">
+    <button type="button" pButton icon="fa-cloud-upload"></button>
+  </ng-template>
+</p-dataView>
+
+<app-add-product (envoi)="onClickParent($event)"></app-add-product>
