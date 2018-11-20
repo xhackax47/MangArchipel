@@ -54,11 +54,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.failureHandler(new SimpleUrlAuthenticationFailureHandler())
 				.failureHandler(new AuthenticationFailureHandler()).and().logout().logoutUrl("/api/users/logout")
 				.logoutSuccessHandler(new AuthentificationLogoutSuccessHandler()).invalidateHttpSession(true).and()
-				.authorizeRequests()
-				.antMatchers("/api/users/login").permitAll().anyRequest().anonymous()
+				.authorizeRequests().antMatchers("/api/users/login").permitAll().anyRequest().anonymous()
 				.antMatchers("/api/users/logout").permitAll().anyRequest().anonymous()
 				.antMatchers("/api/users/user").permitAll().anyRequest().authenticated()
-				.antMatchers("/api/products").permitAll().anyRequest().anonymous();
+				.antMatchers("/api/products").permitAll().anyRequest().anonymous()
+				;
+
 	}
 
 	private class AuthentificationLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {

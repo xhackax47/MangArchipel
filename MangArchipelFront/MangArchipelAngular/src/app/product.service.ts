@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from './product';
@@ -34,6 +35,10 @@ export class ProductService {
   getProductBy(arrayProduct: Product[]): Observable<Product> {
     console.log(arrayProduct);
     return this.http.get<Product>(this.url + '/');
+  }
+
+  addProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.url + '/', product, this.httpOptions);
   }
 
 }
