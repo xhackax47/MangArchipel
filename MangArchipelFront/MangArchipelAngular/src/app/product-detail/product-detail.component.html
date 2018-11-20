@@ -11,7 +11,7 @@
         <p>Description :
             {{product.description}}
         </p>
-        <label id="stock">En Stock</label>
+        <label *ngIf="product.stock  > 10" id="stock">En Stock</label>
     </div>
     <div class="p-col-1 p-col-align-center p-offset-1">
         <button pButton routerLink="/cart">Ajouter au panier</button>
