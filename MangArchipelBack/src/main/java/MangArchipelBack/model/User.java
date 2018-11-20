@@ -20,13 +20,21 @@ public class User implements Serializable , UserDetails {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
+    private Long id;
 
     private String username;
 
-  
-
 	private String password;
+	
+	private String firstName;
+	
+	private String lastName;
+	
+	private String adress;
+	
+	private String city;
+	
+	private Integer postalCode;
     
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
@@ -42,12 +50,12 @@ public class User implements Serializable , UserDetails {
   	public void setRoles(Set<Role> roles) {
   		this.roles = roles;
   	}
-    public Integer getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -90,4 +98,46 @@ public class User implements Serializable , UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getAdress() {
+		return adress;
+	}
+
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public Integer getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(Integer postalCode) {
+		this.postalCode = postalCode;
+	}
+    
+    
 }

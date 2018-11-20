@@ -34,12 +34,17 @@ public class Product {
 	@Column(name="STOCK")
 	private Integer stock;
 	
+	@Column(name="DESCRIPTION",length=2000)
+	private String description;
+	
+
 	@Column(name="PICTURE")
 	private String picture;
+
 	
 	public Product() {}
 
-	public Product(Long id, String productName, String brand, Double price, String productType, Integer stock) {
+	public Product(Long id, String productName, String brand, Double price, String productType, Integer stock, String description, String picture) {
 		super();
 		this.id = id;
 		this.productName = productName;
@@ -47,6 +52,8 @@ public class Product {
 		this.price = price;
 		this.productType = productType;
 		this.stock = stock;
+		this.description = description;
+		this.picture = picture;
 	}
 
 	public Long getId() {
@@ -95,6 +102,34 @@ public class Product {
 
 	public void setStock(Integer stock) {
 		this.stock = stock;
+	}
+
+	/**
+	 * @return the descriptitf
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param descriptitf the descriptitf to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @return the picture
+	 */
+	public String getPicture() {
+		return picture;
+	}
+
+	/**
+	 * @param picture the picture to set
+	 */
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 	
 }

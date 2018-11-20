@@ -1,4 +1,5 @@
 
+
 /* You can add global styles to this file, and also import other style files */
 @font-face
 {
@@ -62,4 +63,16 @@ height: 20em;
 .button
 {
     text-align: center;
+}
+.p-grid 
+{
+    background-color: azure;
+}
+
+h2 {
+    text-align: center;
+}
+
+#stock {
+    color: green;
 }

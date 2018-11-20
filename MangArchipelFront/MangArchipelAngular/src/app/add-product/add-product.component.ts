@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 
@@ -9,7 +11,11 @@ import { ProductService } from '../product.service';
 })
 export class AddProductComponent implements OnInit {
   model: Product;
-  constructor(service: ProductService) {
+
+  @Output() envoi = new EventEmitter<Product>();
+
+  constructor(private service: ProductService) {
+
     this.model = new Product();
   }
 
@@ -17,6 +23,12 @@ export class AddProductComponent implements OnInit {
   }
 
   onSubmit() {
+    this.service.addProduct(this.model).subscribe(product => {
+      console.log('product ajouté');
+      this.envoi.emit(product);
+    }
+
+    );
 
   }
 

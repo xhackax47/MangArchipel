@@ -25,8 +25,8 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationSu
 import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import MangArchipelBack.services.security.AppAuthProvider;
-import MangArchipelBack.services.security.UserService;
+import MangArchipelBack.services.AppAuthProvider;
+import MangArchipelBack.services.UserService;
 
 @Configuration
 @EnableWebSecurity
@@ -47,6 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+<<<<<<< HEAD
 		http.cors().and().csrf().disable().exceptionHandling()
 				.authenticationEntryPoint(new Http403ForbiddenEntryPoint() {
 				}).and().authenticationProvider(getProvider()).formLogin()
@@ -60,6 +61,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/api/products").permitAll().anyRequest().anonymous()
 				.antMatchers("/api/users/user")
 				.permitAll().anyRequest().authenticated();
+=======
+		http.cors()
+		.and()
+		.csrf()
+		.disable()
+		.exceptionHandling()
+		.authenticationEntryPoint(new Http403ForbiddenEntryPoint() {})
+		.and()
+		.authenticationProvider(getProvider())
+		.formLogin()
+		.successHandler(new AuthentificationLoginSuccessHandler())
+		.failureHandler(new SimpleUrlAuthenticationFailureHandler())
+		.failureHandler(new AuthenticationFailureHandler())
+		.and().logout().logoutUrl("/api/users/logout")
+		.logoutSuccessHandler(new AuthentificationLogoutSuccessHandler())
+		.invalidateHttpSession(true)
+		.and()
+		.authorizeRequests()
+		.antMatchers("/api/users/login").permitAll().anyRequest().anonymous()
+		.antMatchers("/api/users/logout").permitAll().anyRequest().anonymous()
+		.antMatchers("/api/users/user").permitAll().anyRequest().authenticated()
+		.antMatchers("/api/products").permitAll().anyRequest().anonymous()
+				;
+>>>>>>> ee2bf0427adb2fee53a561f828ea2367e2fe297b
 
 	}
 

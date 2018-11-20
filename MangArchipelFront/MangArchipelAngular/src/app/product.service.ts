@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from './product';
@@ -33,12 +34,12 @@ export class ProductService {
     return this.http.get<Product>(this.url + '/' + id, this.httpOptions);
   }
 
+  getProductBy(arrayProduct: Product[]): Observable<Product> {
+    return this.http.get<Product>(this.url + '/' + arrayProduct);
+  }
 
-  getProductBy(product: String): Observable<Product[]> {
-    if (!product.trim()) {
-      return of([]);
-    }
-    // return this.http.get<Product[]>
+  addProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.url + '/', product, this.httpOptions);
   }
 
 }

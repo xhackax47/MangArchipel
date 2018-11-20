@@ -1,4 +1,5 @@
 
+
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
@@ -28,7 +29,7 @@ export class ProductsComponent implements OnInit {
   }
 
   onRowSelect(event) {
-    this.router.navigate(['product', this.product.id])
+    this.router.navigate(['product', this.product.id]);
 }
 
 

@@ -1,5 +1,8 @@
 
+
 import { Component } from '@angular/core';
+import { UserService } from './user.service';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +14,13 @@ export class AppComponent {
   logged: boolean;
   admin: boolean;
 
-  constructor() {
-    this.logged = false;
-    this.admin = false;
+  constructor(private userService: UserService) {
+    this.logged = true;
+    this.admin = true;
+
+ //  Observable<string> o = of(localStorage.)
   }
+
+
 }
 
