@@ -1,4 +1,5 @@
 
+
 /* You can add global styles to this file, and also import other style files */
 @font-face
 {
@@ -13,7 +14,7 @@
 body
 {
     background-color: rgba(234,78,78);
-   font-family:  roboto;
+    font-family:  roboto;
 }
 #nameSite
 {
@@ -33,5 +34,21 @@ p-menubar .ui-menubar
 }
 .ui-menuitem-text {
     color: rgba(78, 78, 78,1) !important;
+}
+#product{
+    color: black;
+}
+table {
+    font-family: roboto;
+    background-color: aliceblue;
+}
+
+
+button{
+    font-family: roboto;
+}
+.ui-g
+{
+    text-align: center;
 }
 

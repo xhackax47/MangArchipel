@@ -1,3 +1,4 @@
+
 <form *ngIf="!logged" (ngSubmit)="onSubmit()">
   <div>
     <label>Login : </label>
@@ -11,3 +12,4 @@
 </form>
 
 <button *ngIf="logged" pButton (click)="logout()">Déconnexion</button>
+

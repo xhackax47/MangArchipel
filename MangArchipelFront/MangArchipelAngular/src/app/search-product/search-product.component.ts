@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
 
+import { Component, OnInit } from '@angular/core';
+import { Product } from '../product';
+import { ProductService } from '../product.service';
 @Component({
   selector: 'app-search-product',
   templateUrl: './search-product.component.html',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchProductComponent implements OnInit {
 
-  constructor() { }
+  checkValue: any;
+  productArray: Array<Product>;
+  constructor(private service: ProductService) {
+    this.productArray = [];
+   }
 
   ngOnInit() {
+    // this.service.getProductsById();
   }
-
+  onSubmit() {
+    this.service.getProductBy(this.productArray).subscribe();
+  }
 }

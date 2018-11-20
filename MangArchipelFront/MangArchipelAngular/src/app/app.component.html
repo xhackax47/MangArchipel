@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <!--The content below is only a placeholder and can be replaced.-->
 
@@ -17,3 +18,27 @@
 </div>
 <app-login-form></app-login-form>
 <router-outlet></router-outlet>
+=======
+<!--The content below is only a placeholder and can be replaced.-->
+
+ 
+    <div id="nameSite" >
+      <h1 class="first">
+        {{ title }}
+      </h1>
+      <div *ngIf="!logged">
+        <app-menu></app-menu>
+      </div>
+      <div *ngIf="logged && !admin">
+        <app-menu-bar-details></app-menu-bar-details>
+      </div>
+      <div *ngIf="logged && admin">
+        <app-menu-administrateur></app-menu-administrateur>
+      </div>
+    </div>
+    <div>
+      <app-search-product></app-search-product>
+    </div>
+    <router-outlet></router-outlet>
+
+>>>>>>> 2d71d9694e7bced0f656b66eef36dc578fc37a1f
