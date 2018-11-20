@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
 
-  url = 'http://localhost:8098';
+  url = 'http://localhost:8098/api/products';
   httpOptions = {
     headers: new HttpHeaders().set('Content-type', 'application/json')
   };
@@ -16,7 +16,15 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Array<Product>> {
-    return this.http.get<Array<Product>>(this.url + '/api/products', this.httpOptions);
+    return this.http.get<Array<Product>>(this.url + '/', this.httpOptions);
+  }
+
+  deleteProduct(id: number) {
+    this.http.delete(this.url + '/' + id, this.httpOptions);
+  }
+
+  getProduct(id: number): Observable<Product> {
+    return this.http.get<Product>(this.url + '/' + id, this.httpOptions);
   }
 
   getProductsById(id: Number): Observable<Product> {

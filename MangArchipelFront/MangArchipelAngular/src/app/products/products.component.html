@@ -1,7 +1,3 @@
-
-<ul *ngIf="productArray.length > 0">
-  <li *ngFor="let p of productArray">
-    <app-product-detail [product]="p"></app-product-detail>
-  </li>
-</ul>
-
+<p-dataTable [value]="products" [(selection)]="product" selectionMode="single" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="10" [headerCheckboxToggleAllPages]="true">
+    <p-column field="productName" header="Produits"></p-column>
+</p-dataTable>
