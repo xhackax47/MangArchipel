@@ -57,9 +57,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.authorizeRequests()
 				.antMatchers("/api/users/login").permitAll().anyRequest().anonymous()
 				.antMatchers("/api/users/logout").permitAll().anyRequest().anonymous()
+<<<<<<< HEAD
 				.antMatchers("/api/products/").permitAll().anyRequest().anonymous()
 				.antMatchers("/api/users/user")
 				.permitAll().anyRequest().authenticated();
+=======
+				.antMatchers("/api/users/user").permitAll().anyRequest().authenticated()
+				.antMatchers("/api/products").permitAll().anyRequest().anonymous();
+>>>>>>> 0b776cd678e89cecce2eee6af5116039a43dde8d
 	}
 
 	private class AuthentificationLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {

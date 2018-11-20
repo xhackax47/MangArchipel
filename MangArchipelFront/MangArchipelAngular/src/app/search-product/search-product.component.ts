@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CheckboxModule } from 'primeng/checkbox';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
@@ -17,9 +16,9 @@ export class SearchProductComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    // this.service.getProductsById();
   }
   onSubmit() {
-    this.service.getProductBy(this.productArray).subscribe();
+    this.service.getProductBy().subscribe();
   }
 }

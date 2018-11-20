@@ -16,14 +16,33 @@ export class LoginFormComponent implements OnInit {
   loginform: LoginFormComponent;
   constructor(private service: UserService,
     private router: Router,
-  ) { this.model = new User('', ''); }
+  ) {
+    this.model = new User('', '');
+    this.logged = false;
+    if (localStorage.getItem('USER') !== null) {
+      console.log(localStorage.getItem('USER'));
+      this.logged = true;
+    }
+  }
 
   ngOnInit() {
+    this.logged = false;
+    if (localStorage.getItem('USER') !== null) {
+      console.log(localStorage.getItem('USER'));
+      this.logged = true;
+    }
   }
 
   onSubmit() {
+    console.log('coucou');
+    this.service.loging(this.model).subscribe(user => {
+      console.log(user);
+      if (user.username !== undefined) {
+        localStorage.setItem('USER', user.toString());
+        this.logged = true;
+      }
 
-    this.service.loging(this.model).subscribe();
+    });
 
     /*
     this.service.getUserByLogin(this.model.login).subscribe(
@@ -41,7 +60,9 @@ export class LoginFormComponent implements OnInit {
 
   logout() {
     console.log('tentative de déconecction');
-    this.service.logout().subscribe();
+    this.service.logout().subscribe(() => {
+      this.logged = false;
+      localStorage.removeItem('USER');
+    });
   }
 }
-

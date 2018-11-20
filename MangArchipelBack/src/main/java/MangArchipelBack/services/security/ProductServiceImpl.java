@@ -39,6 +39,7 @@ public class ProductServiceImpl implements ProductService {
 		em = jpaContext.getEntityManagerByManagedType(Product.class);
 	}
 
+// Recherche de produits par critères
 	@Override
 	public List<Product> searchProducts(String productName, String brand, Double price, String productType,
 			Integer stock) {
@@ -68,47 +69,55 @@ public class ProductServiceImpl implements ProductService {
 		
 	}
    
-
+// Récuperer tous les produits
 	@Override
 	public Collection<Product> getAllProducts() {
 		return pRepo.findAll();
 	}
 
+// Récuperer un produit par son ID
 	@Override
 	public Product getProduct(Long id) {
 		return pRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Produit", "id", id));
 	}
 
+// Enregistrer produit dans la BDD
 	@Override
 	public Product save(Product product) {
 		return pRepo.save(product);
 	}
-
+	
+// Supprimer produit dans la BDD
 	@Override
 	public void delete(Long id) {
 		pRepo.deleteById(id);
 	}
 	
+// Récuperer les produits par le nom	
 	@Override
 	public Collection<Product> findByProductName(String productName) {
 		return pRepo.findByProductName(productName);
 	}
 
+// Récuperer les produits par la marque	
 	@Override
 	public Collection<Product> findByBrand(String brand) {
 		return pRepo.findByBrand(brand);
 	}
 
+// Récuperer les produits par le prix	
 	@Override
 	public Collection<Product> findByPrice(Double price) {
 		return pRepo.findByPrice(price);
 	}
 
+// Récuperer les produits par le type de produit
 	@Override
 	public Collection<Product> findByProductType(String productType) {
 		return pRepo.findByProductType(productType);
 	}
 
+// Récupérer le stock d'un produit
 	@Override
 	public Integer getStock(Product product) {
 		return product.getStock();

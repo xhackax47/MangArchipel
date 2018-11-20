@@ -12,8 +12,8 @@ export class AppComponent {
   admin: boolean;
 
   constructor() {
-    this.logged = true;
-    this.admin = true;
+    this.logged = false;
+    this.admin = false;
   }
 }
 

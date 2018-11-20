@@ -16,13 +16,24 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Array<Product>> {
-    return this.http.get<Array<Product>>(this.url + '', this.httpOptions);
+    return this.http.get<Array<Product>>(this.url + '/', this.httpOptions);
+  }
+
+  deleteProduct(id: number) {
+    this.http.delete(this.url + '/' + id, this.httpOptions);
+  }
+
+  getProduct(id: number): Observable<Product> {
+    return this.http.get<Product>(this.url + '/' + id, this.httpOptions);
   }
 
   getProductsById(id: Number): Observable<Product> {
     return this.http.get<Product>(this.url + id);
   }
-  getProductBy(arrayProduct: Product[]): Observable<Product> {
+
+
+  getProductBy(): Observable<Product> {
+
     return this.http.get<Product>(this.url + '/');
   }
 

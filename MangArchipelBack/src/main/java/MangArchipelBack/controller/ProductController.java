@@ -23,11 +23,11 @@ import MangArchipelBack.services.security.ProductService;
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
-	
-	@Autowired 
+
+	@Autowired
 	private ProductService pService;
 	
-	
+// Obtenir produit par productName ET/OU brand ET/OU price ET/OU productType ET/OU stock
 	@CrossOrigin(origins = "*")
     @GetMapping("/")
 	public Collection<Product> getProducts(
@@ -39,19 +39,23 @@ public class ProductController {
 		return pService.searchProducts(productName, brand, price, productType, stock);
 	}
 	
+// Obtenir un produit par son ID
 	@CrossOrigin(origins = "*")
     @GetMapping("/{id}")
 	public Product getProductById(@PathVariable Long id) {
 		return pService.getProduct(id);
 	}
 	
+// Obtenir le stock d'un produit par son ID
 	@CrossOrigin(origins = "*")
     @GetMapping("/{id}/stock")
+
 	public Integer getStockByProduct(@PathVariable Long id) {
 		Product product = pService.getProduct(id);
 		return product.getStock();
 	}
-	
+
+// Créer un produit	
 //    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin(origins = "*")
 	@PostMapping("/") 
@@ -59,6 +63,7 @@ public class ProductController {
 		return pService.save(p);		
 	}
 	
+// Mettre à jour / Modifier un produit
 //    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin(origins = "*")
 	@PutMapping("/{id}") 
@@ -72,12 +77,14 @@ public class ProductController {
 		Product pUpdate = pService.save(product);
 		return pUpdate;
 	}
-	
+
+// Supprimer un produit
 //    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin(origins = "*")
 	@DeleteMapping("/{id}") 
+
 	public void deleteProduct(@PathVariable Long id) {
 		pService.delete(id);
 	}
-	
+
 }
