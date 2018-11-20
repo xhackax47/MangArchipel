@@ -52,22 +52,31 @@ button{
 label{
     text-align: center;
 }
+  /*
 .logg
 {
-  /*background-color: aliceblue;
-  */
-    
- height: 12em;
+ 
+    border-right-width: 150px;
+    margin-right: 500px;
+    margin-left: -200;
+    margin-left: 700px;
+     height: 150px;
+
+   
+    width: 50%;
  
 }
+    */
 .button
 {
     text-align: center;
 }
 .p-grid 
 {
-    background-color: azure;
-    height: 10%;
+    
+    background-color: aliceblue;
+  /* width: 75%;
+    */
 }
 
 h2 {
@@ -76,4 +85,8 @@ h2 {
 
 #stock {
     color: green;
+}
+div
+{
+    text-align: center;
 }
