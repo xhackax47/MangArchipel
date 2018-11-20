@@ -34,6 +34,9 @@ public class Product {
 	@Column(name="STOCK")
 	private Integer stock;
 	
+	@Column(name="PICTURE")
+	private String picture;
+	
 	public Product() {}
 
 	public Product(Long id, String productName, String brand, Double price, String productType, Integer stock) {
