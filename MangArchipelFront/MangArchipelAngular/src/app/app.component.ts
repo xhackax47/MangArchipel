@@ -2,6 +2,9 @@
 
 import { Component } from '@angular/core';
 
+import { UserService } from './user.service';
+import { of } from 'rxjs';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,9 +15,12 @@ export class AppComponent {
   logged: boolean;
   admin: boolean;
 
-  constructor() {
+
+  constructor(private userService: UserService) {
     this.logged = true;
     this.admin = true;
+
+ //  Observable<string> o = of(localStorage.)
   }
 }
 
