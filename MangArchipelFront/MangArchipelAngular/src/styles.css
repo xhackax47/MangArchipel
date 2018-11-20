@@ -51,3 +51,14 @@ button{
     text-align: center;
 }
 
+.p-grid {
+    background-color: azure;
+}
+
+h2 {
+    text-align: center;
+}
+
+div > label {
+    color: green;
+}

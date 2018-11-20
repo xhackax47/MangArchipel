@@ -18,7 +18,8 @@ export class MenuAdministrateurComponent implements OnInit {
       {
         label: 'Administration',
         items: [
-          { label: 'Gestions des produits' },
+          { label: 'Gestions des produits',
+        routerLink: '/add-product' },
           { label: 'Commandes' }
         ]
       }
