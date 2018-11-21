@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-search-product',
   templateUrl: './search-product.component.html',
@@ -9,16 +10,15 @@ import { ProductService } from '../product.service';
 })
 export class SearchProductComponent implements OnInit {
 
-  checkValue: any;
-  productArray: Array<Product>;
-  constructor(private service: ProductService) {
-    this.productArray = [];
-   }
+  product: Product;
+  constructor(private service: ProductService, private router: Router , private route: ActivatedRoute) {
+    this.product = new Product();
+  }
 
   ngOnInit() {
     // this.service.getProductsById();
   }
   onSubmit() {
-    this.service.getProductBy(this.productArray).subscribe();
+  // this.service.getProductBy().subscribe();
   }
 }

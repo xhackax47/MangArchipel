@@ -22,7 +22,7 @@ body
     color: aliceblue;
   
 }
-h1{
+h1,h2{
 font-family:  yozakura;
 text-align: center
 }
@@ -47,13 +47,36 @@ table {
 button{
     font-family: roboto;
 }
-.ui-g
+
+
+label{
+    text-align: center;
+}
+  /*
+.logg
+{
+ 
+    border-right-width: 150px;
+    margin-right: 500px;
+    margin-left: -200;
+    margin-left: 700px;
+     height: 150px;
+
+   
+    width: 50%;
+ 
+}
+    */
+.button
 {
     text-align: center;
 }
-
-.p-grid {
-    background-color: azure;
+.p-grid 
+{
+    
+    background-color: aliceblue;
+  /* width: 75%;
+    */
 }
 
 h2 {
@@ -62,4 +85,8 @@ h2 {
 
 #stock {
     color: green;
+}
+div
+{
+    text-align: center;
 }
