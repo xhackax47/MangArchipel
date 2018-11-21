@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { User } from './user';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -10,15 +10,24 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class UserService {
+  logged: boolean;
+  subjectLog: Subject< boolean>;
+  observeLog: Observable<boolean>;
 
   url = 'http://localhost:8098/api/users';
+
+  constructor(private http: HttpClient, private router: Router) {
+    this.logged = false;
+    this.subjectLog = new Subject< boolean>();
+    this.observeLog = this.subjectLog.asObservable();
+   }
+
   urlRetour = 'http://localhost:8098/api/';
   httpOptions = {
     headers: new HttpHeaders().set('Content-type', 'application/json')
   };
 
 
-  constructor(private http: HttpClient, private router: Router) { }
   getUserByLogin(login: string, password: string): Observable<User> {
     return this.http.get<User>(this.url + login);
   }

@@ -34,8 +34,10 @@ import { ProductsAdminComponent } from './products-admin/products-admin.componen
 import { SearchProductComponent } from './search-product/search-product.component';
 
 
+import {DataViewModule} from 'primeng/dataview';
 import { UserComponent } from './user/user.component';
 import {ButtonModule} from 'primeng/button';
+
 
 const roads: Routes = [
   { path: '', component: ProductsComponent },
@@ -76,7 +78,11 @@ const roads: Routes = [
     HttpClientModule,
     NgbModule,
     DataTableModule,
+
+    DataViewModule,
+
     ButtonModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

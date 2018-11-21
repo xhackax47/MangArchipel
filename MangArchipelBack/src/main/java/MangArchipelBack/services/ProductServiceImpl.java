@@ -11,6 +11,7 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaContext;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -127,4 +128,10 @@ public class ProductServiceImpl implements ProductService {
 		return product.getStock();
 	}
 
+    public Boolean setVisible(long id ,boolean visible) {
+    	Product product = pRepo.getOne(id);
+    	product.setVisible(visible);
+    	Product productRecu = pRepo.save(product);
+    	return productRecu.isVisible();
+    }
 }

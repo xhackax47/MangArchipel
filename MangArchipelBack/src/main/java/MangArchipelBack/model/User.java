@@ -20,6 +20,7 @@ public class User implements Serializable , UserDetails {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
 	@Column(name="username")
     private String username;

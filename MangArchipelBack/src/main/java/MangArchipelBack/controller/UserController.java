@@ -1,5 +1,8 @@
 package MangArchipelBack.controller;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +22,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import MangArchipelBack.model.LoginRequest;
+import MangArchipelBack.model.Role;
 import MangArchipelBack.model.User;
+import MangArchipelBack.services.RoleService;
+
 import MangArchipelBack.services.UserService;
+
 
 @RestController
 @RequestMapping("/api/users")
@@ -30,7 +37,10 @@ public class UserController {
 	AuthenticationManager authenticationManager;
 
   @Autowired
+  RoleService roleService;
+  @Autowired
   private UserService userservice;
+
   
 	@CrossOrigin(origins = "*")
 	@GetMapping("/user")
@@ -56,6 +66,10 @@ public class UserController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		 Set<Role> roles = new  HashSet<Role>();
+		 Role r = roleService.findRoleByUserId(user.getId()).get();
+		 roles.add(r);
+		user.setRoles(roles);
 		return user;
 	}
 
