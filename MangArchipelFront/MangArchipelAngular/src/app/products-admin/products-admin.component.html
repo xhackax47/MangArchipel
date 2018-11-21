@@ -8,8 +8,15 @@
   <p-header>
     <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
   </p-header>
+  <ng-template let-p pTemplate="listItem">
+    <div>
+      <div> {{p.productName}}</div>
+      <div> <button type="button" pButton><i class="pi pi-pencil"></i></button>
+        <button type="button" pButton><i class="pi pi-trash"></i></button>
+        <button type="button" pButton><i class="pi pi-lock"></i></button></div>
 
-
+    </div>
+  </ng-template>
   <ng-template let-p pTemplate="gridItem">
     <div class="ui-g-12 ui-md-3">
       <div> {{p.productName}}</div>

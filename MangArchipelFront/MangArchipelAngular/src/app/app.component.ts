@@ -30,9 +30,9 @@ export class AppComponent {
     userService.observeLog.subscribe(logged => {
       this.logged = logged;
       console.log(logged);
-      const u: User = JSON.parse(localStorage.getItem('USER'));
-      if (u !== null) {
-        if (u.username === 'ADMIN') {
+      const user: User = JSON.parse(localStorage.getItem('USER'));
+      if (user !== null) {
+        if (user.username === 'ADMIN') {
           this.admin = true;
         }
       }
