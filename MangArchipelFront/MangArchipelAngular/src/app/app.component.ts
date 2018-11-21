@@ -1,6 +1,7 @@
 
 
 import { Component } from '@angular/core';
+
 import { UserService } from './user.service';
 import { of } from 'rxjs';
 import { User } from './user';
@@ -14,6 +15,7 @@ export class AppComponent {
   title = 'MangArchipel';
   logged: boolean;
   admin: boolean;
+
 
   constructor(private userService: UserService) {
     this.logged = false;
@@ -39,7 +41,5 @@ export class AppComponent {
     }
     );
   }
-
-
 }
 
