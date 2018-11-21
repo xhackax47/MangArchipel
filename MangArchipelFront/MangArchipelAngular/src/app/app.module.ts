@@ -31,6 +31,9 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { ProductsAdminComponent } from './products-admin/products-admin.component';
 import { SearchProductComponent } from './search-product/search-product.component';
 
+import {DataViewModule} from 'primeng/dataview';
+
+
 const roads: Routes = [
   { path: '', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
@@ -67,7 +70,8 @@ const roads: Routes = [
     FormsModule,
     HttpClientModule,
     NgbModule,
-    DataTableModule
+    DataTableModule,
+    DataViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]
