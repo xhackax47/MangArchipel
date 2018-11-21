@@ -23,7 +23,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getProducts().subscribe(p => {
-      this.productArray = p;
+      this.productArray = p.filter(product => product.visible);
       this.products = this.productArray.slice(0, 20);
     });
   }
