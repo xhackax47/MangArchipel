@@ -14,16 +14,25 @@ export class LoginFormComponent implements OnInit {
   model: User;
   logged: Boolean;
   loginform: LoginFormComponent;
+  message: string;
   // @Output() envoi = new EventEmitter<User>();
   constructor(private service: UserService,
-    private router: Router,
-  ) {
-    this.model = new User('', '');
+    private router: Router) {
+    this.model = new User();
+    this.message = '';
+
     this.logged = false;
-    if (localStorage.getItem('USER') !== null) {
-      console.log(localStorage.getItem('USER'));
+    const u: User = JSON.parse(localStorage.getItem('USER'));
+    if (u !== null) {
       this.logged = true;
     }
+
+    service.observeLog.subscribe(logged => {
+      this.logged = logged;
+    }
+    );
+
+
   }
 
   ngOnInit() {
@@ -36,6 +45,7 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit() {
     console.log('coucou');
+
     this.service.loging(this.model).subscribe(user => {
       console.log(user);
       if (user.username !== undefined) {
@@ -43,30 +53,10 @@ export class LoginFormComponent implements OnInit {
         this.logged = true;
         this.service.logged = true;
         this.service.subjectLog.next(true);
+        this.message = '';
         // this.envoi.emit(user);
       }
-    });
-
-    /*
-    this.service.getUserByLogin(this.model.login).subscribe(
-      userRecu => {
-        if (this.model.password === userRecu.password && sessionStorage.getItem('user') === null) {
-          this.logged = true;
-          sessionStorage.setItem('login', this.model.login);
-          this.router.navigate(['/']);
-        } else {
-          this.logged = false;
-        }
-      });
-      */
-  }
-
-  logout() {
-    console.log('tentative de déconecction');
-    this.service.logout().subscribe(() => {
-      this.logged = false;
-      localStorage.removeItem('USER');
-      this.service.subjectLog.next(false);
-    });
+    }, error => this.message = 'Echec de l\'authentification');
   }
 }
+
