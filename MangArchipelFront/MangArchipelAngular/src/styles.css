@@ -63,3 +63,21 @@ h2 {
 #stock {
     color: green;
 }
+
+
+.objetDataView{
+    text-align: left;
+}
+
+@media only screen and (max-width: 800px) {
+    body{
+        margin: 0px 5px;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    body{
+        margin: 0px 20%;
+    }
+}
+

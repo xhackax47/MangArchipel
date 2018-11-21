@@ -9,7 +9,7 @@
     <p-dataViewLayoutOptions ></p-dataViewLayoutOptions>
   </p-header>
   <ng-template let-p pTemplate="listItem">
-    <div>
+    <div class="objetDataView">
       <div *ngIf="!p.visible" class="locked"> {{p.productName}}</div>
       <div *ngIf="p.visible" class="unlocked"> {{p.productName}}</div>
       <div> <button type="button" pButton><i class="pi pi-pencil"></i></button>
