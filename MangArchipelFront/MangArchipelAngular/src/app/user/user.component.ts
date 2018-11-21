@@ -16,14 +16,14 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*if (this.route.snapshot.paramMap.get('id') === null) {
+    if (this.route.snapshot.paramMap.get('id') === null) {
       this.add = true;
     } else {
       this.add = false;
       const id = parseInt(this.route.snapshot.paramMap.get('id'), 0);
       this.service.getUser().subscribe();
     }
-*/
+
   }
 
   onSubmit() {
@@ -32,7 +32,7 @@ export class UserComponent implements OnInit {
       this.service.addUser(this.model);
       this.model = new User();
       this.router.navigate(['/']);
-    }
+     }
     /*else{
       const p = this.model;
       this.servic

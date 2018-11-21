@@ -57,7 +57,7 @@ export class UserService {
     };
   }
   addUser(user: User): void {
-    this.http.post(this.url + '/signIn', this.httpOptions).subscribe(() => this.router.navigate(['/']));
+    this.http.post(this.url + '/signIn', user, this.httpOptions).subscribe(() => this.router.navigate(['/']));
   }
   updatePony(id: number, user: User): void {
     this.http.put(this.url + '/' + id, user, this.httpOptions).subscribe(() => this.router.navigate(['/']));

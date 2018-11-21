@@ -18,13 +18,20 @@
       </div>
     </div>
     <br />
-    <div class="button">
-      <button pButton type="submit">Connexion</button>
+    <div class="button" >
+      <button pButton type="submit"class="ui-button-rounded ui-button-secondary" >Connexion</button>
     </div>
 
 
-    <button *ngIf="logged" pButton (click)="logout()">Déconnexion</button>
+    <button *ngIf="logged" pButton (click)="logout()" class="ui-button-rounded ui-button-secondary">Déconnexion</button>
   </form>
+  <div>
+    <hr>
+  </div>
+ 
+  <div>
+    <a routerLink="/signIn">nouveau utilisateur</a>
+  </div>
 </div>
 
 {{message}}

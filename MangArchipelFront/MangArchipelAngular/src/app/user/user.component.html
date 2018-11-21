@@ -1,12 +1,12 @@
 <br />
 <div class="p-grid p-dir-col p-col-2 p-offset-5">
 
-  <form *ngIf="!logged" (ngSubmit)="onSubmit()" class="p-col-align-center">
+  <form *ngIf="!logged"  (ngSubmit)="onSubmit()" class="p-col-align-center">
     <h2>S'inscrire</h2>
     <div>
       <p>Nom : </p>
       <div>
-        <input type="text" id="name" name="name" required />
+        <input type="text" id="lastname" name="lastname" [(ngModel)]="model.lastname"required />
       </div>
     </div>
 
@@ -15,7 +15,7 @@
     <div>
       <p>Prenom : </p>
       <div>
-        <input type="text" id="firstname" name="firstname" required />
+        <input type="text" id="firstname" name="firstname" [(ngModel)]="model.firstname" required />
       </div>
     </div>
 
@@ -23,16 +23,24 @@
     <div>
       <p>nom d'utilisateur :</p>
       <div>
-        <input type="text" id="username" name="username" required />
+        <input type="text" id="username" name="username"  [(ngModel)]="model.username" required/>
       </div>
     </div>
 
     <br>
+    <div>
+      <p>city :</p>
+      <div>
+        <input type="text" id="city" name="city" [(ngModel)]="model.city" required />
+      </div>
+    </div>
+
+    <br/>
 
     <div>
       <p>Adresse :</p>
       <div>
-        <input type="text" id="adresse" name="adresse" required />
+        <input type="text" id="adresse" name="adresse" [(ngModel)]="model.adress"required />
       </div>
     </div>
 
@@ -41,12 +49,31 @@
     <div>
       <p>Code postal :</p>
       <div>
-        <input type="text" id="postalcode" name="postalcode" required />
+        <input type="text" id="postalcode" name="postalcode" [(ngModel)]="model.postalCode"required />
       </div>
     </div>
 
     <br>
 
-    <button pButton type="submit" class="ui-button-raised ui-button-secondary">S'inscrire</button>
+    <div>
+      <p> Mot de passe :</p>
+      <div>
+        <input type="password" id="adresse" name="adresse" [(ngModel)]="model.password"required />
+      </div>
+    </div>
+
+    <br/>
+
+    <div>
+      <p>Confirmer le mot de passe :</p>
+      <div>
+        <input type="password" id="postalcode" name="postalcode" required />
+      </div>
+    </div>
+
+    <br>
+
+    <button pButton type="submit" class="ui-button-raised ui-button-secondary"*ngIf="add" >S'inscrire</button>
+    <button pButton type="submit" class="ui-button-raised ui-button-secondary"*ngIf="!add" >Modifier</button>
   </form>
 </div>
