@@ -22,4 +22,5 @@ public interface ProductService {
     
     Product save(Product product);
     void delete(Long id);
+    Boolean setVisible(long id ,boolean visible);
 }

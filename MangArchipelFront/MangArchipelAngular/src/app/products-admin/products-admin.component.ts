@@ -45,10 +45,7 @@ export class ProductsAdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getProducts().subscribe(p => {
-      this.productArray = p;
-      this.products = this.productArray.slice(0, 20);
-    });
+    this.refreshComponent();
   }
 
   onRowSelect(event) {
@@ -61,10 +58,36 @@ export class ProductsAdminComponent implements OnInit {
   }
 
   onClickParent(product: Product) {
-    this.service.getProducts().subscribe(p => {
-      this.productArray = p;
-      this.products = this.productArray.slice(0, 20);
+    this.refreshComponent();
+  }
+
+  lock(id: number) {
+    this.service.setVisible(id, false).subscribe(() => {
+      this.refreshComponent();
     });
   }
 
+
+  unlock(id: number) {
+    this.service.setVisible(id, true).subscribe(() => {
+      this.refreshComponent();
+    });
+  }
+
+  predicateForSort(p1: Product, p2: Product): number {
+    if (p1.id > p2.id) {
+      return 1;
+    } else if (p1.id < p2.id) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+
+  refreshComponent() {
+    this.service.getProducts().subscribe(p => {
+      this.productArray = p.sort(this.predicateForSort);
+      this.products = this.productArray.slice(0, 20);
+    });
+  }
 }
