@@ -13,10 +13,9 @@
         </p>
         <div id="stock" *ngIf="product.stock > 9 ; else elseBlock">En stock</div>
         <ng-template #elseBlock>Il reste {{product.stock}} produits en stock</ng-template>
-
     </div>
     <div class="p-col-1 p-col-align-center p-offset-1">
         <button pButton routerLink="/cart">Ajouter au panier</button>
-    </div>
+    </div> 
 
 </div>
