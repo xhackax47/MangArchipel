@@ -1,5 +1,5 @@
 
-<p-dataTable [value]="products" [(selection)]="product" selectionMode="single" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="10" [headerCheckboxToggleAllPages]="true">
+<p-dataTable [value]="products" [globalFilter]="gb" [(selection)]="product" selectionMode="single" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="10" [headerCheckboxToggleAllPages]="true">
     <p-column field="productName" header="Produits"></p-column>
 </p-dataTable>
 

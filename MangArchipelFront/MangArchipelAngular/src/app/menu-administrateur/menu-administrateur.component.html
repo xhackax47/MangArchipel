@@ -1,6 +1,6 @@
 <p-menubar class="menu" [model]="items">
   <div class="menuManga">
-    <input type="text" pInputText placeholder="Search"/>
+    <input (ngSubmit)="onSubmit()" type="text" pInputText placeholder="Produit" placeholder="Global Filter"/>
     <button pButton routerLink="/search" label="rechercher">rechercher</button>
     <button pButton label="Logout">Se déconnecter</button>
   </div>

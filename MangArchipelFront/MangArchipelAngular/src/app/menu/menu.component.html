@@ -1,4 +1,4 @@
 <p-menubar [model]="items">
-    <input type="text" pInputText placeholder="Search">
+    <input #gb (ngSubmit)="onSubmit()" type="text" pInputText placeholder="Produit" [(ngModel)]="checkValue"/>
     <button pButton label="Logout" style="margin-left:.25em" routerLink="/login">Login</button>
 </p-menubar>
