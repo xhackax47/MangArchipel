@@ -18,10 +18,10 @@ export class AppComponent {
   constructor(private userService: UserService) {
     this.logged = false;
 
-    const u: User = JSON.parse(localStorage.getItem('USER'));
-    if (u !== null) {
+    const user: User = JSON.parse(localStorage.getItem('USER'));
+    if (user !== null) {
       this.logged = true;
-      if (u.username === 'ADMIN') {
+      if (user.roles.length > 0 && user.roles[0].name === 'ROLE_ADMIN') {
         this.admin = true;
       }
     }
@@ -29,10 +29,9 @@ export class AppComponent {
 
     userService.observeLog.subscribe(logged => {
       this.logged = logged;
-      console.log(logged);
-      const user: User = JSON.parse(localStorage.getItem('USER'));
-      if (user !== null) {
-        if (user.username === 'ADMIN') {
+      const user2: User = JSON.parse(localStorage.getItem('USER'));
+      if (user2 !== null) {
+        if (user2.roles.length > 0 && user2.roles[0].name === 'ROLE_ADMIN') {
           this.admin = true;
         }
       }

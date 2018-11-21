@@ -3,7 +3,7 @@
   <p-column  header="Actions"><button pButton (click)="activer()">Activer</button></p-column>
 
 </p-dataTable>-->
-
+<div *ngIf="logged&&admin">
 <p-dataView [value]="products" [paginator]="true" [rows]="10">
   <p-header>
     <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
@@ -36,3 +36,7 @@
 </p-dataView>
 
 <app-add-product (envoi)="onClickParent($event)"></app-add-product>
+</div>
+<div *ngIf="!(logged&&admin)">
+  Vous devez être connecté en tant qu'administrateur pour accéder à cette page
+</div>
