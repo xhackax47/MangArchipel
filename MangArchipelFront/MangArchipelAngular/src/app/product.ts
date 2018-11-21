@@ -8,16 +8,18 @@ export class Product {
     description: string;
     image: string;
     visible: boolean;
+    stock: number;
 
     constructor(name?: string, brand?: string,
         price?: number, type?: string, description?: string,
-        image?: string) {
+        image?: string, stock?: number) {
         this.productName = name;
         this.brand = brand;
         this.price = price;
         this.productType = type;
         this.description = description;
         this.image = image;
+        this.stock = stock;
     }
 }
 
