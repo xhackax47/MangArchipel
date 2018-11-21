@@ -18,7 +18,7 @@ public class OrderProduct {
     @Column(nullable = false)
     private Integer quantity;
  
-    // default constructor
+    public OrderProduct() {}
  
     public OrderProduct(Order order, Product product, Integer quantity) {
         pk = new OrderProductPK();
