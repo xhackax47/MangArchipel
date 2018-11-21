@@ -7,6 +7,7 @@ export class Product {
     productType: string;
     description: string;
     image: string;
+    visible: boolean;
 
     constructor(name?: string, brand?: string,
         price?: number, type?: string, description?: string,

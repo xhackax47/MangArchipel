@@ -86,4 +86,13 @@ public class ProductController {
 		pService.delete(id);
 	}
 	
+	
+	//Activer un produit
+	//@Secured({"ROLE_ADMIN"})
+	@CrossOrigin(origins = "*")
+	@PostMapping("/visible/{id}") 
+	public void setVisible(@PathVariable Long id, @RequestBody Boolean visible) {
+		pService.setVisible(id, visible);
+	}
+	
 }

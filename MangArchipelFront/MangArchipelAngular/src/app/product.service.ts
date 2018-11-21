@@ -40,4 +40,8 @@ export class ProductService {
     return this.http.post<Product>(this.url + '/', product, this.httpOptions);
   }
 
+  setVisible(id: number, visible: boolean) {
+    return this.http.post<Product>(this.url + '/visible/' + id, visible, this.httpOptions);
+  }
+
 }

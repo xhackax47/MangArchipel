@@ -12,8 +12,8 @@ import java.util.Optional;
 @Transactional
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
-    @Query(" select r from Role r inner join user_roles ur on ur.role_id = r.role_id " +
-            " where ur.userid = ?1")
+    @Query(" select r from Role r join r.users ur on ur.id = r.id " +
+            " where ur.id = ?1")
     Optional<Role> findRoleByUserId(Long id);
 
 }
