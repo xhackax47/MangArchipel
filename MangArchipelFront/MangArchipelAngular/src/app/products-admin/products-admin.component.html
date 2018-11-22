@@ -4,6 +4,8 @@
 
 </p-dataTable>-->
 <div *ngIf="logged&&admin">
+  {{message}}
+  <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425"></p-confirmDialog>
 <p-dataView  [value]="products"  [paginator]="true"  [rows]="10" >
   <p-header>
     <p-dataViewLayoutOptions ></p-dataViewLayoutOptions>
@@ -12,10 +14,10 @@
     <div class="objetDataView">
       <div *ngIf="!p.visible" class="locked"> {{p.productName}}</div>
       <div *ngIf="p.visible" class="unlocked"> {{p.productName}}</div>
-      <div> <button type="button" pButton><i class="pi pi-pencil"></i></button>
-        <button type="button" pButton><i class="pi pi-trash"></i></button>
-        <button type="button" *ngIf="p.visible" (click)="lock(p.id)" pButton><i class="pi pi-lock"></i></button>
-        <button type="button" *ngIf="!p.visible" (click)="unlock(p.id)" pButton><i class="pi pi-unlock"></i></button></div>
+      <div> <button class="ui-button-raised ui-button-secondary" type="button" icon="pi pi-pencil" pButton></button>
+        <button class="ui-button-raised ui-button-secondary" type="button"  icon="pi pi-trash"  (click)="delete(p.id)"  pButton></button>
+        <button class="ui-button-raised ui-button-secondary" type="button"  icon="pi pi-lock" *ngIf="p.visible" (click)="lock(p.id)" pButton></button>
+        <button class="ui-button-raised ui-button-secondary" type="button" icon="pi pi-unlock" *ngIf="!p.visible" (click)="unlock(p.id)" pButton></button></div>
 
     </div>
   </ng-template>
@@ -23,10 +25,10 @@
     <div class="ui-g-12 ui-md-3">
       <div *ngIf="!p.visible" class="locked"> {{p.productName}}</div>
       <div *ngIf="p.visible" class="unlocked"> {{p.productName}}</div>
-      <div> <button type="button" pButton><i class="pi pi-pencil"></i></button>
-        <button type="button" pButton><i class="pi pi-trash"></i></button>
-        <button type="button" *ngIf="p.visible" (click)="lock(p.id)" pButton><i class="pi pi-lock"></i></button>
-        <button type="button" *ngIf="!p.visible" (click)="unlock(p.id)" pButton><i class="pi pi-unlock"></i></button></div>
+      <div> <button class="ui-button-raised ui-button-secondary" type="button" icon="pi pi-pencil" pButton></button>
+        <button class="ui-button-raised ui-button-secondary" type="button"  icon="pi pi-trash"  (click)="delete(p.id)"  pButton></button>
+        <button class="ui-button-raised ui-button-secondary" type="button"  icon="pi pi-lock" *ngIf="p.visible" (click)="lock(p.id)" pButton></button>
+        <button class="ui-button-raised ui-button-secondary" type="button" icon="pi pi-unlock" *ngIf="!p.visible" (click)="unlock(p.id)" pButton></button></div>
 
     </div>
 

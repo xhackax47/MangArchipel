@@ -44,9 +44,14 @@ table {
 }
 
 
-button{
+.ui-button{
     font-family: roboto;
+    padding:5px 20px;
+    margin:5px;
 }
+
+
+
 .ui-g
 {
     text-align: center;

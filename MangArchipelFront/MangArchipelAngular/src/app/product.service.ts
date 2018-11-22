@@ -20,8 +20,8 @@ export class ProductService {
     return this.http.get<Array<Product>>(this.url + '/', this.httpOptions);
   }
 
-  deleteProduct(id: number) {
-    this.http.delete(this.url + '/' + id, this.httpOptions);
+  deleteProduct(id: number): Observable <boolean> {
+    return this.http.delete<boolean>(this.url + '/' + id, this.httpOptions);
   }
 
   getProduct(id: number): Observable<Product> {

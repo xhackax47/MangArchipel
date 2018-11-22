@@ -21,6 +21,6 @@ public interface ProductService {
     Collection<Product> findByProductType(String productType);
     
     Product save(Product product);
-    void delete(Long id);
+    Boolean delete(Long id);
     Boolean setVisible(long id ,boolean visible);
 }

@@ -19,7 +19,7 @@ import { Route } from '@angular/router';
 
 import { ProductsComponent } from './products/products.component';
 import { CartComponent } from './cart/cart.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {CheckboxModule} from 'primeng/checkbox';
 import { MenuAdministrateurComponent } from './menu-administrateur/menu-administrateur.component';
@@ -33,6 +33,7 @@ import { SearchProductComponent } from './search-product/search-product.componen
 
 import {DataViewModule} from 'primeng/dataview';
 
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
 const roads: Routes = [
   { path: '', component: ProductsComponent },
@@ -60,7 +61,6 @@ const roads: Routes = [
     SearchProductComponent,
     AddProductComponent,
     ProductsAdminComponent
-
   ],
   imports: [
     BrowserModule,
@@ -71,7 +71,9 @@ const roads: Routes = [
     HttpClientModule,
     NgbModule,
     DataTableModule,
-    DataViewModule
+    DataViewModule,
+    ConfirmDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
