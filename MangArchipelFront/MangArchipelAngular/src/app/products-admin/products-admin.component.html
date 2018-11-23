@@ -14,7 +14,7 @@
     <div class="objetDataView">
       <div *ngIf="!p.visible" class="locked"> {{p.productName}}</div>
       <div *ngIf="p.visible" class="unlocked"> {{p.productName}}</div>
-      <div> <button class="ui-button-raised ui-button-secondary" type="button" icon="pi pi-pencil" pButton></button>
+      <div> <button class="ui-button-raised ui-button-secondary" type="button" icon="pi pi-pencil" (click)="update(p.id)" pButton></button>
         <button class="ui-button-raised ui-button-secondary" type="button"  icon="pi pi-trash"  (click)="delete(p.id)"  pButton></button>
         <button class="ui-button-raised ui-button-secondary" type="button"  icon="pi pi-lock" *ngIf="p.visible" (click)="lock(p.id)" pButton></button>
         <button class="ui-button-raised ui-button-secondary" type="button" icon="pi pi-unlock" *ngIf="!p.visible" (click)="unlock(p.id)" pButton></button></div>
@@ -25,7 +25,7 @@
     <div class="ui-g-12 ui-md-3">
       <div *ngIf="!p.visible" class="locked"> {{p.productName}}</div>
       <div *ngIf="p.visible" class="unlocked"> {{p.productName}}</div>
-      <div> <button class="ui-button-raised ui-button-secondary" type="button" icon="pi pi-pencil" pButton></button>
+      <div> <button class="ui-button-raised ui-button-secondary" type="button" icon="pi pi-pencil" (click)="update(p.id)" pButton></button>
         <button class="ui-button-raised ui-button-secondary" type="button"  icon="pi pi-trash"  (click)="delete(p.id)"  pButton></button>
         <button class="ui-button-raised ui-button-secondary" type="button"  icon="pi pi-lock" *ngIf="p.visible" (click)="lock(p.id)" pButton></button>
         <button class="ui-button-raised ui-button-secondary" type="button" icon="pi pi-unlock" *ngIf="!p.visible" (click)="unlock(p.id)" pButton></button></div>

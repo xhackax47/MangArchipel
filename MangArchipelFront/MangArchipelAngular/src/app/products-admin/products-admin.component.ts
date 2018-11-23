@@ -109,4 +109,8 @@ export class ProductsAdminComponent implements OnInit {
       }
   });
   }
+
+  update(id: number) {
+    this.router.navigate(['/admin/product/' + id ]);
+  }
 }
