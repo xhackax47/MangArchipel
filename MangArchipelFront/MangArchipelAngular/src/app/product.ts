@@ -6,13 +6,13 @@ export class Product {
     price: number;
     productType: string;
     description: string;
-    image: File;
+    image: any[];
     visible: boolean;
     stock: number;
 
     constructor(name?: string, brand?: string,
         price?: number, type?: string, description?: string,
-        image?: File, stock?: number) {
+        image?: any[], stock?: number) {
         this.productName = name;
         this.brand = brand;
         this.price = price;

@@ -1,5 +1,9 @@
 package MangArchipelBack.services;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Base64;
@@ -108,19 +112,9 @@ public class ProductServiceImpl implements ProductService {
 		
 		p.setProductName(pr.getProductName());
 		p.setStock(pr.getStock());
-
-		//encodage en base 64 de l'image
-		byte[] bytes = new byte[(int)pr.getPicture().length()];
-		 try {
-			bytes = Files.readAllBytes(pr.getPicture().toPath());
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		Encoder e = Base64.getEncoder();
-		String fileEncoded = e.encodeToString(bytes);
-		p.setPicture(fileEncoded);
+		p.setPicture(picture);
 		
+	
 		return pRepo.save(p);
 	}
 	
@@ -179,4 +173,30 @@ public class ProductServiceImpl implements ProductService {
     	Product productRecu = pRepo.save(product);
     	return productRecu.isVisible();
     }
+    
+    String sauveGardeImage(File image) {
+    	//encodage en base 64 de l'image
+    			//byte[] bytes = encoder(image.getPath());
+    			
+    			//p.setPicture(fileEncoded);
+		return image.getPath();
+    	
+    }
+    
+
+public static String encoder(String imagePath) {
+	String base64Image = "";
+	File file = new File(imagePath);
+	try (FileInputStream imageInFile = new FileInputStream(file)) {
+		// Reading a Image file from file system
+		byte imageData[] = new byte[(int) file.length()];
+		imageInFile.read(imageData);
+		base64Image = Base64.getEncoder().encodeToString(imageData);
+	} catch (FileNotFoundException e) {
+		System.out.println("Image not found" + e);
+	} catch (IOException ioe) {
+		System.out.println("Exception while reading the Image " + ioe);
+	}
+	return base64Image;
+}
 }

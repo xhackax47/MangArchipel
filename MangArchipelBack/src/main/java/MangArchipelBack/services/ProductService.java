@@ -1,6 +1,7 @@
 package MangArchipelBack.services;
 
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.multipart.MultipartFile;
 
 import MangArchipelBack.model.Product;
 import MangArchipelBack.model.ProductRequest;
@@ -23,4 +24,5 @@ public interface ProductService {
     Product save(ProductRequest productRequest);
     Boolean delete(Long id);
     Boolean setVisible(long id ,boolean visible);
+	void sauvegardeImage(MultipartFile image);
 }

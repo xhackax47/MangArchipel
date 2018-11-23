@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import MangArchipelBack.model.Product;
 import MangArchipelBack.model.ProductRequest;
@@ -63,7 +64,7 @@ public class ProductController {
 	@PostMapping("/") 
 	public Product createProduct(@RequestBody ProductRequest pr){
 		
-		
+		System.out.println(pr);
 		return pService.save(pr);		
 	}
 	
@@ -71,14 +72,9 @@ public class ProductController {
 //    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin(origins = "*")
 	@PutMapping("/{id}") 
-	public Product updateProduct(@PathVariable(value="id") Long id, @Valid @RequestBody Product p) {
-		Product product = pService.getProduct(id);
-		product.setBrand(p.getBrand());
-		product.setProductName(p.getProductName());
-		product.setProductType(p.getProductType());
-		product.setPrice(p.getPrice());
-		product.setStock(p.getStock());
-		Product pUpdate = pService.save(product);
+	public Product updateProduct(@PathVariable(value="id") Long id, @Valid @RequestBody ProductRequest pr) {
+		
+		Product pUpdate = pService.save(pr);
 		return pUpdate;
 	}
 	
@@ -101,4 +97,11 @@ public class ProductController {
 		pService.setVisible(id, visible);
 	}
 	
+	
+	@CrossOrigin(origins = "*")
+	@PostMapping("/image") 
+	public void image(@RequestParam MultipartFile image) {
+		System.out.println(image.getOriginalFilename());
+		pService.sauvegardeImage(image);
+	}
 }
