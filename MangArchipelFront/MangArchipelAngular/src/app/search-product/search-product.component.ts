@@ -5,6 +5,7 @@ import { ProductService } from '../product.service';
 
 import { HttpResponse } from '@angular/common/http';
 import { ValueTransformer } from '@angular/compiler/src/util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-product',
@@ -18,10 +19,14 @@ export class SearchProductComponent implements OnInit {
   product: Product;
   products;
 
-  constructor(private service: ProductService) {
-    service.event$.subscribe(product => this.productArray = product);
+  constructor(private service: ProductService, private router: Router) {
+    service.event$.subscribe(product => this.productArray = product.filter(p => p.visible));
   }
 
   ngOnInit() {
+  }
+
+  onRowSelect(event) {
+    this.router.navigate(['product', this.product.id]);
   }
 }

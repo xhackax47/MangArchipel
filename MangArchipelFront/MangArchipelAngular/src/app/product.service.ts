@@ -17,7 +17,10 @@ export class ProductService {
   url = 'http://localhost:8098/api/products';
   httpOptions = {
     headers: new HttpHeaders().set('Content-type', 'application/json'),
-    params: new HttpParams()
+    params: {
+      productName: null,
+      visible: 'false'
+    }
   };
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -32,7 +35,7 @@ export class ProductService {
   }
 
 
-  deleteProduct(id: number): Observable <boolean> {
+  deleteProduct(id: number): Observable<boolean> {
     return this.http.delete<boolean>(this.url + '/' + id, this.httpOptions);
   }
 
@@ -50,8 +53,9 @@ export class ProductService {
     return this.http.get<Array<Product>>(this.url + '/',
       {
         headers: this.httpOptions.headers, params: {
-          productName: name
-        }
+          productName: name,
+          visible: 'true'
+        },
       });
   }
   productFilterBrand(brand?: string): Observable<Array<Product>> {
