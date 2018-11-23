@@ -26,14 +26,15 @@ export class MenuAdministrateurComponent implements OnInit {
             label: 'Gestions des produits',
             routerLink: '/admin/products'
           },
-          { label: 'Commandes' }
+          { label: 'Commandes',
+          routerLink: '/admin/orders'}
         ]
       }
     ];
   }
 
   logout() {
-    console.log('tentative de déconecction');
+    console.log('ATTEMPT LOGOUT');
     this.userService.logout().subscribe(() => {
       localStorage.removeItem('USER');
       this.userService.subjectLog.next(false);

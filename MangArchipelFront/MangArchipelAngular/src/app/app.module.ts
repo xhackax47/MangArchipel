@@ -39,6 +39,7 @@ import { UserComponent } from './user/user.component';
 import {ButtonModule} from 'primeng/button';
 
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { OrdersComponent } from './orders/orders.component';
 
 const roads: Routes = [
   { path: '', component: ProductsComponent },
@@ -48,9 +49,9 @@ const roads: Routes = [
   { path: 'admin/products', component: ProductsAdminComponent },
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'search', component: SearchProductComponent },
-  { path: 'signIn', component: UserComponent }
+  { path: 'signIn', component: UserComponent },
+  { path: 'admin/orders', component: OrdersComponent},
   // { path: 'profile', component: ProfileComponent},
-  // { path: 'admin/orders', component: OrdersComponent},
 ];
 
 
@@ -67,7 +68,8 @@ const roads: Routes = [
     SearchProductComponent,
     AddProductComponent,
     ProductsAdminComponent,
-    UserComponent
+    UserComponent,
+    OrdersComponent
 
   ],
   imports: [
@@ -81,7 +83,7 @@ const roads: Routes = [
     DataTableModule,
     DataViewModule,
     ConfirmDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
     ButtonModule
   ],
   providers: [],

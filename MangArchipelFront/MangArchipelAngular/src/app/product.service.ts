@@ -11,7 +11,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class ProductService {
 
-  url = 'http://localhost:8098/api/products';
+  private url = 'http://localhost:8098/api/products';
   httpOptions = {
     headers: new HttpHeaders().set('Content-type', 'application/json')
   };
@@ -26,15 +26,11 @@ export class ProductService {
     return this.http.delete<boolean>(this.url + '/' + id, this.httpOptions);
   }
 
-  getProduct(id: number): Observable<Product> {
+  getProductById(id: Number): Observable<Product> {
     return this.http.get<Product>(this.url + '/' + id, this.httpOptions);
   }
 
-  getProductsById(id: Number): Observable<Product> {
-    return this.http.get<Product>(this.url + '/' + id, this.httpOptions);
-  }
-
-  getProductBy(arrayProduct: Product[]): Observable<Product> {
+  getProductsBy(arrayProduct: Product[]): Observable<Product> {
     return this.http.get<Product>(this.url + '/' + arrayProduct);
   }
 
