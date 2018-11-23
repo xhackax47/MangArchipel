@@ -39,6 +39,7 @@ import { UserComponent } from './user/user.component';
 import {ButtonModule} from 'primeng/button';
 
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { ModifProductComponent } from './modif-product/modif-product.component';
 
 const roads: Routes = [
   { path: '', component: ProductsComponent },
@@ -46,6 +47,7 @@ const roads: Routes = [
   { path: 'login', component: LoginFormComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'admin/products', component: ProductsAdminComponent },
+  { path: 'admin/product/:id', component: ModifProductComponent },
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'search', component: SearchProductComponent },
   { path: 'signIn', component: UserComponent }
@@ -67,7 +69,8 @@ const roads: Routes = [
     SearchProductComponent,
     AddProductComponent,
     ProductsAdminComponent,
-    UserComponent
+    UserComponent,
+    ModifProductComponent
 
   ],
   imports: [
@@ -81,7 +84,7 @@ const roads: Routes = [
     DataTableModule,
     DataViewModule,
     ConfirmDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
     ButtonModule
   ],
   providers: [],

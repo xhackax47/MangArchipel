@@ -26,20 +26,21 @@ export class ProductService {
     return this.http.delete<boolean>(this.url + '/' + id, this.httpOptions);
   }
 
-  getProduct(id: number): Observable<Product> {
+
+  getProductById(id: Number): Observable<Product> {
     return this.http.get<Product>(this.url + '/' + id, this.httpOptions);
   }
 
-  getProductsById(id: Number): Observable<Product> {
-    return this.http.get<Product>(this.url + '/' + id, this.httpOptions);
-  }
-
-  getProductBy(arrayProduct: Product[]): Observable<Product> {
+  getProductsBy(arrayProduct: Product[]): Observable<Product> {
     return this.http.get<Product>(this.url + '/' + arrayProduct);
   }
 
   addProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(this.url + '/', product, this.httpOptions);
+  }
+
+  updateProduct(id: Number, product: Product): Observable<Product> {
+    return this.http.put<Product>(this.url + '/' + id, product, this.httpOptions);
   }
 
   setVisible(id: number, visible: boolean) {
