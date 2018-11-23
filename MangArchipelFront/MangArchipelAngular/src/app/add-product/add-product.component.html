@@ -1,30 +1,31 @@
 <form (ngSubmit)="onSubmit()">
   <div>
     <label>Nom : </label>
-    <input type="text" placeholder="Nom" name="Nom" id="Nom" required [(ngModel)]="model.productName"/></div>
+    <input type="text" placeholder="Nom" name="Nom" id="Nom" required [(ngModel)]="model.productName" /></div>
   <div>
-      <label>Marque : </label>
-      <input type="text" placeholder="Marque" name="Brand" id="Brand" required [(ngModel)]="model.brand"/></div>
-      <div>
-          <label>Product Type : </label>
-          <input type="text" placeholder="Product type" name="productType" id="productType" required [(ngModel)]="model.productType"/></div>
-      <div>
+    <label>Marque : </label>
+    <input type="text" placeholder="Marque" name="Brand" id="Brand" required [(ngModel)]="model.brand" /></div>
+  <div>
+    <label>Product Type : </label>
+    <input type="text" placeholder="Product type" name="productType" id="productType" required [(ngModel)]="model.productType" /></div>
+  <div>
     <label> Prix : </label>
-    <input type="text" placeholder="Prix" name="Prix" id="Prix" required [(ngModel)]="model.price"/>
+    <input type="text" placeholder="Prix" name="Prix" id="Prix" required [(ngModel)]="model.price" />
   </div>
-    <div>
+  <div>
     <label> Image : </label>
-    <input type="image" placeholder="Image" name="Image" id="Image" required [(ngModel)]="model.image"/>
+    <input type="image" placeholder="Image" name="Image" id="Image" required [(ngModel)]="model.image" />
   </div>
-    <div>
+  <div>
     <label> Descriptitf : </label>
-    <input type="text" placeholder="Descriptitf" name="Descriptitf" id="Descriptitf" required [(ngModel)]="model.descriptitf"/>
+    <input type="text" placeholder="Descriptitf" name="Descriptitf" id="Descriptitf" required [(ngModel)]="model.descriptitf" />
   </div>
   <div>
     <label> Stock : </label>
-    <input type="text" placeholder="Stock" name="Stock" id="Stock" required [(ngModel)]="model.stock"/>
+
+    <input type="text" placeholder="Stock" name="Stock" id="Stock" required [(ngModel)]="model.stock" />
   </div>
-  
-  <button pButton type="submit">Ajouter un produit</button>
+
+  <button pButton type="submit" label="Ajouter un produit"></button>
 
 </form>

@@ -1,11 +1,5 @@
-
-<h2>Rechercher un produit </h2>
-<form (ngSubmit)="onSubmit()" class="p-grid   ">
- <div class="p-col-6 p-offset-3">
-  <p>Recherche:
-    <input type="text" id="search" name="search" [(ngModel)]="product" required/>
-  </p><br />
-    <br />
-    <button pButton label="rechercher" type="submit">rechercher</button>
-  </div>
-</form>
+<h2>Résultat de la recherche</h2>
+  <p-dataTable [value]="productArray" [globalFilter]="gb" [(selection)]="product" selectionMode="single" (onRowSelect)="onRowSelect($event)"
+    [paginator]="true" [rows]="10" [headerCheckboxToggleAllPages]="true">
+    <p-column field="productName" header="Produits" filterMatchMode="equals"></p-column>
+  </p-dataTable>

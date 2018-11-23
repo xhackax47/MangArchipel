@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Product } from '../product';
+import { ProductService } from '../product.service';
+import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 
 @Component({
@@ -9,9 +12,14 @@ import { UserService } from '../user.service';
 })
 export class MenuBarDetailsComponent implements OnInit {
 
-  constructor(private userService: UserService) {}
-
+  @Input() product: Product[];
+  checkValue: string;
   items: MenuItem[];
+
+  constructor(private service: ProductService, private router: Router,
+    private userService: UserService) {
+
+  }
 
   ngOnInit() {
     this.items = [
@@ -37,6 +45,15 @@ export class MenuBarDetailsComponent implements OnInit {
         routerLink: '/cart'
       }
     ];
+  }
+  onSubmit() {
+    this.service.productFilterName(this.checkValue).subscribe(
+      p => {
+        this.product = p;
+        this.service.emit(this.product);
+      }
+    );
+    this.router.navigate(['search']);
   }
 
   logout() {
