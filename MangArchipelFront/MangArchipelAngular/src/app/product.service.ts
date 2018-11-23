@@ -1,43 +1,77 @@
 
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Product } from './product';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  url = 'http://localhost:8098/api/products';
+
+  private source = new Subject<Product[]>();
+  public event$ = this.source.asObservable();
+
+  private url = 'http://localhost:8098/api/products';
   httpOptions = {
-    headers: new HttpHeaders().set('Content-type', 'application/json')
+    headers: new HttpHeaders().set('Content-type', 'application/json'),
+    params: {
+      productName: null,
+      visible: 'false'
+    }
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
+
+  // Permet de faire la recherche depuis n'importe où via le menu
+  emit(eventData: Product[]): void {
+    this.source.next(eventData);
+  }
 
   getProducts(): Observable<Array<Product>> {
-    return this.http.get<Array<Product>>(this.url + '/', this.httpOptions);
+    return this.http.get<Array<Product>>(this.url + '/');
   }
 
-  deleteProduct(id: number) {
-    this.http.delete(this.url + '/' + id, this.httpOptions);
+
+  deleteProduct(id: number): Observable<boolean> {
+    return this.http.delete<boolean>(this.url + '/' + id, this.httpOptions);
   }
 
-  getProduct(id: number): Observable<Product> {
+
+  getProductById(id: Number): Observable<Product> {
     return this.http.get<Product>(this.url + '/' + id, this.httpOptions);
   }
 
-  getProductsById(id: Number): Observable<Product> {
-    return this.http.get<Product>(this.url + id);
-  }
-
-  getProductBy(arrayProduct: Product[]): Observable<Product> {
-    return this.http.get<Product>(this.url + '/' + arrayProduct);
-  }
-
   addProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(this.url + '/', product, this.httpOptions);
+    return this.http.post<Product>(this.url + '/', product);
+  }
+
+  productFilterName(name?: string): Observable<Array<Product>> {
+    return this.http.get<Array<Product>>(this.url + '/',
+      {
+        headers: this.httpOptions.headers, params: {
+          productName: name,
+          visible: 'true'
+        },
+      });
+  }
+  productFilterBrand(brand?: string): Observable<Array<Product>> {
+    return this.http.get<Array<Product>>(this.url + '/',
+      {
+        headers: this.httpOptions.headers, params: {
+          brand: brand
+        }
+      });
+  }
+  updateProduct(id: Number, product: Product): Observable<Product> {
+    return this.http.put<Product>(this.url + '/' + id, product, this.httpOptions);
+  }
+
+  setVisible(id: number, visible: boolean) {
+    return this.http.post<Product>(this.url + '/visible/' + id, visible, this.httpOptions);
   }
 
 }

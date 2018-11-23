@@ -1,0 +1,12 @@
+.locked{
+    margin:5px;
+    padding:5px;
+    background-color: #dedede; 
+}
+
+.unlocked{
+    margin:5px;
+    padding:5px;
+    background-color: rgba(234,78,78);
+    color:white;
+}

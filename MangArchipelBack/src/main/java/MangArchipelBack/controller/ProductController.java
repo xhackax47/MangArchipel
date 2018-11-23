@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import MangArchipelBack.model.Product;
@@ -82,8 +83,19 @@ public class ProductController {
 //    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin(origins = "*")
 	@DeleteMapping("/{id}") 
-	public void deleteProduct(@PathVariable Long id) {
-		pService.delete(id);
+	@ResponseBody
+	public Boolean deleteProduct(@PathVariable Long id) {
+		
+		return pService.delete(id);
+	}
+	
+	
+	//Activer un produit
+	//@Secured({"ROLE_ADMIN"})
+	@CrossOrigin(origins = "*")
+	@PostMapping("/visible/{id}") 
+	public void setVisible(@PathVariable Long id, @RequestBody Boolean visible) {
+		pService.setVisible(id, visible);
 	}
 	
 }
