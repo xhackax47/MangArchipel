@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import MangArchipelBack.exception.BadRequestException;
 import MangArchipelBack.exception.ResourceNotFoundException;
 import MangArchipelBack.model.Product;
 import MangArchipelBack.repository.ProductRepository;
@@ -26,6 +27,9 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Autowired
 	private ProductRepository pRepo;
+	
+	/*@Autowired
+	OrderRepository orderRepository */
 	
 	@Autowired
 	private EntityManager em;
@@ -94,8 +98,21 @@ public class ProductServiceImpl implements ProductService {
 	
 // Supprimer produit dans la BDD
 	@Override
-	public void delete(Long id) {
-		pRepo.deleteById(id);
+	public Boolean delete(Long id) {
+		// TODO : décommenter en dessous lorsque Samy aura merge vers test
+		// Boolean produitDejaCommande = orderRepository.findByProductId(id).isPresent();
+		 Boolean produitDejaCommande = false;
+		if(!produitDejaCommande) {
+			pRepo.deleteById(id);
+			if(!pRepo.existsById(id)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		} else {
+			throw new BadRequestException("Le produit que vous tentez de supprimer à été commandé.");
+		}
 	}
 	
 // Récuperer les produits par le nom	

@@ -4,11 +4,16 @@ import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import { ConfirmationService } from 'primeng/api';
+
+
+
 
 @Component({
   selector: 'app-products-admin',
   templateUrl: './products-admin.component.html',
-  styleUrls: ['./products-admin.component.css']
+  styleUrls: ['./products-admin.component.css'],
+  providers: [ConfirmationService]
 })
 export class ProductsAdminComponent implements OnInit {
   logged: boolean;
@@ -16,10 +21,12 @@ export class ProductsAdminComponent implements OnInit {
   product: Product;
   productArray: Array<Product>;
   products: Product[];
+  message: string;
 
-  constructor(private service: ProductService, private router: Router, private userService: UserService) {
+  constructor(private service: ProductService, private router: Router, private userService:
+     UserService, private confirmationService: ConfirmationService) {
     this.productArray = [];
-
+    this.message = '';
     this.logged = false;
 
     const u: User = JSON.parse(localStorage.getItem('USER'));
@@ -89,5 +96,17 @@ export class ProductsAdminComponent implements OnInit {
       this.productArray = p.sort(this.predicateForSort);
       this.products = this.productArray.slice(0, 20);
     });
+  }
+
+  delete(id: number) {
+    this.confirmationService.confirm({
+      message: 'Voulez vous supprimer ce produit ?',
+      accept: () => {
+        this.service.deleteProduct(id).subscribe(b => {
+          this.message = 'Produit supprimé';
+          this.refreshComponent();
+        });
+      }
+  });
   }
 }

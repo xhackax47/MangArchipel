@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-menu-bar-details',
@@ -8,6 +9,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class MenuBarDetailsComponent implements OnInit {
 
+  constructor(private userService: UserService) {}
 
   items: MenuItem[];
 
@@ -37,4 +39,11 @@ export class MenuBarDetailsComponent implements OnInit {
     ];
   }
 
+  logout() {
+    console.log('tentative de déconecction');
+    this.userService.logout().subscribe(() => {
+      localStorage.removeItem('USER');
+      this.userService.subjectLog.next(false);
+    });
+  }
 }

@@ -25,6 +25,8 @@ export class AppComponent {
       this.logged = true;
       if (user.roles.length > 0 && user.roles[0].name === 'ROLE_ADMIN') {
         this.admin = true;
+      } else {
+        this.admin = false;
       }
     }
 
@@ -35,6 +37,8 @@ export class AppComponent {
       if (user2 !== null) {
         if (user2.roles.length > 0 && user2.roles[0].name === 'ROLE_ADMIN') {
           this.admin = true;
+        } else {
+          this.admin = false;
         }
       }
     }
