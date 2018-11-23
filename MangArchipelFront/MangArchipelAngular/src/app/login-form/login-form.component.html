@@ -1,15 +1,33 @@
 
-<form *ngIf="!logged" (ngSubmit)="onSubmit()">
-  <div>
-    <label>Login : </label>
-    <input type="text" placeholder="Login" name="log" id="log" required [(ngModel)]="model.username"/></div>
-  <div>
-    <label>Mot de passe : </label>
-    <input type="password" placeholder="Mot de passe" name="pass" id="pass" required [(ngModel)]="model.password"/>
-  </div>
-  <button pButton label="Connexion" type="submit"></button>
+<br />
+<div class="p-grid p-dir-col p-col-2 p-offset-5">
 
-</form>
+  <form *ngIf="!logged" (ngSubmit)="onSubmit()" class="p-col-align-center">
+    <h2>Se connecter</h2>
+    <div>
+      <label>Login : </label>
+      <div>
+        <input type="text" placeholder="Login" name="log" id="log" required [(ngModel)]="model.username" />
+      </div>
+    </div>
+
+
+    <div>
+      <label>password : </label>
+      <div>
+        <input type="password" placeholder="Mot de passe" name="pass" id="pass" required [(ngModel)]="model.password" />
+      </div>
+    </div>
+    <br />
+    <div class="button">
+      <button pButton type="submit">Connexion</button>
+    </div>
+
+
+    <button *ngIf="logged" pButton (click)="logout()">Déconnexion</button>
+  </form>
+</div>
+
 {{message}}
 <!--<button *ngIf="logged" pButton (click)="logout()">Déconnexion</button>-->
 

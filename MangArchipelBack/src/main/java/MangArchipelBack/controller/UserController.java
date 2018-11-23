@@ -26,6 +26,9 @@ import MangArchipelBack.model.Role;
 import MangArchipelBack.model.User;
 import MangArchipelBack.services.RoleService;
 
+import MangArchipelBack.services.UserService;
+
+
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -35,6 +38,9 @@ public class UserController {
 
   @Autowired
   RoleService roleService;
+  @Autowired
+  private UserService userservice;
+
   
 	@CrossOrigin(origins = "*")
 	@GetMapping("/user")
@@ -75,4 +81,12 @@ public class UserController {
 		 SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false);
 		return null;
 	}
+	
+	 @CrossOrigin(origins = "*")
+	 @PostMapping("/signIn")
+	 // creation d'un utilisateur
+	 public  User addUser(@RequestBody User user )
+	 {
+		 return userservice.save(user);
+	 }
 }
