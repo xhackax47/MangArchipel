@@ -3,6 +3,7 @@ import { MenuItem } from 'primeng/api';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-menu-bar-details',
@@ -15,7 +16,8 @@ export class MenuBarDetailsComponent implements OnInit {
   checkValue: string;
   items: MenuItem[];
 
-  constructor(private service: ProductService, private router: Router) {
+  constructor(private service: ProductService, private router: Router,
+             private userService: UserService) {
 
   }
 
@@ -52,5 +54,13 @@ export class MenuBarDetailsComponent implements OnInit {
       }
     );
     this.router.navigate(['search']);
+  }
+    
+  logout() {
+    console.log('tentative de déconecction');
+    this.userService.logout().subscribe(() => {
+      localStorage.removeItem('USER');
+      this.userService.subjectLog.next(false);
+    });
   }
 }

@@ -3,6 +3,7 @@ import { MenuItem } from 'primeng/api';
 import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
 import { Product } from '../product';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-menu-administrateur',
@@ -15,7 +16,8 @@ export class MenuAdministrateurComponent implements OnInit {
   items: MenuItem[];
   checkValue: string;
 
-  constructor(private service: ProductService, private router: Router) {
+  constructor(private service: ProductService, private router: Router,
+              private userService: UserService) {
   }
 
   ngOnInit() {
@@ -45,4 +47,13 @@ export class MenuAdministrateurComponent implements OnInit {
     );
     this.router.navigate(['search']);
   }
+
+  logout() {
+    console.log('tentative de déconecction');
+    this.userService.logout().subscribe(() => {
+      localStorage.removeItem('USER');
+      this.userService.subjectLog.next(false);
+    });
+  }
+
 }

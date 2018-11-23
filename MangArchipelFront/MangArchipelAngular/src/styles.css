@@ -22,7 +22,7 @@ body
     color: aliceblue;
   
 }
-h1{
+h1,h2{
 font-family:  yozakura;
 text-align: center
 }
@@ -44,16 +44,42 @@ table {
 }
 
 
-button{
+.ui-button{
     font-family: roboto;
+    padding:5px 20px;
+    margin:5px;
 }
-.ui-g
+
+
+
+label{
+    text-align: center;
+}
+  /*
+.logg
+{
+ 
+    border-right-width: 150px;
+    margin-right: 500px;
+    margin-left: -200;
+    margin-left: 700px;
+     height: 150px;
+
+   
+    width: 50%;
+ 
+}
+    */
+.button
 {
     text-align: center;
 }
-
-.p-grid {
-    background-color: azure;
+.p-grid 
+{
+    
+    background-color: aliceblue;
+  /* width: 75%;
+    */
 }
 
 h2 {
@@ -62,4 +88,25 @@ h2 {
 
 #stock {
     color: green;
+}
+
+.objetDataView{
+    text-align: left;
+}
+
+@media only screen and (max-width: 800px) {
+    body{
+        margin: 0px 5px;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    body{
+        margin: 0px 20%;
+    }
+}
+
+div
+{
+    text-align: center;
 }

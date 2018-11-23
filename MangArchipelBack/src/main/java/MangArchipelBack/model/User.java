@@ -20,20 +20,27 @@ public class User implements Serializable , UserDetails {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
+    private Long id;
+	@Column(name="username")
     private String username;
 
+	@Column(name="password")
 	private String password;
 	
+	@Column(name="firstname")
 	private String firstName;
 	
+	@Column(name="lastname")
 	private String lastName;
 	
+	@Column(name="adress")
 	private String adress;
 	
+	@Column(name="city")
 	private String city;
 	
+	@Column(name="postalcode")
 	private Integer postalCode;
     
     @ManyToMany(fetch = FetchType.LAZY)

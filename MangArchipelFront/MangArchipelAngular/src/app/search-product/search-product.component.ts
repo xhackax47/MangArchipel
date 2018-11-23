@@ -2,8 +2,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
+
 import { HttpResponse } from '@angular/common/http';
 import { ValueTransformer } from '@angular/compiler/src/util';
+
 @Component({
   selector: 'app-search-product',
   templateUrl: './search-product.component.html',

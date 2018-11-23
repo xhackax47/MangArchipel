@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Product } from './product';
 import { Observable, Subject } from 'rxjs';
+import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,7 @@ export class ProductService {
     params: new HttpParams()
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   // Permet de faire la recherche depuis n'importe où via le menu
   emit(eventData: Product[]): void {
@@ -29,17 +31,16 @@ export class ProductService {
     return this.http.get<Array<Product>>(this.url + '/');
   }
 
-  deleteProduct(id: number) {
-    this.http.delete(this.url + '/' + id);
+
+  deleteProduct(id: number): Observable <boolean> {
+    return this.http.delete<boolean>(this.url + '/' + id, this.httpOptions);
   }
 
-  getProduct(id: number): Observable<Product> {
-    return this.http.get<Product>(this.url + '/' + id);
+
+  getProductById(id: Number): Observable<Product> {
+    return this.http.get<Product>(this.url + '/' + id, this.httpOptions);
   }
 
-  getProductsById(id: Number): Observable<Product> {
-    return this.http.get<Product>(this.url + id);
-  }
 
   addProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(this.url + '/', product);
@@ -61,4 +62,12 @@ export class ProductService {
         }
       });
   }
+  updateProduct(id: Number, product: Product): Observable<Product> {
+    return this.http.put<Product>(this.url + '/' + id, product, this.httpOptions);
+  }
+
+  setVisible(id: number, visible: boolean) {
+    return this.http.post<Product>(this.url + '/visible/' + id, visible, this.httpOptions);
+  }
+
 }

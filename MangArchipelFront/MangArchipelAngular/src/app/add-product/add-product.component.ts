@@ -23,6 +23,7 @@ export class AddProductComponent implements OnInit {
   }
 
   onSubmit() {
+    this.model.visible = true;
     this.service.addProduct(this.model).subscribe(product => {
       console.log('product ajouté');
       this.envoi.emit(product);

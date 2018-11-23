@@ -28,9 +28,11 @@ public class Product {
 	@Column(name="PRICE")
 	private Double price;
 	
+	@NotNull(message = "Le type du produit est requis.")
 	@Column(name="TYPE")
 	private String productType;
 	
+	@NotNull(message = "Le stock du produit est requis.")
 	@Column(name="STOCK")
 	private Integer stock;
 	
@@ -41,7 +43,18 @@ public class Product {
 	@Column(name="PICTURE")
 	private String picture;
 
+	@Column(name="VISIBLE")
+	private boolean visible;
 	
+	
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
+
 	public Product() {}
 
 	public Product(Long id, String productName, String brand, Double price, String productType, Integer stock, String description, String picture) {

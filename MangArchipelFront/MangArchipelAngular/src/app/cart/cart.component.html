@@ -1,3 +1,15 @@
-<p>
-  cart works!
-</p>
+
+  <p-dataView  [value]="orders"  [paginator]="true" [rows]="10">
+
+    <ng-template let-order pTemplate="listItem">
+      <div  class="objetDataView">
+
+        <div > {{order.product.productName}} : {{order.quantity}}</div>
+          <button type="button" pButton (click)="deleteOrder(order)"><i class="pi pi-trash"></i></button>
+  
+      </div>
+    </ng-template>
+  </p-dataView>
+
+  <button type="button" pButton (click)="validate()"><i class="pi pi-shopping-cart"></i>Valider</button>
+  

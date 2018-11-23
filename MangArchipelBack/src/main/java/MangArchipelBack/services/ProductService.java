@@ -5,12 +5,11 @@ import org.springframework.validation.annotation.Validated;
 import MangArchipelBack.model.Product;
 
 import java.util.Collection;
-import java.util.List;
 
 @Validated
 public interface ProductService {
 
-	List<Product> searchProducts(String productName, String brand, Double price, String productType, Integer stock, String description);
+	Collection<Product> searchProducts(String productName, String brand, Double price, String productType, Integer stock, String description);
     Collection<Product> getAllProducts();
     Product getProduct(Long id);
     Integer getStock(Product product);
@@ -21,5 +20,6 @@ public interface ProductService {
     Collection<Product> findByProductType(String productType);
     
     Product save(Product product);
-    void delete(Long id);
+    Boolean delete(Long id);
+    Boolean setVisible(long id ,boolean visible);
 }
