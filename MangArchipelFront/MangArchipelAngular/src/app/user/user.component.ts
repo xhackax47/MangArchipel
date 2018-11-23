@@ -23,7 +23,6 @@ export class UserComponent implements OnInit {
     private alertService: AlertService) {
 
     this.model = new User();
-
   }
   /*
     ngOnInit() {
