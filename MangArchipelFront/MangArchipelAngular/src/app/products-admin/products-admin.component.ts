@@ -52,7 +52,7 @@ export class ProductsAdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.refreshComponent();
+    this.loadProducts();
   }
 
   onRowSelect(event) {
@@ -65,19 +65,19 @@ export class ProductsAdminComponent implements OnInit {
   }
 
   onClickParent(product: Product) {
-    this.refreshComponent();
+    this.loadProducts();
   }
 
   lock(id: number) {
     this.service.setVisible(id, false).subscribe(() => {
-      this.refreshComponent();
+      this.loadProducts();
     });
   }
 
 
   unlock(id: number) {
     this.service.setVisible(id, true).subscribe(() => {
-      this.refreshComponent();
+      this.loadProducts();
     });
   }
 
@@ -91,7 +91,7 @@ export class ProductsAdminComponent implements OnInit {
     }
   }
 
-  refreshComponent() {
+  loadProducts() {
     this.service.getProducts().subscribe(p => {
       this.productArray = p.sort(this.predicateForSort);
       this.products = this.productArray.slice(0, 20);
@@ -104,7 +104,7 @@ export class ProductsAdminComponent implements OnInit {
       accept: () => {
         this.service.deleteProduct(id).subscribe(b => {
           this.message = 'Produit supprimé';
-          this.refreshComponent();
+          this.loadProducts();
         });
       }
   });

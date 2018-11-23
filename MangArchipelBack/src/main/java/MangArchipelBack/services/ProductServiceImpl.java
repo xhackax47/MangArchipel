@@ -1,5 +1,9 @@
 package MangArchipelBack.services;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Base64;
+import java.util.Base64.Encoder;
 import java.util.Collection;
 
 import javax.persistence.EntityManager;
@@ -18,7 +22,9 @@ import org.springframework.util.StringUtils;
 import MangArchipelBack.exception.BadRequestException;
 import MangArchipelBack.exception.ResourceNotFoundException;
 import MangArchipelBack.model.Product;
+import MangArchipelBack.model.ProductRequest;
 import MangArchipelBack.repository.ProductRepository;
+import MangArchipelBack.repository.OrderRepository;
 
 @Service
 @Transactional
@@ -27,8 +33,8 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductRepository pRepo;
 	
-	/*@Autowired
-	OrderRepository orderRepository */
+	@Autowired
+	private OrderRepository orderRepository;
 	
 	@Autowired
 	private EntityManager em;
@@ -91,16 +97,39 @@ public class ProductServiceImpl implements ProductService {
 
 // Enregistrer produit dans la BDD
 	@Override
-	public Product save(Product product) {
-		return pRepo.save(product);
+	public Product save(ProductRequest pr) {
+		Product p = new Product();
+		p.setBrand(pr.getBrand());
+		p.setDescription(pr.getDescription());
+		p.setProductType(pr.getProductType());
+		p.setPrice(pr.getPrice());
+		p.setVisible(true);
+		
+		
+		p.setProductName(pr.getProductName());
+		p.setStock(pr.getStock());
+
+		//encodage en base 64 de l'image
+		byte[] bytes = new byte[(int)pr.getPicture().length()];
+		 try {
+			bytes = Files.readAllBytes(pr.getPicture().toPath());
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Encoder e = Base64.getEncoder();
+		String fileEncoded = e.encodeToString(bytes);
+		p.setPicture(fileEncoded);
+		
+		return pRepo.save(p);
 	}
 	
 // Supprimer produit dans la BDD
 	@Override
 	public Boolean delete(Long id) {
 		// TODO : décommenter en dessous lorsque Samy aura merge vers test
-		// Boolean produitDejaCommande = orderRepository.findByProductId(id).isPresent();
-		 Boolean produitDejaCommande = false;
+		 Boolean produitDejaCommande = orderRepository.findById(id).isPresent();
+		 //Boolean produitDejaCommande = false;
 		if(!produitDejaCommande) {
 			pRepo.deleteById(id);
 			if(!pRepo.existsById(id)) {

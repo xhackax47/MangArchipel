@@ -2,7 +2,7 @@
 <br />
 <div class="p-grid p-dir-col p-col-2 p-offset-5">
 
-  <form *ngIf="!logged" (ngSubmit)="onSubmit()" class="p-col-align-center">
+  <form  *ngIf="!logged" (ngSubmit)="onSubmit()" class="p-col-align-center" ngNativeValidate>
     <h2>Se connecter</h2>
     <div>
       <label>Login : </label>

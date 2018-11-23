@@ -3,6 +3,7 @@ package MangArchipelBack.services;
 import org.springframework.validation.annotation.Validated;
 
 import MangArchipelBack.model.Product;
+import MangArchipelBack.model.ProductRequest;
 
 import java.util.Collection;
 
@@ -19,7 +20,7 @@ public interface ProductService {
     Collection<Product> findByPrice(Double price);
     Collection<Product> findByProductType(String productType);
     
-    Product save(Product product);
+    Product save(ProductRequest productRequest);
     Boolean delete(Long id);
     Boolean setVisible(long id ,boolean visible);
 }

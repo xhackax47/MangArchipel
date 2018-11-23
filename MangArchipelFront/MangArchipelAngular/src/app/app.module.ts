@@ -41,6 +41,8 @@ import {ButtonModule} from 'primeng/button';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { ModifProductComponent } from './modif-product/modif-product.component';
 
+import {FileUploadModule} from 'primeng/fileupload';
+
 const roads: Routes = [
   { path: '', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
@@ -85,7 +87,8 @@ const roads: Routes = [
     DataViewModule,
     ConfirmDialogModule,
     BrowserAnimationsModule,
-    ButtonModule
+    ButtonModule,
+    FileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]

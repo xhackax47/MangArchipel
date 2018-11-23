@@ -33,4 +33,10 @@ export class AddProductComponent implements OnInit {
 
   }
 
+  onSelect(event) {
+    console.log('image ajoutée');
+    this.model.image = event.files[0];
+    console.log('image ajoutée : ' + this.model.image);
+}
+
 }

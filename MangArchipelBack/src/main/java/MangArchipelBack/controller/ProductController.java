@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import MangArchipelBack.model.Product;
+import MangArchipelBack.model.ProductRequest;
 import MangArchipelBack.services.ProductService;
 
 @RestController
@@ -60,8 +61,10 @@ public class ProductController {
 //    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin(origins = "*")
 	@PostMapping("/") 
-	public Product createProduct(@RequestBody Product p){
-		return pService.save(p);		
+	public Product createProduct(@RequestBody ProductRequest pr){
+		
+		
+		return pService.save(pr);		
 	}
 	
 // Mettre à jour / Modifier un produit

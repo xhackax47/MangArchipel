@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" ngNativeValidate>
   <div>
     <label>Nom : </label>
     <input type="text" placeholder="Nom" name="Nom" id="Nom" required [(ngModel)]="model.productName"/></div>
@@ -14,12 +14,16 @@
   </div>
     <div>
     <label> Image : </label>
-    <input type="image" placeholder="Image" name="Image" id="Image" required [(ngModel)]="model.image"/>
-  </div>
+    <p-fileUpload name="image" mode="basic" name="demo[]" url="admin/products" accept="image/*" maxFileSize="1000000" (onSelect)="onSelect($event)"></p-fileUpload>
+   </div>
     <div>
     <label> Descriptitf : </label>
     <input type="text" placeholder="Descriptitf" name="Descriptitf" id="Descriptitf" required [(ngModel)]="model.descriptitf"/>
   </div>
+  <div>
+  <label> Stock : </label>
+  <input type="text" placeholder="Stock" name="Stock" id="Stock" required [(ngModel)]="model.stock"/>
+</div>
   
   <button pButton type="submit" label="Ajouter un produit"></button>
 
