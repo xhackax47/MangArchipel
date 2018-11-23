@@ -6,7 +6,7 @@
     <div>
       <p>Nom : </p>
       <div>
-        <input type="text" id="lastname" name="lastname" [(ngModel)]="model.lastname"required />
+        <input type="text" id="lastname" name="lastname" [(ngModel)]="model.lastname"required>
       </div>
     </div>
 
@@ -15,7 +15,7 @@
     <div>
       <p>Prenom : </p>
       <div>
-        <input type="text" id="firstname" name="firstname" [(ngModel)]="model.firstname" required />
+        <input type="text" id="firstname" name="firstname" [(ngModel)]="model.firstname" required>
       </div>
     </div>
 
@@ -23,7 +23,7 @@
     <div>
       <p>nom d'utilisateur :</p>
       <div>
-        <input type="text" id="username" name="username"  [(ngModel)]="model.username" required/>
+        <input type="text" id="username" name="username"  [(ngModel)]="model.username" required>
       </div>
     </div>
 
@@ -31,7 +31,7 @@
     <div>
       <p>city :</p>
       <div>
-        <input type="text" id="city" name="city" [(ngModel)]="model.city" required />
+        <input type="text" id="city" name="city" [(ngModel)]="model.city" required>
       </div>
     </div>
 
@@ -40,7 +40,7 @@
     <div>
       <p>Adresse :</p>
       <div>
-        <input type="text" id="adresse" name="adresse" [(ngModel)]="model.adress"required />
+        <input type="text" id="adresse" name="adresse" [(ngModel)]="model.adress" required>
       </div>
     </div>
 
@@ -49,7 +49,7 @@
     <div>
       <p>Code postal :</p>
       <div>
-        <input type="text" id="postalcode" name="postalcode" [(ngModel)]="model.postalCode"required />
+        <input type="text" id="postalcode" name="postalcode" [(ngModel)]="model.postalCode" required>
       </div>
     </div>
 
@@ -58,22 +58,23 @@
     <div>
       <p> Mot de passe :</p>
       <div>
-        <input type="password" id="adresse" name="adresse" [(ngModel)]="model.password"required />
+        <input type="password" id="password" name="password" [(ngModel)]="model.password" required>
       </div>
     </div>
+    <div></div>
 
     <br/>
 
     <div>
       <p>Confirmer le mot de passe :</p>
       <div>
-        <input type="password" id="postalcode" name="postalcode" required />
+        <input type="password" id="passwordconfirm" name="passwordconfirm" required>
       </div>
     </div>
 
     <br>
-
-    <button pButton type="submit" class="ui-button-raised ui-button-secondary"*ngIf="add" >S'inscrire</button>
-    <button pButton type="submit" class="ui-button-raised ui-button-secondary"*ngIf="!add" >Modifier</button>
+    <button pButton type="submit" class="ui-button-raised ui-button-secondary" *ngIf="add">S'inscrire</button>
+    
+    <button pButton type="submit" class="ui-button-raised ui-button-secondary" *ngIf="!add" >Modifier</button>
   </form>
 </div>

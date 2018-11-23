@@ -1,25 +1,36 @@
 <br />
-<div class="p-grid p-dir-col p-col-2 p-offset-5">
+<div class="p-grid p-dir-col p-col-2 p-offset-5" >
 
-  <form *ngIf="!logged" (ngSubmit)="onSubmit()" class="p-col-align-center">
+  <form  *ngIf="!logged" (ngSubmit)="onSubmit()" class="p-col-align-center"  ngNativeValidate>
     <h2>Se connecter</h2>
-    <div>
-      <label>Login : </label>
+    <div >
       <div>
-        <input type="text" placeholder="Login" name="log" id="log" required [(ngModel)]="model.username" />
+        <label for="username">nom d'utilisateur : </label>
       </div>
+      <input type="text" name="username"  [(ngModel)]="model.username" required/>
+     <!--
+      <div *ngIf="subbmitted && f.username.invalid" class="invalid-feedback">
+        <div *ngIf="f.username.errors.required"> Le nom d'utilisateur est obligatoire</div>
+      </div> 
+-->
+
     </div>
 
 
-    <div>
-      <label>password : </label>
+    <div >
       <div>
-        <input type="password" placeholder="Mot de passe" name="pass" id="pass" required [(ngModel)]="model.password" />
+        <label for="password">password : </label>
       </div>
+      <input type="password" name="password" [(ngModel)]="model.password" required/>
+      <!--
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Le mot de passe est obligatoire</div>
+      </div>
+      -->
     </div>
     <br />
-    <div class="button" >
-      <button pButton type="submit"class="ui-button-rounded ui-button-secondary" >Connexion</button>
+    <div class="button">
+      <button pButton type="submit" class="ui-button-rounded ui-button-secondary">Connexion</button>
     </div>
 
 

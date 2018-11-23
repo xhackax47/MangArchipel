@@ -36,8 +36,9 @@ import { SearchProductComponent } from './search-product/search-product.componen
 
 import {DataViewModule} from 'primeng/dataview';
 import { UserComponent } from './user/user.component';
-import {ButtonModule} from 'primeng/button';
 
+import {ButtonModule} from 'primeng/button';
+import { AlertComponent } from './alert/alert.component';
 
 const roads: Routes = [
   { path: '', component: ProductsComponent },
@@ -66,7 +67,8 @@ const roads: Routes = [
     SearchProductComponent,
     AddProductComponent,
     ProductsAdminComponent,
-    UserComponent
+    UserComponent,
+    AlertComponent
 
   ],
   imports: [
