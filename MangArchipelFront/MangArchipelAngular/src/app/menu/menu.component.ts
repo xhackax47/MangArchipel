@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
   @Input() product: Product[];
-  @Output() output = new EventEmitter;
   checkValue: string;
   items: MenuItem[];
 
@@ -31,9 +30,14 @@ export class MenuComponent implements OnInit {
     }];
   }
 
+  // A mettre dans tous les menus
   onSubmit() {
-    this.service.productFilterName(this.checkValue).subscribe(p => { this.product = p; this.output.emit(this.product);
-    console.log(this.product); });
+    this.service.productFilterName(this.checkValue).subscribe(
+      p => {
+        this.product = p;
+        this.service.emit(this.product);
+      }
+    );
     this.router.navigate(['search']);
   }
 }

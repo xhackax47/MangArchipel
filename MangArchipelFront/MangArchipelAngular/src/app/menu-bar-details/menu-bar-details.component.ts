@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Product } from '../product';
+import { ProductService } from '../product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-bar-details',
@@ -8,8 +11,13 @@ import { MenuItem } from 'primeng/api';
 })
 export class MenuBarDetailsComponent implements OnInit {
 
-
+  @Input() product: Product[];
+  checkValue: string;
   items: MenuItem[];
+
+  constructor(private service: ProductService, private router: Router) {
+
+  }
 
   ngOnInit() {
     this.items = [
@@ -36,5 +44,13 @@ export class MenuBarDetailsComponent implements OnInit {
       }
     ];
   }
-
+  onSubmit() {
+    this.service.productFilterName(this.checkValue).subscribe(
+      p => {
+        this.product = p;
+        this.service.emit(this.product);
+      }
+    );
+    this.router.navigate(['search']);
+  }
 }

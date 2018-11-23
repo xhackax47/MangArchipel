@@ -1,6 +1,8 @@
 <p-menubar class="menu" [model]="items">
   <div class="menuManga">
-    <input (ngSubmit)="onSubmit()" type="text" pInputText placeholder="Produit" placeholder="Global Filter"/>
+      <form (ngSubmit)="onSubmit()" class="ui-g">
+          <input #gb type="search" name="search" [(ngModel)]="checkValue"/> 
+      </form>
     <button pButton routerLink="/search" label="rechercher">rechercher</button>
     <button pButton label="Logout">Se déconnecter</button>
   </div>

@@ -11,23 +11,15 @@ import { ValueTransformer } from '@angular/compiler/src/util';
 })
 export class SearchProductComponent implements OnInit {
 
-  @Input() value;
+  @Input() checkValue;
   productArray;
   product: Product;
   products;
 
   constructor(private service: ProductService) {
-    this.products = [];
-    console.log(this.value);
+    service.event$.subscribe(product => this.productArray = product);
   }
 
   ngOnInit() {
-    // this.service.getProductsById();
-    this.service.productFilterName(this.value).subscribe(p => this.products = p);
   }
-  // onSubmit() {
-  //   // this.service.getProductBy(this.productArray).subscribe();
-  //   console.log('toto');
-  //   this.service.productFilterName(this.checkValue).subscribe(p => this.productArray = p);
-  // }
 }

@@ -1,9 +1,4 @@
-<h2>Rechercher un produit </h2>
-<form (ngSubmit)="onSubmit()" class="ui-g">
-  <p>Recherche:
-    <input #gb type="search" id="search" name="search" [(ngModel)]="checkValue" />
-  </p>
-</form>
+<h2>Résultat de la recherche</h2>
   <p-dataTable [value]="productArray" [globalFilter]="gb" [(selection)]="product" selectionMode="single" (onRowSelect)="onRowSelect($event)"
     [paginator]="true" [rows]="10" [headerCheckboxToggleAllPages]="true">
     <p-column field="productName" header="Produits" filterMatchMode="equals"></p-column>
