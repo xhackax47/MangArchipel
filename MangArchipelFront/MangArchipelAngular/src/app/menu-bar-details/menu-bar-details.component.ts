@@ -17,7 +17,7 @@ export class MenuBarDetailsComponent implements OnInit {
   items: MenuItem[];
 
   constructor(private service: ProductService, private router: Router,
-             private userService: UserService) {
+    private userService: UserService) {
 
   }
 
@@ -55,7 +55,7 @@ export class MenuBarDetailsComponent implements OnInit {
     );
     this.router.navigate(['search']);
   }
-    
+
   logout() {
     console.log('tentative de déconecction');
     this.userService.logout().subscribe(() => {
