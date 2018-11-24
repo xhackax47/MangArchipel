@@ -52,7 +52,7 @@ const roads: Routes = [
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'search', component: SearchProductComponent },
   { path: 'signIn', component: UserComponent },
-  { path: 'admin/orders', component: OrdersComponent},
+  { path: 'orders', component: OrdersComponent},
   // { path: 'profile', component: ProfileComponent},
 ];
 

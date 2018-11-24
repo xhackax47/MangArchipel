@@ -17,11 +17,9 @@ export class OrderService {
 
   private productOrder: ProductOrder;
   private orders: ProductOrders = new ProductOrders();
-
   private productOrderSubject = new Subject();
   private ordersSubject = new Subject();
   private totalSubject = new Subject();
-
   private total: number;
 
   productOrderChanged = this.productOrderSubject.asObservable();
@@ -31,6 +29,7 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
   saveOrder(order: ProductOrders) {
+    console.log(order);
     return this.http.post(this.url + '/', order, this.httpOptions);
   }
 
@@ -40,7 +39,7 @@ export class OrderService {
 
   set SelectedProductOrder(value: ProductOrder) {
     this.productOrder = value;
-    this.productOrderSubject.next(value);
+    this.productOrderSubject.next(this.productOrder);
   }
 
   get ProductOrders() {
@@ -49,7 +48,7 @@ export class OrderService {
 
   set ProductOrders(value: ProductOrders) {
     this.orders = value;
-    this.ordersSubject.next(value);
+    this.ordersSubject.next(this.orders);
   }
 
   get Total() {
@@ -58,7 +57,7 @@ export class OrderService {
 
   set Total(value: number) {
     this.total = value;
-    this.totalSubject.next(value);
+    this.totalSubject.next(this.total);
   }
 
   addOrder(order: Order) {

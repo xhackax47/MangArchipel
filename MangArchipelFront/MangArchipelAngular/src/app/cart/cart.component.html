@@ -1,11 +1,13 @@
 <p-dataView [value]="orders.productOrders" [paginator]="true" [rows]="10">
   <ng-template let-order pTemplate="listItem">
     <div class="objetDataView">
-      <div>Produit :  {{order.product.productName}}, Quantité : {{order.quantity}}</div>
-      <button type="button" pButton (click)="deleteOrder(order)"><i class="pi pi-trash"></i></button>
+      <div>Produit :  {{order.productName}}, Quantité : {{order.quantity}}</div>
+      <button type="button" pButton (click)="removeFromCart(order)"><i class="pi pi-trash"></i></button>
     </div>
-    <h5 class="card-title">Total: {{order.total}}€</h5>
+    <h5 class="card-title">Total: {{total}}€</h5>
   </ng-template>
 </p-dataView>
 
 <button type="button" pButton (click)="finishOrder()"><i class="pi pi-shopping-cart"></i>Valider le panier</button>
+<button type="button" pButton (click)="reset()"><i class="pi pi-trash"></i>Vider le panier</button>
+

@@ -23,6 +23,7 @@ export class ProductDetailComponent implements OnInit {
   private cartOrders: ProductOrders;
   productSelected: Boolean = false;
   sub: Subscription;
+  quantity: number;
 
   constructor(private productService: ProductService,
     private orderService: OrderService,
@@ -32,15 +33,14 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit() {
     const id = parseInt(this.route.snapshot.paramMap.get('id'), 0);
-<<<<<<< HEAD
     this.productService.getProductById(id).subscribe(p => this.product = p);
   }
 
-  addToCart(product: Product, quantity?: number) {
-    const productOrder: ProductOrder = new ProductOrder(product, quantity);
-    this.productOrders.push(productOrder);
-    this.orderService.SelectedProductOrder = productOrder;
+  addToCart(order: ProductOrder) {
+    const productOrder: ProductOrder = order;
+    this.orderService.SelectedProductOrder = order;
     this.selectedProductOrder = this.orderService.SelectedProductOrder;
+    this.productOrders.push(productOrder);
     this.productSelected = true;
     this.orderService.addOrder(productOrder);
     localStorage.setItem('commande', JSON.stringify(this.productOrders));
@@ -53,17 +53,6 @@ export class ProductDetailComponent implements OnInit {
 
   isProductSelected(product: Product): boolean {
     return this.getProductIndex(product) > -1;
-  }
-
-  removeFromCart(productOrder: ProductOrder) {
-    const index = this.getProductIndex(productOrder.product);
-    if (index > -1) {
-      this.cartOrders.productOrders.splice(
-        this.getProductIndex(productOrder.product), 1);
-    }
-    this.orderService.ProductOrders = this.cartOrders;
-    this.cartOrders = this.orderService.ProductOrders;
-    this.productSelected = false;
   }
 
 }
