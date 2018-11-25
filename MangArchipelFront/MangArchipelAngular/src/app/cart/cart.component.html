@@ -1,4 +1,4 @@
-
+<div class="p-grid p-dir-col p-col-8 p-offset-2 main">
   <p-dataView  [value]="orders"  [paginator]="true" [rows]="10">
 
     <ng-template let-order pTemplate="listItem">
@@ -12,4 +12,4 @@
   </p-dataView>
 
   <button type="button" pButton (click)="validate()"><i class="pi pi-shopping-cart"></i>Valider</button>
-  
+  </div>
