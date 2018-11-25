@@ -36,18 +36,26 @@ export class UserComponent implements OnInit {
     }
     */
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
-      username: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required,Validators.minLength(6)],
-      confirmpassword: ['', Validators.required],
-      city: ['', Validators.required],
-      postalCode: ['', Validators.required],
-      adress: ['', Validators.required],
-    },{validator: this.service.confirmPassword('password', 'confirmassword')}
-    );
+    if (this.route.snapshot.paramMap.get('id') === null) {
+      this.add = true;
+      this.registerForm = this.formBuilder.group({
+        firstname: ['', Validators.required],
+        lastname: ['', Validators.required],
+        username: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', Validators.required, Validators.minLength(6)],
+        confirmpassword: ['', Validators.required],
+        city: ['', Validators.required],
+        postalCode: ['', Validators.required],
+        adress: ['', Validators.required],
+      
+      }, { validator: this.service.confirmPassword('password', 'confirmassword') }
+      );
+    }else{
+      this.add = false;
+      const id = parseInt(this.route.snapshot.paramMap.get('id'), 0)
+      this.service.getUser
+    }
   }
   get f() { return this.registerForm.controls; }
 
@@ -57,14 +65,15 @@ export class UserComponent implements OnInit {
     }
     if (this.add) {
       console.log('coucou');
-      this.model=new User(this.registerForm.value);
+      this.model = new User(this.registerForm.value);
       this.service.addUser(this.model);
       this.model = new User();
       this.router.navigate(['/']);
+
     }
-   else{
+    else {
       const p = this.model;
-      this.service.updateUser(p.id,p);
+      this.service.updateUser(p.id, p);
     }
     this.service.registerUser(this.registerForm.value)
       .pipe(first()).subscribe(

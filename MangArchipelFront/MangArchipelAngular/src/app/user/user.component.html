@@ -86,13 +86,13 @@
           <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
         </div>
       </div>
-    
+    </div>
       <br/>
       
     <div>
       <p> confirmer le Mot de passe :</p>
       <div>
-        <input type="password" id="password" name="confirmpassword" formControlName="confirmpassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmpassword.errors }" required>
+        <input type="password" id="confirmpassword" name="confirmpassword" formControlName="confirmpassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmpassword.errors }" required>
         <div *ngIf="submitted && f.comfirmpassword.errors" class="invalid-feedback">
           <div *ngIf="f.password.errors.required">le mot de passe  est obligatoire</div>
           <div *ngIf="f.password.errors.minlength">les mot de passe doivent etre identique</div>
