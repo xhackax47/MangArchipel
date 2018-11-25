@@ -40,6 +40,7 @@ import { UserComponent } from './user/user.component';
 import {ButtonModule} from 'primeng/button';
 import { AlertComponent } from './alert/alert.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
 const roads: Routes = [
   { path: '', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
@@ -83,7 +84,8 @@ const roads: Routes = [
 
     DataViewModule,
 
-    ButtonModule
+    ButtonModule,
+    ReactiveFormsModule
 
   ],
   providers: [],

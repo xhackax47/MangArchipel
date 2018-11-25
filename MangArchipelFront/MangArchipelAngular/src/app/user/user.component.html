@@ -1,12 +1,18 @@
 <br />
-<div class="p-grid p-dir-col p-col-2 p-offset-5">
-
-  <form *ngIf="!logged"  (ngSubmit)="onSubmit()" class="p-col-align-center">
-    <h2>S'inscrire</h2>
+<div class="p-grid p-dir-col p-col-3 p-offset-5">
+  <h2 *ngIf="add">S'inscrire</h2>
+  <h2 *ngIf="!add">Modifier ses données</h2>
+  <form *ngIf="!logged" [formGroup]='registerForm' (ngSubmit)="onSubmit()" class="p-col-align-center">
+   
+   
     <div>
       <p>Nom : </p>
       <div>
-        <input type="text" id="lastname" name="lastname" [(ngModel)]="model.lastname"required>
+        <input type="text" id="lastname" name="lastname" formControlName="lastname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }"
+          required>
+        <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+          <div *ngIf="f.lastname.errors.required">le nom est obligatoire</div>
+        </div>
       </div>
     </div>
 
@@ -15,66 +21,85 @@
     <div>
       <p>Prenom : </p>
       <div>
-        <input type="text" id="firstname" name="firstname" [(ngModel)]="model.firstname" required>
+        <input type="text" id="firstname" name="firstname" formControlName="firstname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }"
+          required>
+        <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+          <div *ngIf="f.firstname.errors.required">le prénom est obligatoire</div>
+        </div>
       </div>
     </div>
 
-    <br>
+    <br/>
+
     <div>
       <p>nom d'utilisateur :</p>
       <div>
-        <input type="text" id="username" name="username"  [(ngModel)]="model.username" required>
+        <input type="text" id="username" name="username"  formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"required>
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+          <div *ngIf="f.username.errors.required">le nom d'utilisateur est obligatoire</div>
+        </div>
       </div>
     </div>
 
-    <br>
+    <br/>
+
     <div>
       <p>city :</p>
       <div>
-        <input type="text" id="city" name="city" [(ngModel)]="model.city" required>
+        <input type="text" id="city" name="city"  formControlName="city" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.city.errors }" required>
+        <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+          <div *ngIf="f.city.errors.required">la ville est obligatoire</div>
+        </div>
       </div>
     </div>
-
     <br/>
 
     <div>
       <p>Adresse :</p>
       <div>
-        <input type="text" id="adresse" name="adresse" [(ngModel)]="model.adress" required>
+        <input type="text" id="adresse" name="adresse" formControlName="adress" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.adress.errors }" required>
+        <div *ngIf="submitted && f.adress.errors" class="invalid-feedback">
+          <div *ngIf="f.adresse.errors.required">l'adresse est obligatoire</div>
+        </div>
       </div>
     </div>
-
+  
     <br/>
 
     <div>
       <p>Code postal :</p>
       <div>
-        <input type="text" id="postalcode" name="postalcode" [(ngModel)]="model.postalCode" required>
+        <input type="text" id="postalCode" name="postalCode"  formControlName="postalCode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.postalCode.errors }"required>
+        <div *ngIf="submitted && f.postalCode.errors" class="invalid-feedback">
+          <div *ngIf="f.postalCode.errors.required">le code postal est obligatoire</div>
+        </div>
       </div>
     </div>
-
     <br>
 
     <div>
       <p> Mot de passe :</p>
       <div>
-        <input type="password" id="password" name="password" [(ngModel)]="model.password" required>
+        <input type="password" id="password" name="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" required>
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">le mot de passe  est obligatoire</div>
+          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
       </div>
-    </div>
-    <div></div>
-
-    <br/>
-
-    <div>
-      <p>Confirmer le mot de passe :</p>
-      <div>
-        <input type="password" id="passwordconfirm" name="passwordconfirm" required>
-      </div>
-    </div>
-
-    <br>
-    <button pButton type="submit" class="ui-button-raised ui-button-secondary" *ngIf="add">S'inscrire</button>
     
-    <button pButton type="submit" class="ui-button-raised ui-button-secondary" *ngIf="!add" >Modifier</button>
+      <br/>
+      
+    <div>
+      <p> confirmer le Mot de passe :</p>
+      <div>
+        <input type="password" id="password" name="confirmpassword" formControlName="confirmpassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmpassword.errors }" required>
+        <div *ngIf="submitted && f.comfirmpassword.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">le mot de passe  est obligatoire</div>
+          <div *ngIf="f.password.errors.minlength">les mot de passe doivent etre identique</div>
+        </div>
+      </div>
+    </div>
+    <button pButton type="submit" class="ui-button-raised ui-button-secondary" *ngIf="add">S'inscrire</button>
+    <button pButton type="submit" class="ui-button-raised ui-button-secondary" *ngIf="!add">Modifier</button>
   </form>
 </div>
