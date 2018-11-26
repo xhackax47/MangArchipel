@@ -3,7 +3,7 @@
   <p-column  header="Actions"><button pButton (click)="activer()">Activer</button></p-column>
 
 </p-dataTable>-->
-<div *ngIf="logged&&admin">
+<div *ngIf="logged&&admin" class="p-grid p-dir-col p-col-8 p-offset-2 main">
   {{message}}
   <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425"></p-confirmDialog>
 <p-dataView  [value]="products"  [paginator]="true"  [rows]="10" >

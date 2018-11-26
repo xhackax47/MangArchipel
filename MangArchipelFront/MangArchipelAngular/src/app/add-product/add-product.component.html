@@ -1,4 +1,5 @@
-<form (ngSubmit)="onSubmit()">
+<div class="p-grid p-dir-col p-col-8 p-offset-2 main">
+<form (ngSubmit)="onSubmit()" ngNativeValidate>
   <div>
     <label>Nom : </label>
     <input type="text" placeholder="Nom" name="Nom" id="Nom" required [(ngModel)]="model.productName" /></div>
@@ -7,25 +8,40 @@
     <input type="text" placeholder="Marque" name="Brand" id="Brand" required [(ngModel)]="model.brand" /></div>
   <div>
     <label>Product Type : </label>
-    <input type="text" placeholder="Product type" name="productType" id="productType" required [(ngModel)]="model.productType" /></div>
+    <!-- <input type="text" placeholder="Product type" name="productType" id="productType" required [(ngModel)]="model.productType" /> -->
+    <select name="type" required [(ngModel)]="model.productType">
+        <option value="Mangas">Mangas</option>
+        <option value="Animes/Films">Animes/Films</option>
+        <option value="CD/Musiques">CD/Musiques</option>
+        <option value="Figurines">Figurines</option>
+        <option value="Jeux">Jeux</option>
+      </select>
+  </div>
   <div>
     <label> Prix : </label>
     <input type="text" placeholder="Prix" name="Prix" id="Prix" required [(ngModel)]="model.price" />
   </div>
   <div>
     <label> Image : </label>
-    <input type="image" placeholder="Image" name="Image" id="Image" required [(ngModel)]="model.image" />
+
+    <p-fileUpload name="image" mode="basic"  url="http://localhost:8098/api/products/image" accept="image/*" maxFileSize="1000000" (onUpload)="onUpload($event)"></p-fileUpload>
+    <div *ngIf="model.picture"><img src="http://localhost:8098/{{model.picture}}" width="500px" alt="test" />
+    </div>
+    
+
   </div>
   <div>
     <label> Descriptitf : </label>
     <input type="text" placeholder="Descriptitf" name="Descriptitf" id="Descriptitf" required [(ngModel)]="model.descriptitf" />
   </div>
   <div>
-    <label> Stock : </label>
 
-    <input type="text" placeholder="Stock" name="Stock" id="Stock" required [(ngModel)]="model.stock" />
-  </div>
+  <label> Stock : </label>
+  <input type="text" placeholder="Stock" name="Stock" id="Stock" required [(ngModel)]="model.stock"/>
+</div>
+  
 
   <button pButton type="submit" label="Ajouter un produit"></button>
 
 </form>
+</div>

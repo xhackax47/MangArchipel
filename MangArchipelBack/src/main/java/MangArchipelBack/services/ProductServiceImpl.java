@@ -1,5 +1,14 @@
 package MangArchipelBack.services;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Base64;
+import java.util.Base64.Encoder;
 import java.util.Collection;
 
 import javax.persistence.EntityManager;
@@ -14,11 +23,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import MangArchipelBack.exception.BadRequestException;
 import MangArchipelBack.exception.ResourceNotFoundException;
 import MangArchipelBack.model.Product;
 import MangArchipelBack.repository.ProductRepository;
+import MangArchipelBack.repository.OrderRepository;
 
 @Service
 @Transactional
@@ -27,8 +38,8 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductRepository pRepo;
 	
-	/*@Autowired
-	OrderRepository orderRepository */
+	@Autowired
+	private OrderRepository orderRepository;
 	
 	@Autowired
 	private EntityManager em;
@@ -99,8 +110,8 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Boolean delete(Long id) {
 		// TODO : décommenter en dessous lorsque Samy aura merge vers test
-		// Boolean produitDejaCommande = orderRepository.findByProductId(id).isPresent();
-		 Boolean produitDejaCommande = false;
+		 Boolean produitDejaCommande = orderRepository.findById(id).isPresent();
+		 //Boolean produitDejaCommande = false;
 		if(!produitDejaCommande) {
 			pRepo.deleteById(id);
 			if(!pRepo.existsById(id)) {
@@ -150,4 +161,41 @@ public class ProductServiceImpl implements ProductService {
     	Product productRecu = pRepo.save(product);
     	return productRecu.isVisible();
     }
+    
+    String sauveGardeImage(File image) {
+    	//encodage en base 64 de l'image
+    			//byte[] bytes = encoder(image.getPath());
+    			
+    			//p.setPicture(fileEncoded);
+		return image.getPath();
+    	
+    }
+    
+
+public static String encoder(String imagePath) {
+	String base64Image = "";
+	File file = new File(imagePath);
+	try (FileInputStream imageInFile = new FileInputStream(file)) {
+		// Reading a Image file from file system
+		byte imageData[] = new byte[(int) file.length()];
+		imageInFile.read(imageData);
+		base64Image = Base64.getEncoder().encodeToString(imageData);
+	} catch (FileNotFoundException e) {
+		System.out.println("Image not found" + e);
+	} catch (IOException ioe) {
+		System.out.println("Exception while reading the Image " + ioe);
+	}
+	return base64Image;
+}
+
+
+@Override
+public String sauvegardeImage(MultipartFile image, String name) throws FileNotFoundException,IOException {
+	//encodage en base 64 de l'image
+	File f = new File("images/" + name);
+	FileOutputStream fos = new FileOutputStream(f);
+	fos.write(image.getBytes());
+	
+	return f.getPath();
+}
 }
