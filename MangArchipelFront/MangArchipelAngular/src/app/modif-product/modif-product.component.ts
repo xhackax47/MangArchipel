@@ -34,4 +34,9 @@ export class ModifProductComponent implements OnInit {
 
   }
 
+  onUpload(event) {
+    const httpRequest: XMLHttpRequest = event.xhr;
+   this.model.picture = httpRequest.responseText.toString();
+  }
+
 }
