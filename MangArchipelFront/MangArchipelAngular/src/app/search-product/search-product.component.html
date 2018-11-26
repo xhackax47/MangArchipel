@@ -1,16 +1,5 @@
 <h2>Rechercher un produit</h2>
 
-<!-- <p-dataTable [value]="productArray" [globalFilter]="gb" [(selection)]="product" selectionMode="single" (onRowSelect)="onRowSelect($event)"
-  [paginator]="true" [rows]="10" [headerCheckboxToggleAllPages]="true" #dt>
-  <p-column field="productName" header="Produits" filterMatchMode="in"></p-column>
-  <p-column field="productType" header="Type de produit" [filter]="true" filterMatchMode="equals">
-      <ng-template pTemplate="filter" let-col>
-          <p-dropdown [options]="types" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)"
-              styleClass="ui-column-filter"></p-dropdown>
-      </ng-template>
-  </p-column>
-</p-dataTable> -->
-
 <p-table #dt [columns]="cols" [value]="productArray" [(selection)]="product" selectionMode="single" (onRowSelect)="onRowSelect($event)"
     filteredValue="productArray" [paginator]="true" [rows]="10" [globalFilterFields]="['productName']">
     <ng-template pTemplate="header" let-columns>
