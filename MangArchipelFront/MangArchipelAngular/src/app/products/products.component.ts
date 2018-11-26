@@ -20,6 +20,8 @@ export class ProductsComponent implements OnInit {
   yearFilter: number;
   yearTimeout: any;
 
+  cols: any[];
+
   constructor(private service: ProductService, private router: Router) {
     this.productArray = [];
   }
@@ -29,24 +31,30 @@ export class ProductsComponent implements OnInit {
       this.productArray = p.filter(product => product.visible);
       this.products = this.productArray.slice(0, 20);
     });
-    this.types = [];
-    this.types.push({label: 'Tous les types', value: null});
-    this.types.push({label: 'Mangas', value: 'Mangas'});
-    this.types.push({label: 'Animes/Films', value: 'Animes/Films'});
-    this.types.push({label: 'CD/Musiques', value: 'CD/Musiques'});
-    this.types.push({label: 'Figurines', value: 'Figurines'});
-    this.types.push({label: 'Jeux', value: 'Jeux'});
+    this.types = [
+      { label: 'Mangas', value: 'Mangas' },
+      { label: 'Animes/Films', value: 'Animes/Films' },
+      { label: 'CD/Musiques', value: 'CD/Musiques' },
+      { label: 'Figurines', value: 'Figurines' },
+      { label: 'Jeux', value: 'Jeux' }
+    ];
+
+    this.cols = [
+      { field: 'productName', header: 'Produit' },
+      { field: 'productType', header: 'Type du produit' }
+    ];
   }
 
   onRowSelect(event) {
     this.router.navigate(['product', this.product.id]);
   }
-  onYearChange(event, dt, col) {
+  onYearChange(event, dt) {
     if (this.yearTimeout) {
       clearTimeout(this.yearTimeout);
     }
+
     this.yearTimeout = setTimeout(() => {
-      dt.filter(event.value, col.field, col.filterMatchMode);
+      dt.filter(event.value, 'year', 'gt');
     }, 250);
   }
 

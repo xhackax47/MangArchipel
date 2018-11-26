@@ -7,6 +7,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { AppRoutingModule } from './app-routing.module';
 
 import { DataTableModule } from 'primeng/datatable';
+import {TableModule} from 'primeng/table';
 
 import { MenuBarDetailsComponent } from './menu-bar-details/menu-bar-details.component';
 
@@ -90,7 +91,8 @@ const roads: Routes = [
     ButtonModule,
     CheckboxModule,
     DropdownModule,
-    MultiSelectModule
+    MultiSelectModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
