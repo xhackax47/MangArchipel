@@ -7,6 +7,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { AppRoutingModule } from './app-routing.module';
 
 import { DataTableModule } from 'primeng/datatable';
+import {TableModule} from 'primeng/table';
 
 import { MenuBarDetailsComponent } from './menu-bar-details/menu-bar-details.component';
 
@@ -37,6 +38,8 @@ import { SearchProductComponent } from './search-product/search-product.componen
 import {DataViewModule} from 'primeng/dataview';
 import { UserComponent } from './user/user.component';
 import {ButtonModule} from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule} from 'primeng/multiselect';
 
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { OrdersComponent } from './orders/orders.component';
@@ -90,6 +93,10 @@ const roads: Routes = [
     ConfirmDialogModule,
     BrowserAnimationsModule,
     ButtonModule,
+    CheckboxModule,
+    DropdownModule,
+    MultiSelectModule,
+    TableModule,
     FileUploadModule
   ],
   providers: [],
