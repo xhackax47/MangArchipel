@@ -1,4 +1,5 @@
-<form (ngSubmit)="onSubmit()">
+<div class="p-grid p-dir-col p-col-8 p-offset-2 main">
+<form (ngSubmit)="onSubmit()" ngNativeValidate>
   <div>
     <label>Nom : </label>
     <input type="text" placeholder="Nom" name="Nom" id="Nom" required [(ngModel)]="model.productName"/></div>
@@ -20,7 +21,12 @@
     <label> Descriptitf : </label>
     <input type="text" placeholder="Descriptitf" name="Descriptitf" id="Descriptitf" required [(ngModel)]="model.descriptitf"/>
   </div>
+  <div>
+    <label> Stock : </label>
+    <input type="text" placeholder="Stock" name="Stock" id="Stock" required [(ngModel)]="model.stock"/>
+  </div>
   
   <button pButton type="submit" label="Enregistrer les modififications"></button>
 
 </form>
+</div>

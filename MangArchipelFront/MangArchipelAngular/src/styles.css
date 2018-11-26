@@ -13,13 +13,14 @@
 }
 body
 {
-    background-color: rgba(234,78,78);
+ 
     font-family:  roboto;
+    margin:0px;
 }
 #nameSite
 {
     font-family: yozakura;
-    color: aliceblue;
+    color: #f5f5f5;
   
 }
 h1,h2{
@@ -30,7 +31,8 @@ text-align: center
 p-menubar .ui-menubar
 {
     font-family: roboto !important;
-    background-color:  aliceblue !important;
+    background-color:  #f5f5f5 !important;
+    padding-right:20%;
 }
 .ui-menuitem-text {
     color: rgba(78, 78, 78,1) !important;
@@ -40,7 +42,7 @@ p-menubar .ui-menubar
 }
 table {
     font-family: roboto;
-    background-color: aliceblue;
+    background-color:  #f5f5f5;
 }
 
 
@@ -77,7 +79,7 @@ label{
 .p-grid 
 {
     
-    background-color: aliceblue;
+    background-color:  #f5f5f5;
   /* width: 75%;
     */
 }
@@ -94,19 +96,31 @@ h2 {
     text-align: left;
 }
 
-@media only screen and (max-width: 800px) {
-    body{
-        margin: 0px 5px;
-    }
-}
 
-@media only screen and (min-width: 800px) {
-    body{
-        margin: 0px 20%;
-    }
-}
 
 div
 {
     text-align: center;
+}
+
+
+.first {
+    width: 100%;
+    background-color: rgba(234,78,78);
+    font-family: yozakura;
+    color: #ffedea;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.main {
+    color: rgb(113, 113, 113);
+    background-color: #ffffff;
+    border: #d2d2d2 1px;
+    border-style: solid;
+}
+
+input{
+    height: 30px;
 }
