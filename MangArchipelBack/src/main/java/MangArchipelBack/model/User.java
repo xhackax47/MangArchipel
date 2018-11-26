@@ -43,6 +43,8 @@ public class User implements Serializable , UserDetails {
 	
 	@Column(name="postalcode")
 	private Integer postalCode;
+	
+	public User() {}
     
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
