@@ -1,5 +1,7 @@
 package MangArchipelBack.controller;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Collection;
 
 import javax.validation.Valid;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import MangArchipelBack.model.Product;
 import MangArchipelBack.services.ProductService;
@@ -60,7 +63,7 @@ public class ProductController {
 //    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin(origins = "*")
 	@PostMapping("/") 
-	public Product createProduct(@RequestBody Product p){
+	public Product createProduct(@Valid @RequestBody Product p){
 		return pService.save(p);		
 	}
 	
@@ -68,13 +71,15 @@ public class ProductController {
 //    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin(origins = "*")
 	@PutMapping("/{id}") 
-	public Product updateProduct(@PathVariable(value="id") Long id, @Valid @RequestBody Product p) {
+	public Product updateProduct(@PathVariable(value="id") Long id, @RequestBody Product p) {
 		Product product = pService.getProduct(id);
 		product.setBrand(p.getBrand());
 		product.setProductName(p.getProductName());
 		product.setProductType(p.getProductType());
 		product.setPrice(p.getPrice());
 		product.setStock(p.getStock());
+		product.setPicture(p.getPicture());
+		product.setDescription(p.getDescription());
 		Product pUpdate = pService.save(product);
 		return pUpdate;
 	}
@@ -98,4 +103,11 @@ public class ProductController {
 		pService.setVisible(id, visible);
 	}
 	
+	
+	@CrossOrigin(origins = "*")
+	@PostMapping("/image") 
+	public String sauvegardeImage(@RequestParam MultipartFile image) throws FileNotFoundException, IOException {
+		System.out.println("Nom image : "+image.getOriginalFilename());
+		return pService.sauvegardeImage(image,image.getOriginalFilename());
+	}
 }

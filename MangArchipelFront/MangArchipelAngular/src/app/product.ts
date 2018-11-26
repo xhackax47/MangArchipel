@@ -6,7 +6,7 @@ export class Product {
     price: number;
     productType: string;
     description: string;
-    image: string;
+    picture: string;
     visible: boolean;
     stock: number;
 
@@ -18,7 +18,7 @@ export class Product {
         this.price = price;
         this.productType = type;
         this.description = description;
-        this.image = image;
+        this.picture = image;
         this.stock = stock;
     }
 }

@@ -5,6 +5,10 @@ import { Product } from '../product';
 import { ProductService } from '../product.service';
 import { LazyLoadEvent, SelectItem } from 'primeng/api';
 import { Router } from '@angular/router';
+import { ProductOrder } from '../product-order';
+import { ProductOrders } from '../product-orders';
+import { Subscription } from 'rxjs';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-products',
@@ -21,13 +25,24 @@ export class ProductsComponent implements OnInit {
   yearTimeout: any;
 
   cols: any[];
+  productOrders: ProductOrder[] = [];
+  selectedProductOrder: ProductOrder;
+  private cartOrders: ProductOrders;
+  productSelected: Boolean = false;
+  sub: Subscription;
 
-  constructor(private service: ProductService, private router: Router) {
+  constructor(private productService: ProductService, private orderService: OrderService, private router: Router) {
     this.productArray = [];
   }
 
   ngOnInit(): void {
-    this.service.getProducts().subscribe(p => {
+    this.productOrders = [];
+    this.loadProducts();
+    this.loadOrders();
+  }
+
+  loadProducts() {
+    this.productService.getProducts().subscribe(p => {
       this.productArray = p.filter(product => product.visible);
       this.products = this.productArray.slice(0, 20);
     });
@@ -43,6 +58,12 @@ export class ProductsComponent implements OnInit {
       { field: 'productName', header: 'Produit' },
       { field: 'productType', header: 'Type du produit' }
     ];
+  }
+
+  loadOrders() {
+    this.sub = this.orderService.ordersChanged.subscribe(() => {
+      this.cartOrders = this.orderService.ProductOrders;
+    });
   }
 
   onRowSelect(event) {

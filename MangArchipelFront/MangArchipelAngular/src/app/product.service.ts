@@ -11,10 +11,11 @@ import { catchError } from 'rxjs/operators';
 })
 export class ProductService {
 
+
   private source = new Subject<Product[]>();
   public event$ = this.source.asObservable();
 
-  url = 'http://localhost:8098/api/products';
+  private url = 'http://localhost:8098/api/products';
   httpOptions = {
     headers: new HttpHeaders().set('Content-type', 'application/json'),
     params: {
@@ -43,7 +44,6 @@ export class ProductService {
   getProductById(id: Number): Observable<Product> {
     return this.http.get<Product>(this.url + '/' + id, this.httpOptions);
   }
-
 
   addProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(this.url + '/', product);

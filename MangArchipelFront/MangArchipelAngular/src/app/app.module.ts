@@ -42,7 +42,10 @@ import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule} from 'primeng/multiselect';
 
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { OrdersComponent } from './orders/orders.component';
 import { ModifProductComponent } from './modif-product/modif-product.component';
+
+import {FileUploadModule} from 'primeng/fileupload';
 
 const roads: Routes = [
   { path: '', component: ProductsComponent },
@@ -53,9 +56,9 @@ const roads: Routes = [
   { path: 'admin/product/:id', component: ModifProductComponent },
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'search', component: SearchProductComponent },
-  { path: 'signIn', component: UserComponent }
+  { path: 'signIn', component: UserComponent },
+  { path: 'admin/orders', component: OrdersComponent},
   // { path: 'profile', component: ProfileComponent},
-  // { path: 'admin/orders', component: OrdersComponent},
 ];
 
 
@@ -73,6 +76,7 @@ const roads: Routes = [
     AddProductComponent,
     ProductsAdminComponent,
     UserComponent,
+    OrdersComponent,
     ModifProductComponent
 
   ],
@@ -92,7 +96,8 @@ const roads: Routes = [
     CheckboxModule,
     DropdownModule,
     MultiSelectModule,
-    TableModule
+    TableModule,
+    FileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
