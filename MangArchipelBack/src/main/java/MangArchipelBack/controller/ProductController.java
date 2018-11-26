@@ -63,7 +63,7 @@ public class ProductController {
 //    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin(origins = "*")
 	@PostMapping("/") 
-	public Product createProduct(@RequestBody Product p){
+	public Product createProduct(@Valid @RequestBody Product p){
 		return pService.save(p);		
 	}
 	
@@ -71,7 +71,7 @@ public class ProductController {
 //    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin(origins = "*")
 	@PutMapping("/{id}") 
-	public Product updateProduct(@PathVariable(value="id") Long id, @Valid @RequestBody Product p) {
+	public Product updateProduct(@PathVariable(value="id") Long id, @RequestBody Product p) {
 		Product product = pService.getProduct(id);
 		product.setBrand(p.getBrand());
 		product.setProductName(p.getProductName());
@@ -79,6 +79,7 @@ public class ProductController {
 		product.setPrice(p.getPrice());
 		product.setStock(p.getStock());
 		product.setPicture(p.getPicture());
+		product.setDescription(p.getDescription());
 		Product pUpdate = pService.save(product);
 		return pUpdate;
 	}
@@ -105,8 +106,8 @@ public class ProductController {
 	
 	@CrossOrigin(origins = "*")
 	@PostMapping("/image") 
-	public String image(@RequestParam MultipartFile image) throws FileNotFoundException, IOException {
-		System.out.println("nom image : "+image.getOriginalFilename());
+	public String sauvegardeImage(@RequestParam MultipartFile image) throws FileNotFoundException, IOException {
+		System.out.println("Nom image : "+image.getOriginalFilename());
 		return pService.sauvegardeImage(image,image.getOriginalFilename());
 	}
 }
