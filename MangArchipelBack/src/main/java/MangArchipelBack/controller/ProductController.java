@@ -1,5 +1,7 @@
 package MangArchipelBack.controller;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Collection;
 
 import javax.validation.Valid;
@@ -100,8 +102,8 @@ public class ProductController {
 	
 	@CrossOrigin(origins = "*")
 	@PostMapping("/image") 
-	public void image(@RequestParam MultipartFile image) {
-		System.out.println(image.getOriginalFilename());
-		pService.sauvegardeImage(image);
+	public String image(@RequestParam MultipartFile image) throws FileNotFoundException, IOException {
+		System.out.println("nom image : "+image.getOriginalFilename());
+		return pService.sauvegardeImage(image,image.getOriginalFilename());
 	}
 }

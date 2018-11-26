@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Base64;
@@ -22,6 +23,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import MangArchipelBack.exception.BadRequestException;
 import MangArchipelBack.exception.ResourceNotFoundException;
@@ -112,7 +114,7 @@ public class ProductServiceImpl implements ProductService {
 		
 		p.setProductName(pr.getProductName());
 		p.setStock(pr.getStock());
-		p.setPicture(picture);
+		//p.setPicture(picture);
 		
 	
 		return pRepo.save(p);
@@ -198,5 +200,16 @@ public static String encoder(String imagePath) {
 		System.out.println("Exception while reading the Image " + ioe);
 	}
 	return base64Image;
+}
+
+
+@Override
+public String sauvegardeImage(MultipartFile image, String name) throws FileNotFoundException,IOException {
+	//encodage en base 64 de l'image
+	File f = new File("images/" + name);
+	FileOutputStream fos = new FileOutputStream(f);
+	fos.write(image.getBytes());
+	
+	return f.getPath();
 }
 }

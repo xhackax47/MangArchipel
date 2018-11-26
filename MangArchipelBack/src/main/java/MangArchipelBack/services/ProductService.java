@@ -6,6 +6,8 @@ import org.springframework.web.multipart.MultipartFile;
 import MangArchipelBack.model.Product;
 import MangArchipelBack.model.ProductRequest;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Collection;
 
 @Validated
@@ -24,5 +26,5 @@ public interface ProductService {
     Product save(ProductRequest productRequest);
     Boolean delete(Long id);
     Boolean setVisible(long id ,boolean visible);
-	void sauvegardeImage(MultipartFile image);
+    String sauvegardeImage(MultipartFile image, String name) throws FileNotFoundException, IOException;
 }
