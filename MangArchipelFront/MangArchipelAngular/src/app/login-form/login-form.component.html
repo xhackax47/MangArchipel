@@ -1,0 +1,32 @@
+
+<br />
+<div class="p-grid p-dir-col p-col-8 p-offset-2 main">
+
+  <form  *ngIf="!logged" (ngSubmit)="onSubmit()" class="p-col-align-center" ngNativeValidate>
+    <h2>Se connecter</h2>
+    <div>
+      <p>Login : </p>
+      <div>
+        <input type="text" placeholder="Login" name="log" id="log" required [(ngModel)]="model.username" />
+      </div>
+    </div>
+
+
+    <div>
+      <p>Password : </p>
+      <div>
+        <input type="password" placeholder="Mot de passe" name="pass" id="pass" required [(ngModel)]="model.password" />
+      </div>
+    </div>
+    <br />
+    <div class="button">
+      <button pButton type="submit">Connexion</button>
+    </div>
+
+    <button *ngIf="logged" pButton (click)="logout()" label="Déconnexion"></button>
+  </form>
+</div>
+
+{{message}}
+<!--<button *ngIf="logged" pButton (click)="logout()">Déconnexion</button>-->
+
