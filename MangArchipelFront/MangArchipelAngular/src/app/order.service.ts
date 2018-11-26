@@ -38,6 +38,10 @@ export class OrderService {
     return this.http.get<Array<ProductOrder>>(this.url + '/', this.httpOptions);
   }
 
+   getOrdersByUserId(id: number): Observable<Array<Order>> {
+    return this.http.get<Array<Order>>(this.url + '/ByUserId/'+id, this.httpOptions);
+  }
+
   get SelectedProductOrder() {
     return this.productOrder;
   }

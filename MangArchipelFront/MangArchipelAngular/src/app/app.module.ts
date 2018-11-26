@@ -44,6 +44,7 @@ import { ModifProductComponent } from './modif-product/modif-product.component';
 
 import {FileUploadModule} from 'primeng/fileupload';
 import { OrdersAdminComponent } from './orders-admin/orders-admin.component';
+import { OrdersUserComponent } from './orders-user/orders-user.component';
 
 const roads: Routes = [
   { path: '', component: ProductsComponent },
@@ -57,6 +58,7 @@ const roads: Routes = [
   { path: 'signIn', component: UserComponent },
   { path: 'orders', component: OrdersComponent},
   { path: 'admin/orders', component: OrdersAdminComponent},
+  { path: 'user/order/:id', component: OrdersUserComponent}
   // { path: 'profile', component: ProfileComponent},
 ];
 
@@ -77,7 +79,8 @@ const roads: Routes = [
     UserComponent,
     OrdersComponent,
     ModifProductComponent,
-    OrdersAdminComponent
+    OrdersAdminComponent,
+    OrdersUserComponent
 
   ],
   imports: [
