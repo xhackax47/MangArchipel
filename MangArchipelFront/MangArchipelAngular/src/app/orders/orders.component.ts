@@ -17,18 +17,30 @@ export class OrdersComponent implements OnInit {
   paid: boolean;
   sub: Subscription;
 
+  listOrders: Array<Order>;
+  cols: any[];
+
   constructor(private orderService: OrderService) {
-      this.orders = new ProductOrders(JSON.parse(localStorage.getItem('commande')));
-      this.total = orderService.calculateTotal();
+    this.orders = new ProductOrders(JSON.parse(localStorage.getItem('commande')));
+    this.total = orderService.calculateTotal();
   }
 
   ngOnInit() {
 
-     /* this.paid = false;
-      this.sub = this.orderService.ordersChanged.subscribe(() => {
-          this.orders = this.orderService.ProductOrders;
-      });*/
-      // this.loadTotal();
+    /* this.paid = false;
+     this.sub = this.orderService.ordersChanged.subscribe(() => {
+         this.orders = this.orderService.ProductOrders;
+     });*/
+    // this.loadTotal();
+    this.cols = [
+      { field: 'id', header: 'Numéro de commande' },
+      { field: 'dateCreated', header: 'Date de la commande' }
+    ];
+
+    this.orderService.getOrders().subscribe(order => {
+      this.listOrders = order;
+      console.log(this.listOrders);
+    });
   }
 
   pay() {

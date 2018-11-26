@@ -10,7 +10,7 @@ import { isNullOrUndefined } from 'util';
   providedIn: 'root'
 })
 export class OrderService {
-
+  
   private url = 'http://localhost:8098/api/orders';
   httpOptions = {
     headers: new HttpHeaders().set('Content-type', 'application/json')
@@ -35,6 +35,9 @@ export class OrderService {
     return this.http.post(this.url + '/', order, this.httpOptions);
   }
 
+  getOrders(): any {
+    return this.http.get(this.url + '/', this.httpOptions);
+  }
 
   get ProductOrders() {
     return this.orders;
