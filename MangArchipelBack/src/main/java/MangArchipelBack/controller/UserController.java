@@ -85,7 +85,7 @@ public class UserController {
 	 @CrossOrigin(origins = "*")
 	 @PostMapping("/signIn")
 	 // creation d'un utilisateur
-	 public  User addUser(@RequestBody User user )
+	 public User addUser(@RequestBody User user )
 	 {
 		 return userservice.save(user);
 	 }
