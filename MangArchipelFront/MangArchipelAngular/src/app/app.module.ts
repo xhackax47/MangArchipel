@@ -65,7 +65,7 @@ const roads: Routes = [
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'search', component: SearchProductComponent },
   { path: 'signIn', component: UserComponent },
-
+  { path: 'orders', component: OrdersComponent},
   { path: 'update', component: UserComponent },
   { path: 'orders', component: OrdersComponent},
   { path: 'admin/orders', component: OrdersAdminComponent},

@@ -17,15 +17,16 @@ export class OrdersComponent implements OnInit {
   sub: Subscription;
 
   constructor(private orderService: OrderService) {
-      this.orders = this.orderService.ProductOrders;
+      this.orders = new ProductOrders(JSON.parse(localStorage.getItem('commande')));
+      this.total = orderService.calculateTotal();
   }
 
   ngOnInit() {
-      this.paid = false;
+     /* this.paid = false;
       this.sub = this.orderService.ordersChanged.subscribe(() => {
           this.orders = this.orderService.ProductOrders;
-      });
-      this.loadTotal();
+      });*/
+      // this.loadTotal();
   }
 
   pay() {
