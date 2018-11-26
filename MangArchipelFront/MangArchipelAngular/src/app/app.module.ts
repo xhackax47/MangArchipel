@@ -20,13 +20,9 @@ import { Route } from '@angular/router';
 
 import { ProductsComponent } from './products/products.component';
 import { CartComponent } from './cart/cart.component';
-<<<<<<< HEAD
-
-=======
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CheckboxModule } from 'primeng/checkbox';
->>>>>>> aa63aa7bce7830f6e809258125eb4a4a4b68d5f6
 import { MenuAdministrateurComponent } from './menu-administrateur/menu-administrateur.component';
 
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -46,7 +42,7 @@ import { UserComponent } from './user/user.component';
 import { ButtonModule } from 'primeng/button';
 import { AlertComponent } from './alert/alert.component';
 
-import {ButtonModule} from 'primeng/button';
+
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule} from 'primeng/multiselect';
 
@@ -70,7 +66,7 @@ const roads: Routes = [
   { path: 'search', component: SearchProductComponent },
   { path: 'signIn', component: UserComponent },
 
-  { path: 'update', component: UserComponent },
+  { path: 'update/:id', component: UserComponent },
   { path: 'orders', component: OrdersComponent},
   { path: 'admin/orders', component: OrdersAdminComponent},
   // { path: 'profile', component: ProfileComponent},
@@ -109,7 +105,7 @@ const roads: Routes = [
     DataViewModule,
 
     ButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
 
     ConfirmDialogModule,
     BrowserAnimationsModule,

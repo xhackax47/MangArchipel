@@ -86,4 +86,8 @@ export class UserService {
   getUserIdByLogin(login: string): Observable<User> {
     return this.http.get<User>(this.url + '/username/' + login);
   }
+  updateUser(user: User)
+  {
+    this.http.put(this.url +'/update/'+user.id,user,this.httpOptions).subscribe(() => this.router.navigate(['/']));
+  }
 }

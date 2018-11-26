@@ -10,8 +10,8 @@ export class User {
     postalCode: number;
     adress: string;
     mail: string;
-    // roles: Array<Role>;
-    roles: string;
+     roles: Array<Role>;
+   // roles: string;
 
     constructor(username?: string, password?: string, firstname?: string, lastname?: string, city?: string,
         postalCode?: number, adress?: string, mail?: string) {
