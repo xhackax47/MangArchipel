@@ -45,9 +45,9 @@ export class AddProductComponent implements OnInit {
 }
 
 onUpload(event) {
-  for (const file of event.files) {
-      this.model.image.push(file);
-  }
+  const httpRequest: XMLHttpRequest = event.xhr;
+ this.model.picture = httpRequest.responseText.toString();
+
 }
 
 }

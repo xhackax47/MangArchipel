@@ -28,7 +28,6 @@ import org.springframework.web.multipart.MultipartFile;
 import MangArchipelBack.exception.BadRequestException;
 import MangArchipelBack.exception.ResourceNotFoundException;
 import MangArchipelBack.model.Product;
-import MangArchipelBack.model.ProductRequest;
 import MangArchipelBack.repository.ProductRepository;
 import MangArchipelBack.repository.OrderRepository;
 
@@ -103,21 +102,8 @@ public class ProductServiceImpl implements ProductService {
 
 // Enregistrer produit dans la BDD
 	@Override
-	public Product save(ProductRequest pr) {
-		Product p = new Product();
-		p.setBrand(pr.getBrand());
-		p.setDescription(pr.getDescription());
-		p.setProductType(pr.getProductType());
-		p.setPrice(pr.getPrice());
-		p.setVisible(true);
-		
-		
-		p.setProductName(pr.getProductName());
-		p.setStock(pr.getStock());
-		//p.setPicture(picture);
-		
-	
-		return pRepo.save(p);
+	public Product save(Product product) {
+		return pRepo.save(product);
 	}
 	
 // Supprimer produit dans la BDD

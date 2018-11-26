@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import MangArchipelBack.model.Product;
-import MangArchipelBack.model.ProductRequest;
 import MangArchipelBack.services.ProductService;
 
 @RestController
@@ -64,19 +63,23 @@ public class ProductController {
 //    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin(origins = "*")
 	@PostMapping("/") 
-	public Product createProduct(@RequestBody ProductRequest pr){
-		
-		System.out.println(pr);
-		return pService.save(pr);		
+	public Product createProduct(@RequestBody Product p){
+		return pService.save(p);		
 	}
 	
 // Mettre à jour / Modifier un produit
 //    @Secured({"ROLE_ADMIN"})
 	@CrossOrigin(origins = "*")
 	@PutMapping("/{id}") 
-	public Product updateProduct(@PathVariable(value="id") Long id, @Valid @RequestBody ProductRequest pr) {
-		
-		Product pUpdate = pService.save(pr);
+	public Product updateProduct(@PathVariable(value="id") Long id, @Valid @RequestBody Product p) {
+		Product product = pService.getProduct(id);
+		product.setBrand(p.getBrand());
+		product.setProductName(p.getProductName());
+		product.setProductType(p.getProductType());
+		product.setPrice(p.getPrice());
+		product.setStock(p.getStock());
+		product.setPicture(p.getPicture());
+		Product pUpdate = pService.save(product);
 		return pUpdate;
 	}
 	

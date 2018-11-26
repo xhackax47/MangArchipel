@@ -4,7 +4,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.multipart.MultipartFile;
 
 import MangArchipelBack.model.Product;
-import MangArchipelBack.model.ProductRequest;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,7 +22,7 @@ public interface ProductService {
     Collection<Product> findByPrice(Double price);
     Collection<Product> findByProductType(String productType);
     
-    Product save(ProductRequest productRequest);
+    Product save(Product productRequest);
     Boolean delete(Long id);
     Boolean setVisible(long id ,boolean visible);
     String sauvegardeImage(MultipartFile image, String name) throws FileNotFoundException, IOException;
