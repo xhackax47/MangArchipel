@@ -78,7 +78,7 @@ export class UserService {
       }
     };
   }
-  getUserIdByLogin(login: string) {
-
+  getUserIdByLogin(login: string): Observable<User> {
+    return this.http.get<User>(this.url + '/username/' + login);
   }
 }

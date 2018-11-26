@@ -14,7 +14,7 @@ export class UserComponent implements OnInit {
   registerForm: FormGroup;
   model: User;
   add: Boolean;
-
+  id: number;
 
   constructor(private service: UserService,
     private router: Router,

@@ -14,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -92,8 +93,8 @@ public class UserController {
 	 }
 	 
 	 @CrossOrigin(origins = "*")
-		@GetMapping("/update")
-	 public User loadUserByuserName(String username)
+		@GetMapping("/{username}")
+	 public User loadUserByuserName(@PathVariable String username)
 	 {
 		 return (User) userservice.loadUserByUsername(username);
 	 }
