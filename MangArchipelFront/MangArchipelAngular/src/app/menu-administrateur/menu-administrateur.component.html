@@ -1,5 +1,6 @@
 <p-menubar class="menu" [model]="items">
   <div class="menuManga">
+
       <form (ngSubmit)="onSubmit()" class="ui-g">
         <input #gb type="text" pInputText placeholder="Recherche" [(ngModel)]="checkValue" [ngModelOptions]="{standalone: true}">
       </form>

@@ -1,9 +1,15 @@
 import { ProductOrder } from './product-order';
+import { isNull } from '@angular/compiler/src/output/output_ast';
+import { isNullOrUndefined } from 'util';
 
 export class ProductOrders {
-    productOrders: ProductOrder[] = [];
+    productOrders: ProductOrder[];
 
     constructor(productOrders?: ProductOrder[]) {
-        this.productOrders = productOrders;
+        if (isNullOrUndefined(productOrders)) {
+            this.productOrders = [];
+        } else {
+            this.productOrders = productOrders;
+        }
     }
 }

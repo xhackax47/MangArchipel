@@ -26,9 +26,6 @@ export class ProductsComponent implements OnInit {
 
   cols: any[];
   productOrders: ProductOrder[] = [];
-  selectedProductOrder: ProductOrder;
-  private cartOrders: ProductOrders;
-  productSelected: Boolean = false;
   sub: Subscription;
 
   constructor(private productService: ProductService, private orderService: OrderService, private router: Router) {
@@ -38,11 +35,11 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.productOrders = [];
     this.loadProducts();
-    this.loadOrders();
   }
 
   loadProducts() {
     this.productService.getProducts().subscribe(p => {
+
       this.productArray = p.filter(product => product.visible);
       this.products = this.productArray.slice(0, 20);
     });
