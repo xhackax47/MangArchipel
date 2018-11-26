@@ -18,14 +18,14 @@
   <label> Image : </label>
 
   <p-fileUpload name="image" mode="basic"  url="http://localhost:8098/api/products/image" accept="image/*" maxFileSize="1000000" (onUpload)="onUpload($event)"></p-fileUpload>
-  <div *ngIf="model.picture"><img src="http://localhost:8098/{{model.picture}}" width="500px" alt="test" />
+  <div *ngIf="model.picture"><img src="http://localhost:8098/{{model.picture}}" width="500px"/>
   </div>
   
     </div>
     
     <div>
-    <label> Descriptitf : </label>
-    <input type="text" placeholder="Descriptitf" name="Descriptitf" id="Descriptitf" required [(ngModel)]="model.descriptitf"/>
+    <label> Description : </label>
+    <input type="text" placeholder="Description" name="Description" id="Description" required [(ngModel)]="model.description"/>
   </div>
   <div>
     <label> Stock : </label>

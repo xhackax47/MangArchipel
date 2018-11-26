@@ -24,7 +24,6 @@ export class ModifProductComponent implements OnInit {
   }
 
   onSubmit() {
-    this.model.visible = true;
     this.service.updateProduct(this.model.id, this.model).subscribe(product => {
       console.log('produit modifié');
       this.router.navigate(['/admin/products']);
