@@ -7,6 +7,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { AppRoutingModule } from './app-routing.module';
 
 import { DataTableModule } from 'primeng/datatable';
+import {TableModule} from 'primeng/table';
 
 import { MenuBarDetailsComponent } from './menu-bar-details/menu-bar-details.component';
 
@@ -19,7 +20,7 @@ import { Route } from '@angular/router';
 
 import { ProductsComponent } from './products/products.component';
 import { CartComponent } from './cart/cart.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CheckboxModule } from 'primeng/checkbox';
 import { MenuAdministrateurComponent } from './menu-administrateur/menu-administrateur.component';
@@ -37,8 +38,21 @@ import { SearchProductComponent } from './search-product/search-product.componen
 import { DataViewModule } from 'primeng/dataview';
 import { UserComponent } from './user/user.component';
 
+
 import { ButtonModule } from 'primeng/button';
 import { AlertComponent } from './alert/alert.component';
+
+import {ButtonModule} from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule} from 'primeng/multiselect';
+
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { OrdersComponent } from './orders/orders.component';
+import { ModifProductComponent } from './modif-product/modif-product.component';
+
+import {FileUploadModule} from 'primeng/fileupload';
+import { OrdersAdminComponent } from './orders-admin/orders-admin.component';
+
 
 import { ReactiveFormsModule } from '@angular/forms';
 const roads: Routes = [
@@ -47,12 +61,15 @@ const roads: Routes = [
   { path: 'login', component: LoginFormComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'admin/products', component: ProductsAdminComponent },
+  { path: 'admin/product/:id', component: ModifProductComponent },
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'search', component: SearchProductComponent },
   { path: 'signIn', component: UserComponent },
-  { path: 'update', component: UserComponent }
+
+  { path: 'update', component: UserComponent },
+  { path: 'orders', component: OrdersComponent},
+  { path: 'admin/orders', component: OrdersAdminComponent},
   // { path: 'profile', component: ProfileComponent},
-  // { path: 'admin/orders', component: OrdersComponent},
 ];
 
 
@@ -70,7 +87,10 @@ const roads: Routes = [
     AddProductComponent,
     ProductsAdminComponent,
     UserComponent,
-    AlertComponent
+    AlertComponent,
+    OrdersComponent,
+    ModifProductComponent,
+    OrdersAdminComponent
 
   ],
   imports: [
@@ -82,11 +102,19 @@ const roads: Routes = [
     HttpClientModule,
     NgbModule,
     DataTableModule,
-
     DataViewModule,
 
     ButtonModule,
     ReactiveFormsModule
+
+    ConfirmDialogModule,
+    BrowserAnimationsModule,
+    ButtonModule,
+    CheckboxModule,
+    DropdownModule,
+    MultiSelectModule,
+    TableModule,
+    FileUploadModule
 
   ],
   providers: [],

@@ -20,7 +20,5 @@ public interface ProductRepository extends JpaRepository<Product, Long>{
     Collection<Product> findByPrice(Double price);
     Collection<Product> findByProductType(String productType);
     
-    @Query(" update Product  " +
-            "set visible = ?2 where id = ?1")
-    Boolean setVisible(long id ,boolean visible);
+    
 }

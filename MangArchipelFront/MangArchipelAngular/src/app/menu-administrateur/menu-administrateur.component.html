@@ -1,12 +1,11 @@
-
 <p-menubar class="menu" [model]="items">
   <div class="menuManga">
 
-    
-    <input type="text" pInputText placeholder="Search">
-
-    <button pButton routerLink="/search"  class="ui-button-rounded ui-button-secondary">rechercher</button>
-    <button pButton  (click)="logout()" class="ui-button-rounded ui-button-secondary">Se déconnecter</button>
+      <form (ngSubmit)="onSubmit()" class="ui-g">
+        <input #gb type="text" pInputText placeholder="Recherche" [(ngModel)]="checkValue" [ngModelOptions]="{standalone: true}">
+      </form>
+    <button pButton routerLink="/search" label="rechercher"></button>
+    <button pButton label="Se déconnecter" (click)="logout()"></button>
   </div>
 
 </p-menubar>

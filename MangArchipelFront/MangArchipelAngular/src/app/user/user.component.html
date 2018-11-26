@@ -1,9 +1,9 @@
 <br />
+
 <div class="p-grid p-dir-col p-col-3 p-offset-5">
   <h2 *ngIf="add">S'inscrire</h2>
   <h2 *ngIf="!add">Modifier ses données</h2>
   <form *ngIf="!logged" [formGroup]='registerForm' (ngSubmit)="onSubmit()" class="p-col-align-center">
-   
    
     <div>
       <p>Nom : </p>

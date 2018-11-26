@@ -6,19 +6,19 @@ export class Product {
     price: number;
     productType: string;
     description: string;
-    image: string;
+    picture: string;
     visible: boolean;
     stock: number;
 
-    constructor(name?: string, brand?: string,
-        price?: number, type?: string, description?: string,
-        image?: string, stock?: number) {
-        this.productName = name;
+    constructor(productName?: string, brand?: string,
+        price?: number, productType?: string, description?: string,
+        picture?: string, stock?: number) {
+        this.productName = productName;
         this.brand = brand;
         this.price = price;
-        this.productType = type;
+        this.productType = productType;
         this.description = description;
-        this.image = image;
+        this.picture = picture;
         this.stock = stock;
     }
 }

@@ -28,9 +28,11 @@ public class Product {
 	@Column(name="PRICE")
 	private Double price;
 	
+	@NotNull(message = "Le type du produit est requis.")
 	@Column(name="TYPE")
 	private String productType;
 	
+	@NotNull(message = "Le stock du produit est requis.")
 	@Column(name="STOCK")
 	private Integer stock;
 	

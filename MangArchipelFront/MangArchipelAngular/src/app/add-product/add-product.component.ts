@@ -3,6 +3,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { Product } from '../product';
 import { ProductService } from '../product.service';
+import { toBase64String } from '@angular/compiler/src/output/source_map';
 
 @Component({
   selector: 'app-add-product',
@@ -23,6 +24,7 @@ export class AddProductComponent implements OnInit {
   }
 
   onSubmit() {
+    this.model.visible = true;
     this.service.addProduct(this.model).subscribe(product => {
       console.log('product ajouté');
       this.envoi.emit(product);
@@ -31,5 +33,21 @@ export class AddProductComponent implements OnInit {
     );
 
   }
+
+  onSelect(event) {
+    /*console.log('image ajoutée');
+    const f: File = event.files[0];
+    // File.toString();
+    this.model.image = f ;
+    // toBase64String(string);
+    console.log('image ajoutée : ' + this.model.image);
+    console.log( this.model);*/
+}
+
+onUpload(event) {
+  const httpRequest: XMLHttpRequest = event.xhr;
+ this.model.picture = httpRequest.responseText.toString();
+
+}
 
 }
