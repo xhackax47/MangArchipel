@@ -58,8 +58,8 @@ export class LoginFormComponent implements OnInit {
         this.message = '';
         // this.envoi.emit(user);
       }
-    }, // error => this.message = 'Echec de l\'authentification');
-      error => {this.alertService.error(error);
+    },  error => {this.message = 'Echec de l\'authentification';
+      // error => {this.alertService.error(error);
 });
   }
 }

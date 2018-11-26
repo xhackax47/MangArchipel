@@ -34,7 +34,7 @@ export class UserService {
   }
 
   loging(user: User): Observable<User> {
-    return this.http.post<User>(this.url + '/login', user);
+    return this.http.post<User>(this.url + '/', user);
     // .pipe(catchError((err) => console.log(err)));
   }
 
@@ -57,25 +57,25 @@ export class UserService {
       return of(result as T);
     };
   }
-  addUser(user: User): void {
-    this.http.post(this.url + '/signIn', user, this.httpOptions).subscribe(() => this.router.navigate(['/']));
+  addUser(user: User) {
+    return this.http.post(this.url + '/signIn', user, this.httpOptions);
   }
   updateUser(id: number, user: User): void {
     this.http.put(this.url + '/' + id, user, this.httpOptions).subscribe(() => this.router.navigate(['/']));
   }
   registerUser(user: User) {
-    return this.http.post(this.url + '/signIn', user);
+    return this.http.post(this.url + '/signIn', user, this.httpOptions);
   }
   confirmPassword(password1: string, password2: string) {
-    (group: FormGroup) => {
-      let tmp = group.controls[password1];
-      let tmp1 = group.controls[password2];
+
+    return (group: FormGroup) => {
+      const tmp = group.controls[password1];
+      const tmp1 = group.controls[password2];
       if (tmp.value !== tmp1.value) {
-        return tmp1.setErrors({ notEquivalent: true })
-      }
-      else {
+        return tmp1.setErrors({ notEquivalent: true });
+      } else {
         return tmp1.setErrors(null);
       }
-    }
+    };
   }
 }

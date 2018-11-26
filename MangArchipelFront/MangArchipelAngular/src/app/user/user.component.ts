@@ -39,51 +39,56 @@ export class UserComponent implements OnInit {
     if (this.route.snapshot.paramMap.get('id') === null) {
       this.add = true;
       this.registerForm = this.formBuilder.group({
-        firstname: ['', Validators.required],
-        lastname: ['', Validators.required],
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
         username: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', Validators.required, Validators.minLength(6)],
+        mail: ['', Validators.compose([Validators.email, Validators.required])],
+        password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
         confirmpassword: ['', Validators.required],
         city: ['', Validators.required],
         postalCode: ['', Validators.required],
         adress: ['', Validators.required],
-      
-      }, { validator: this.service.confirmPassword('password', 'confirmassword') }
+
+      }, { validator: this.service.confirmPassword('password', 'confirmpassword') }
       );
-    }else{
-      this.add = false;
-      const id = parseInt(this.route.snapshot.paramMap.get('id'), 0)
-      this.service.getUser
+    } else {
+      this.add = true;
+      const id = parseInt(this.route.snapshot.paramMap.get('id'), 0);
+      // this.service.getUser
     }
   }
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
+    const role = 'ROLE_USER';
     if (this.registerForm.invalid) {
       return;
     }
     if (this.add) {
-      console.log('coucou');
-      this.model = new User(this.registerForm.value);
-      this.service.addUser(this.model);
-      this.model = new User();
+      // this.model = new User(this.registerForm.value);
+      const user = new User(this.registerForm.value.username,
+        this.registerForm.value.firstName, this.registerForm.value.lastName,
+        this.registerForm.value.city, this.registerForm.value.postalCode,
+        this.registerForm.value.adress, this.registerForm.value.mail, role);
+      // this.service.addUser(this.model);
+      this.service.addUser(user).subscribe(() => this.router.navigate(['/']));
+      // this.model = new User();
       this.router.navigate(['/']);
 
-    }
-    else {
+    } else {
       const p = this.model;
       this.service.updateUser(p.id, p);
     }
     this.service.registerUser(this.registerForm.value)
       .pipe(first()).subscribe(
         data => {
-          this.alertService.success('Registration successful', true);
-          this.router.navigate(['/login']);
+          this.alertService.success('Inscription réussi', true);
+          this.router.navigate(['/']);
         },
         error => {
           this.alertService.error(error);
           this.add = false;
+
         });
   }
   /*if else{
