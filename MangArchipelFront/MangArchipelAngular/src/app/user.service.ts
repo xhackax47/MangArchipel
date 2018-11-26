@@ -46,6 +46,9 @@ export class UserService {
   getUser(): Observable<User> {
     return this.http.get<User>(this.url + '/user');
   }
+  getUserId(id: number): Observable<User> {
+    return this.http.get<User>(this.url + '/' + id, this.httpOptions);
+  }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

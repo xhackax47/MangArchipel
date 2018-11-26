@@ -72,12 +72,18 @@ export class UserComponent implements OnInit {
         this.registerForm.value.adress, this.registerForm.value.mail, role);
       // this.service.addUser(this.model);
       this.service.addUser(user).subscribe(() => this.router.navigate(['/']));
+      localStorage.setItem('loginAct', user.username);
+      localStorage.setItem('passwordAct', user.password);
+      localStorage.setItem('roleAct', user.roles);
       // this.model = new User();
       this.router.navigate(['/']);
 
     } else {
       const p = this.model;
-      this.service.updateUser(p.id, p);
+      this.service.getUserId(this.id).subscribe(user => {
+        this.service.getUserIdByLogin(localStorage.getItem('loginAct')).subscribe(userr =>
+          {this.service.confirmPassword(user)})
+      })
     }
     this.service.registerUser(this.registerForm.value)
       .pipe(first()).subscribe(

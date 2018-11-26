@@ -98,4 +98,10 @@ public class UserController {
 	 {
 		 return (User) userservice.loadUserByUsername(username);
 	 }
+	 @CrossOrigin(origins = "*")
+		@GetMapping("/{id}")
+	 public User loadUserByuserId(@PathVariable Long id)
+	 {
+		 return (User) userservice.getUserById(id);
+	 }
 }
