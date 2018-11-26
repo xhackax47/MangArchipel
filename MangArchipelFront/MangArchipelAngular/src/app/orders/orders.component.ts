@@ -17,6 +17,9 @@ export class OrdersComponent implements OnInit {
   paid: boolean;
   sub: Subscription;
 
+  listOrders: Array<Order>;
+  cols: any[];
+
   constructor(private orderService: OrderService) {
     this.orders = this.orderService.ProductOrders;
   }
@@ -27,6 +30,16 @@ export class OrdersComponent implements OnInit {
       this.orders = this.orderService.ProductOrders;
     });
     this.loadTotal();
+
+    this.cols = [
+      { field: 'id', header: 'Numéro de commande' },
+      { field: 'dateCreated', header: 'Date de la commande' }
+    ];
+
+    this.orderService.getOrders().subscribe(order => {
+    this.listOrders = order;
+      console.log(this.listOrders);
+    });
   }
 
   pay() {
