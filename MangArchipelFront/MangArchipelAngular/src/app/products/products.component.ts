@@ -21,9 +21,6 @@ export class ProductsComponent implements OnInit {
   productArray: Array<Product>;
   products: Product[];
   productOrders: ProductOrder[] = [];
-  selectedProductOrder: ProductOrder;
-  private cartOrders: ProductOrders;
-  productSelected: Boolean = false;
   sub: Subscription;
 
   constructor(private productService: ProductService, private orderService: OrderService, private router: Router) {
@@ -33,19 +30,13 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.productOrders = [];
     this.loadProducts();
-    this.loadOrders();
   }
 
   loadProducts() {
     this.productService.getProducts().subscribe(p => {
-      this.productArray = p.filter(product => product.visible);
-      this.products = this.productArray.slice(0, 20);
-    });
-  }
-
-  loadOrders() {
-    this.sub = this.orderService.ordersChanged.subscribe(() => {
-      this.cartOrders = this.orderService.ProductOrders;
+     // this.productArray = p.filter(product => product.visible);
+      this.products = p;
+      // this.productArray.slice(0, 20);
     });
   }
 

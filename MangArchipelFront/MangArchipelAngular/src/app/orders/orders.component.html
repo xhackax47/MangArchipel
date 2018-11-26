@@ -1,12 +1,14 @@
 <h2 class="text-center">Commande</h2>
 <ul>
     <li *ngFor="let order of orders.productOrders">
-        {{ order.productName }} - {{ order.price }}€ x {{ order.quantity}} pcs.
+        <p>Nom du produit : {{ order.product.productName }}</p>
+        <p>Prix par unité : {{ order.product.price }}€</p>
+        <p>{{ order.quantity}} pcs.</p> 
     </li>
 </ul>
 <h3 class="text-right">TOTAL : {{ total }}€</h3>
  
-<button class="btn btn-primary btn-block" (click)="pay()" *ngIf="!paid">Valider et payer la commande</button>
+<button pButton class="ui-button-rounded ui-button-success" (click)="pay()" *ngIf="!paid" label="Valider et payer la commande"></button>
 <div class="alert alert-success" role="alert" *ngIf="paid">
     <strong>Félicitations !</strong> Votre commande a bien été validée et effectuée.
 </div>
