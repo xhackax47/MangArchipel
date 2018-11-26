@@ -54,6 +54,7 @@ import { OrdersAdminComponent } from './orders-admin/orders-admin.component';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
 const roads: Routes = [
   { path: '', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
@@ -65,6 +66,7 @@ const roads: Routes = [
   { path: 'search', component: SearchProductComponent },
   { path: 'signIn', component: UserComponent },
   { path: 'orders', component: OrdersComponent},
+  { path: 'orders/:id', component: OrderDetailComponent},
   { path: 'update', component: UserComponent },
   { path: 'orders', component: OrdersComponent},
   { path: 'admin/orders', component: OrdersAdminComponent},
@@ -89,7 +91,8 @@ const roads: Routes = [
     AlertComponent,
     OrdersComponent,
     ModifProductComponent,
-    OrdersAdminComponent
+    OrdersAdminComponent,
+    OrderDetailComponent
 
   ],
   imports: [

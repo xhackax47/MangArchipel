@@ -39,6 +39,10 @@ export class OrderService {
     return this.http.get(this.url + '/', this.httpOptions);
   }
 
+  getOrderById(id: number): Observable<Order> {
+    return this.http.get<Order>(this.url + '/' + id, this.httpOptions);
+  }
+
   get ProductOrders() {
     return this.orders;
   }

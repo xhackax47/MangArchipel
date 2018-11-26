@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { OrderService } from '../order.service';
 import { Cart } from '../cart';
 import { Order } from '../order';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-orders',
@@ -19,8 +20,9 @@ export class OrdersComponent implements OnInit {
 
   listOrders: Array<Order>;
   cols: any[];
+  order: Order;
 
-  constructor(private orderService: OrderService) {
+  constructor(private orderService: OrderService, private router: Router) {
     this.orders = new ProductOrders(JSON.parse(localStorage.getItem('commande')));
     this.total = orderService.calculateTotal();
   }
@@ -52,5 +54,9 @@ export class OrdersComponent implements OnInit {
     this.sub = this.orderService.ordersChanged.subscribe(() => {
       this.total = this.orderService.Total;
     });
+  }
+
+  onRowSelect(event) {
+    this.router.navigate(['orders', this.order.id]);
   }
 }
