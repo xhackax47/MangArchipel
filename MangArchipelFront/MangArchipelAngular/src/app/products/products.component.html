@@ -1,6 +1,12 @@
+<div class="p-grid">
+<div class="ui-widget-header p-col-3" style="padding:4px 10px;border-bottom: 0 none">
+    <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+    <p-dropdown #gp [options]="types" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value,productType,equals)" styleClass="ui-column-filter"></p-dropdown>
 
-
-<p-dataTable [value]="products" [globalFilter]="gb" [(selection)]="product" selectionMode="single" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="10" [headerCheckboxToggleAllPages]="true">
+</div>
+<p-dataTable class="p-col-9" [value]="products" [globalFilter]="gb" [(selection)]="product" selectionMode="single" (onRowSelect)="onRowSelect($event)"
+    [paginator]="true" [rows]="10" [headerCheckboxToggleAllPages]="true" #dt>
     <p-column field="productName" header="Produits"></p-column>
-</p-dataTable>
-
+    <p-column field="productType" header="Type de produit">
+    </p-column>
+</p-dataTable></div>

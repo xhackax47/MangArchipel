@@ -37,6 +37,8 @@ import { SearchProductComponent } from './search-product/search-product.componen
 import {DataViewModule} from 'primeng/dataview';
 import { UserComponent } from './user/user.component';
 import {ButtonModule} from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule} from 'primeng/multiselect';
 
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { ModifProductComponent } from './modif-product/modif-product.component';
@@ -85,7 +87,10 @@ const roads: Routes = [
     DataViewModule,
     ConfirmDialogModule,
     BrowserAnimationsModule,
-    ButtonModule
+    ButtonModule,
+    CheckboxModule,
+    DropdownModule,
+    MultiSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
