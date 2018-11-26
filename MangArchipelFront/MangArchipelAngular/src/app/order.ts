@@ -5,7 +5,7 @@ export class Order {
     quantity: number;
 
     constructor(product?: Product, quantity?: number) {
-            this.product = product;
-            this.quantity = quantity;
+        this.product = product;
+        this.quantity = quantity;
     }
 }

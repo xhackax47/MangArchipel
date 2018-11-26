@@ -5,7 +5,7 @@
     </li>
 </ul>
 <h3 class="text-right">TOTAL : {{ total }}€</h3>
- 
+
 <button class="btn btn-primary btn-block" (click)="pay()" *ngIf="!paid">Valider et payer la commande</button>
 <div class="alert alert-success" role="alert" *ngIf="paid">
     <strong>Félicitations !</strong> Votre commande a bien été validée et effectuée.
