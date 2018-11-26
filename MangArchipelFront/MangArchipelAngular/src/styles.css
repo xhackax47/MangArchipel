@@ -79,7 +79,9 @@ label{
 .p-grid 
 {
     
+
     background-color:  #f5f5f5;
+
   /* width: 75%;
     */
 }
@@ -103,6 +105,10 @@ div
     text-align: center;
 }
 
+hr{
+    color: black;
+}
+
 
 .first {
     width: 100%;
@@ -123,4 +129,5 @@ div
 
 input{
     height: 30px;
+
 }

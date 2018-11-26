@@ -3,24 +3,25 @@ import { Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
 import { User } from './user';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+
 import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   logged: boolean;
-  subjectLog: Subject< boolean>;
+  subjectLog: Subject<boolean>;
   observeLog: Observable<boolean>;
 
   url = 'http://localhost:8098/api/users';
 
   constructor(private http: HttpClient, private router: Router) {
     this.logged = false;
-    this.subjectLog = new Subject< boolean>();
+    this.subjectLog = new Subject<boolean>();
     this.observeLog = this.subjectLog.asObservable();
-   }
+  }
 
   urlRetour = 'http://localhost:8098/api/';
   httpOptions = {
@@ -56,11 +57,30 @@ export class UserService {
       return of(result as T);
     };
   }
-  addUser(user: User): void {
-    this.http.post(this.url + '/signIn', this.httpOptions).subscribe(() => this.router.navigate(['/']));
+  addUser(user: User) {
+    return this.http.post(this.url + '/signIn', user, this.httpOptions);
   }
+
   updateProduct(id: number, user: User): void {
+
     this.http.put(this.url + '/' + id, user, this.httpOptions).subscribe(() => this.router.navigate(['/']));
   }
-}
+  registerUser(user: User) {
+    return this.http.post(this.url + '/signIn', user, this.httpOptions);
+  }
+  confirmPassword(password1: string, password2: string) {
 
+    return (group: FormGroup) => {
+      const tmp = group.controls[password1];
+      const tmp1 = group.controls[password2];
+      if (tmp.value !== tmp1.value) {
+        return tmp1.setErrors({ notEquivalent: true });
+      } else {
+        return tmp1.setErrors(null);
+      }
+    };
+  }
+  getUserIdByLogin(login: string): Observable<User> {
+    return this.http.get<User>(this.url + '/username/' + login);
+  }
+}
