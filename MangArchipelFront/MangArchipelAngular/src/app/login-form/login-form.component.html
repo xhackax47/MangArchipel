@@ -11,8 +11,6 @@
       <div *ngIf="subbmitted && f.username.invalid" class="invalid-feedback">
         <div *ngIf="f.username.errors.required"> Le nom d'utilisateur est obligatoire</div>
       </div> 
-
-
     </div>
 
 
@@ -25,8 +23,8 @@
       <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
         <div *ngIf="f.password.errors.required">Le mot de passe est obligatoire</div>
       </div>
-      
     </div>
+    
     <br />
     <div class="button">
       <button pButton type="submit" class="ui-button-rounded ui-button-secondary">Connexion</button>

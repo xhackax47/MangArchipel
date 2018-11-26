@@ -56,6 +56,7 @@ export class LoginFormComponent implements OnInit {
         this.service.logged = true;
         this.service.subjectLog.next(true);
         this.message = '';
+        this.router.navigate(['']);
         // this.envoi.emit(user);
       }
     },  error => {this.message = 'Echec de l\'authentification';

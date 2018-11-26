@@ -34,7 +34,7 @@ export class UserService {
   }
 
   loging(user: User): Observable<User> {
-    return this.http.post<User>(this.url + '/', user);
+    return this.http.post<User>(this.url + '/login', user);
     // .pipe(catchError((err) => console.log(err)));
   }
 
@@ -77,5 +77,8 @@ export class UserService {
         return tmp1.setErrors(null);
       }
     };
+  }
+  getUserIdByLogin(login: string) {
+
   }
 }

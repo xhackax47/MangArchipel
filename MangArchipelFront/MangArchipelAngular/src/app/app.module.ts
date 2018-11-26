@@ -34,10 +34,10 @@ import { ProductsAdminComponent } from './products-admin/products-admin.componen
 import { SearchProductComponent } from './search-product/search-product.component';
 
 
-import {DataViewModule} from 'primeng/dataview';
+import { DataViewModule } from 'primeng/dataview';
 import { UserComponent } from './user/user.component';
 
-import {ButtonModule} from 'primeng/button';
+import { ButtonModule } from 'primeng/button';
 import { AlertComponent } from './alert/alert.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -49,7 +49,8 @@ const roads: Routes = [
   { path: 'admin/products', component: ProductsAdminComponent },
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'search', component: SearchProductComponent },
-  { path: 'signIn', component: UserComponent }
+  { path: 'signIn', component: UserComponent },
+  { path: 'update', component: UserComponent }
   // { path: 'profile', component: ProfileComponent},
   // { path: 'admin/orders', component: OrdersComponent},
 ];
