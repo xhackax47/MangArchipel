@@ -1,9 +1,11 @@
+
 <br />
 <div class="p-grid p-dir-col p-col-2 p-offset-5" >
 
   <form  *ngIf="!logged" (ngSubmit)="onSubmit()" class="p-col-align-center"  ngNativeValidate>
     <h2>Se connecter</h2>
     <div >
+
       <div>
         <label for="username">nom d'utilisateur : </label>
       </div>
@@ -13,8 +15,9 @@
       </div> 
     </div>
 
+    <div>
+      <p>Password : </p>
 
-    <div >
       <div>
         <label for="password">password : </label>
       </div>
@@ -30,8 +33,8 @@
       <button pButton type="submit" class="ui-button-rounded ui-button-secondary">Connexion</button>
     </div>
 
-
     <button *ngIf="logged" pButton (click)="logout()" class="ui-button-rounded ui-button-secondary">Déconnexion</button>
+
   </form>
   <div>
     <hr>

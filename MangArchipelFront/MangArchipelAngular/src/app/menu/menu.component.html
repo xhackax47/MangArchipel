@@ -1,4 +1,8 @@
+
 <p-menubar [model]="items">
-    <input type="text" pInputText placeholder="Search">
-    <button pButton  style="margin-left:.25em" class="ui-button-rounded ui-button-secondary" routerLink="/login">Login</button>
+    <form (ngSubmit)="onSubmit()" class="ui-g">
+            <input #gb type="text" pInputText placeholder="Recherche" [(ngModel)]="checkValue" [ngModelOptions]="{standalone: true}">
+    </form>
+    <button pButton label="Logout" style="margin-left:.25em" routerLink="/login">Login</button>
+
 </p-menubar>

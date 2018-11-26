@@ -1,0 +1,14 @@
+<h2 class="text-center">Commandes</h2>
+<ul>
+  <li class="ui-card" *ngFor="let order of orders.productOrders">
+    <div class="ui-card-header">
+      <h4>Référence commande</h4> {{order.id}}
+    </div>
+    <div class="ui-card-content">
+      <h4>Date de la commande : </h4> {{ order.dateCreated }}
+    </div>
+    <div class="ui-card-footer">
+      <h4>STATUT COMMANDE : </h4>{{ order.status }}
+    </div>
+  </li>
+</ul>
