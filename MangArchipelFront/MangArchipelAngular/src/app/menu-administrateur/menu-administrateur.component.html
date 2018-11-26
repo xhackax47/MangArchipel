@@ -4,7 +4,7 @@
           <input #gb type="search" name="search" [(ngModel)]="checkValue"/> 
       </form>
     <button pButton routerLink="/search" label="rechercher"></button>
-    <button pButton label="Se déconnecter"></button>
+    <button pButton label="Se déconnecter" (click)="logout()"></button>
   </div>
 
 </p-menubar>
