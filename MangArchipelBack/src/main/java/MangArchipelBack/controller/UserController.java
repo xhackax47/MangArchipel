@@ -13,6 +13,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -85,8 +86,15 @@ public class UserController {
 	 @CrossOrigin(origins = "*")
 	 @PostMapping("/signIn")
 	 // creation d'un utilisateur
-	 public  User addUser(@RequestBody User user )
+	 public User addUser(@RequestBody User user )
 	 {
 		 return userservice.save(user);
+	 }
+	 
+	 @CrossOrigin(origins = "*")
+		@GetMapping("/{username}")
+	 public User loadUserByuserName(@PathVariable String username)
+	 {
+		 return (User) userservice.loadUserByUsername(username);
 	 }
 }

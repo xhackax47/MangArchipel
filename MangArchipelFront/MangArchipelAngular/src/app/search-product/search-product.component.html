@@ -1,5 +1,24 @@
-<h2>Résultat de la recherche</h2>
-  <p-dataTable [value]="productArray" [globalFilter]="gb" [(selection)]="product" selectionMode="single" (onRowSelect)="onRowSelect($event)"
-    [paginator]="true" [rows]="10" [headerCheckboxToggleAllPages]="true">
-    <p-column field="productName" header="Produits" filterMatchMode="equals"></p-column>
-  </p-dataTable>
+<h2>Rechercher un produit</h2>
+
+<p-table #dt [columns]="cols" [value]="productArray" [(selection)]="product" selectionMode="single" (onRowSelect)="onRowSelect($event)"
+    filteredValue="productArray" [paginator]="true" [rows]="10" [globalFilterFields]="['productName']">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+        <tr>
+            <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                <p-multiSelect *ngSwitchCase="'productType'" [options]="types" defaultLabel="Tous les types" (onChange)="dt.filter($event.value, col.field, 'in')"></p-multiSelect>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [pSelectableRow]="rowData">
+            <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

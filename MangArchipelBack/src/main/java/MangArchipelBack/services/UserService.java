@@ -52,5 +52,6 @@ public class UserService implements UserDetailsService {
         	throw new UsernameNotFoundException("Utilisateur non trouvé");
         }
     }
+    
 
 }
