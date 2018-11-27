@@ -1,3 +1,16 @@
-<p>
-  cart works!
-</p>
+<div class="p-grid p-dir-col p-col-8 p-offset-2 main">
+<p-dataView *ngIf="orders" [value]="orders.productOrders" [paginator]="true" [rows]="10">
+  <ng-template let-order pTemplate="listItem">
+    <div class="objetDataView">
+      {{order.image}}
+      <div>Produit :  {{order.product.productName}}, Quantité : {{order.quantity}}</div>
+      <button type="button" pButton (click)="removeFromCart(order)"><i class="pi pi-trash"></i></button>
+    </div>
+    <h5 class="card-title">Total: {{order.total}}€</h5>
+  </ng-template>
+</p-dataView>
+
+<button type="button" pButton (click)="validateCart()" routerLink="/orders"><i class="pi pi-shopping-cart"></i>Valider le panier</button>
+<button type="button" pButton (click)="reset()"><i class="pi pi-trash"></i>Vider le panier</button>
+</div>
+

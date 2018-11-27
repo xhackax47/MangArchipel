@@ -20,21 +20,31 @@ public class User implements Serializable , UserDetails {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
+    private Long id;
+	@Column(name="username")
     private String username;
 
+	@Column(name="password")
 	private String password;
 	
+	@Column(name="firstname")
 	private String firstName;
 	
+	@Column(name="lastname")
 	private String lastName;
 	
+	@Column(name="adress")
 	private String adress;
-	
+	@Column(name="mail")
+	private String email;
+	@Column(name="city")
 	private String city;
 	
+	@Column(name="postalcode")
 	private Integer postalCode;
+	
+	public User() {}
     
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
@@ -138,6 +148,22 @@ public class User implements Serializable , UserDetails {
 	public void setPostalCode(Integer postalCode) {
 		this.postalCode = postalCode;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", adress=" + adress + ", email=" + email + ", city=" + city
+				+ ", postalCode=" + postalCode + ", roles=" + roles + "]";
+	}
     
+	
     
 }

@@ -18,6 +18,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.Http403ForbiddenEntryPoint;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
@@ -47,6 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+
 		http.cors()
 		.and()
 		.csrf()
@@ -68,6 +71,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/api/users/logout").permitAll().anyRequest().anonymous()
 		.antMatchers("/api/users/user").permitAll().anyRequest().authenticated()
 		.antMatchers("/api/products").permitAll().anyRequest().anonymous()
+		.antMatchers("/api/users/update").permitAll().anyRequest().anonymous()
 				;
 
 	}
@@ -117,5 +121,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}
-
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+	    return new BCryptPasswordEncoder();
+	}
 }
