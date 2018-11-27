@@ -35,6 +35,22 @@ export class OrderService {
     return this.http.post(this.url + '/', order, this.httpOptions);
   }
 
+  getOrders(): Observable<Array<ProductOrder>> {
+    return this.http.get<Array<ProductOrder>>(this.url + '/', this.httpOptions);
+  }
+
+   getOrdersByUserId(id: number): Observable<Array<Order>> {
+    return this.http.get<Array<Order>>(this.url + '/ByUserId/'+id, this.httpOptions);
+  }
+
+  get SelectedProductOrder() {
+    return this.productOrder;
+  }
+
+  set SelectedProductOrder(value: ProductOrder) {
+    this.productOrder = value;
+    this.productOrderSubject.next(value);
+  }
 
   get ProductOrders() {
     return this.orders;

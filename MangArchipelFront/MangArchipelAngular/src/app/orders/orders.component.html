@@ -9,6 +9,70 @@
 <h3 class="text-right">TOTAL : {{ total }}€</h3>
  
 <button pButton class="ui-button-rounded ui-button-success" (click)="pay()" *ngIf="!paid" label="Valider et payer la commande"></button>
+
 <div class="alert alert-success" role="alert" *ngIf="paid">
     <strong>Félicitations !</strong> Votre commande a bien été validée et effectuée.
 </div>
+
+<hr>
+
+<h3>Création tableau des commandes</h3>
+<p-table [columns]="cols" [value]="listOrders" dataKey="id">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th style="width: 3em"></th>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
+        <tr>
+            <td>
+                <a [pRowToggler]="rowData">
+                    <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                </a>
+            </td>
+            <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns">
+        <tr>
+            <td [attr.colspan]="columns.length + 1">
+                <div class="ui-g ui-fluid" style="font-size:16px;padding:20px">
+                    <div class="ui-g-12 ui-md-9">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <b>Produits :</b>
+                                <p-table [value] = "rowData.orderProducts   ">
+                                    <ng-template pTemplate="header">
+                                        <tr>
+                                            <th>Produit</th>
+                                            <th>Type</th>
+                                            <th>Quantité</th>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-car>
+                                        <tr>
+                                            <td><!--A terminer--></td>
+                                            <td><!--A terminer--></td>
+                                            <td><!--A terminer--></td>
+                                        </tr>
+                                    </ng-template>
+                                </p-table>
+                            </div>
+                            <div class="ui-g-12">
+                                <b>Statut :</b> {{rowData.status}}
+                            </div>
+                            <div class="ui-g-12">
+                                <b>Total :</b> <!--A terminer-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
