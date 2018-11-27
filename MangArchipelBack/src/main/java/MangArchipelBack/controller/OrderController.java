@@ -15,12 +15,15 @@ import MangArchipelBack.model.OrderStatus;
 import MangArchipelBack.services.OrderProductService;
 import MangArchipelBack.services.OrderService;
 import MangArchipelBack.services.ProductService;
+import MangArchipelBack.services.UserService;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import javax.websocket.server.PathParam;
 
 @RestController
 @RequestMapping("/api/orders")
@@ -32,6 +35,8 @@ public class OrderController {
     OrderService orderService;
 	@Autowired
 	OrderProductService orderProductService;
+	@Autowired
+	UserService userService;
 
     public OrderController(ProductService productService, OrderService orderService, OrderProductService orderProductService) {
         this.productService = productService;
@@ -55,11 +60,12 @@ public class OrderController {
 
 // Créer une commande
 	@CrossOrigin(origins = "*")
-    @PostMapping("/")
-    public ResponseEntity<Order> create(@RequestBody OrderForm form) {
+    @PostMapping("/{userId}")
+    public ResponseEntity<Order> create(@RequestBody OrderForm form, @PathVariable Long userId) {
         List<OrderProductDto> formDtos = form.getProductOrders();
         validateProductsExistence(formDtos);
         Order order = new Order();
+        order.setUser(userService.getUserById(userId));
         order.setStatus(OrderStatus.PAID.name());
         order = this.orderService.save(order);
 
@@ -110,5 +116,13 @@ public class OrderController {
         public void setProductOrders(List<OrderProductDto> productOrders) {
             this.productOrders = productOrders;
         }
+    }
+    
+    @CrossOrigin(origins = "*")
+    @GetMapping("/ByUserId/{id}")
+    @ResponseBody
+    private List<Order> getByUserId(@PathVariable(value="id") Long id){
+		return orderService.getOrderByUserId(id);
+    	
     }
 }
