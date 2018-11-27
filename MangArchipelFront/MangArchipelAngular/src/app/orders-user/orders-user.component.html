@@ -1,0 +1,11 @@
+<h2 class="text-center">Commande</h2>
+<div *ngFor="let order of orders">
+  date: {{order.date}}
+<ul>
+    <li *ngFor="let productOrder of order.orderProducts">
+        {{ productOrder.product.productName }} - {{ productOrder.product.price }}€ x {{ productOrder.quantity}} pcs.
+    </li>
+</ul>
+</div>
+
+

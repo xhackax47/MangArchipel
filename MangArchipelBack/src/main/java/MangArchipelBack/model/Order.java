@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.Valid;
@@ -32,6 +33,9 @@ public class Order {
  
     @Column(name="STATUS")
     private String status;
+    
+    @ManyToOne
+    private User user;
  
     @JsonManagedReference
     @OneToMany(mappedBy = "pk.order")
