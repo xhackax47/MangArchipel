@@ -2,7 +2,7 @@
 
 <div class="p-grid p-dir-col p-col-3 p-offset-5">
     <form  [formGroup]='registerForm' (ngSubmit)="onSubmit()" class="p-col-align-center">
-  <h2 >S'inscrire</h2>
+  <h2 *ngIf="!add">Modifier ses données</h2>
   
    
     <div>
@@ -107,6 +107,7 @@
         </div>
       </div>
     </div>
-    <button pButton type="submit" class="ui-button-raised ui-button-secondary" *ngIf="add"  [disabled]='!registerForm.valid'>S'inscrire</button>
+
+    <button pButton type="submit" class="ui-button-raised ui-button-secondary" *ngIf="!add" [disabled]='!registerForm.valid'>Modifier</button>
   </form>
 </div>

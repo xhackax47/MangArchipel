@@ -102,6 +102,17 @@ public class UserController {
 	@CrossOrigin(origins = "*")
 	@PutMapping("/update/{id}")
 	public User loadUser(@RequestBody User user, @PathVariable Long id) {
-		return userservice.update(user, id);
+		System.out.println(user.toString());
+		User u = userservice.getUserById(id);
+		u.setAdress(user.getAdress());
+		u.setCity(user.getCity());
+		u.setFirstName(user.getFirstName());
+		u.setLastName(user.getLastName());
+		u.setEmail(user.getEmail());
+		u.setUsername(user.getUsername());
+		u.setPostalCode(user.getPostalCode());
+		u.setPassword(user.getPassword());
+		User userUpdate = userservice.save(u);
+		return userUpdate;
 	}
 }

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertService } from '../alert.service';
+import { FormBuilder, Validators } from '@angular/forms';
+
 import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-user',
@@ -11,10 +11,10 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  message: string;
   model: User;
-  add: boolean;
+  add: Boolean;
   id: number;
-
   registerForm = this.formBuilder.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
@@ -28,116 +28,64 @@ export class UserComponent implements OnInit {
 
   }, { validator: this.service.confirmPassword('password', 'confirmpassword') }
   );
-
-
   constructor(private service: UserService,
     private router: Router,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
-    private routeActive: ActivatedRoute,
-    private alertService: AlertService) {
+    private formBuilder: FormBuilder) {
 
     this.model = new User();
   }
 
   ngOnInit() {
-
     if (this.route.snapshot.paramMap.get('id') === null) {
       this.add = true;
 
     } else {
-
-
-      let id = parseInt(this.route.snapshot.paramMap.get('id'), 0);
-      this.service.getUserId(parseInt(this.routeActive.snapshot.paramMap.get('id'))).subscribe(user =>
-        this.registerForm.setValue({
-          username: user.username,
-          firstName: user.firstName,
-          lastName: user.lastName,
-          city: user.city,
-          adress: user.adress,
-          mail: user.mail,
-          postalCode: user.postalCode,
-          password: user.password
-        }));
+      this.add = false;
+      const id = parseInt(this.route.snapshot.paramMap.get('id'), 0);
+      this.service.getUserId(id).subscribe(user => this.model = user);
     }
   }
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
     const role = 'ROLE_USER';
-    /*
-    if (this.registerForm.invalid) {
-      return;
-    }
-    */ console.log(this.add);
+
     if (this.add) {
 
-      // this.model = new User(this.registerForm.value);
       const user = new User(this.registerForm.value.username,
         this.registerForm.value.firstName, this.registerForm.value.lastName,
         this.registerForm.value.city, this.registerForm.value.postalCode,
         this.registerForm.value.adress, this.registerForm.value.mail, role);
-      // this.service.addUser(this.model);
+
       this.service.addUser(user).subscribe(() => this.router.navigate(['/']));
       localStorage.setItem('loginAct', user.username);
       localStorage.setItem('passwordAct', user.password);
-      // localStorage.setItem('roleAct', user.values);
-      // this.model = new User();
 
       this.router.navigate(['/']);
 
     } else {
-      const p = this.model; console.log(this.add);
-      
-      this.service.getUserId(this.id).subscribe(user => {
-        this.service.getUserIdByLogin(localStorage.getItem('loginAct')).subscribe(userr => {
-          if (userr) {
-            if (user.id === userr.id) {
-              this.registerForm.setValue({
-                username: user.username,
-                firstName: user.firstName,
-                lastName: user.lastName,
-                city: user.city,
-                adress: user.adress,
-                mail: user.mail,
-                postalCode: user.postalCode,
-                password: user.password
-              });
-            } else {
-              this.router.navigate(['/']);
-            }
-          }
-        });
-    /*
-        const userUpdated = new User();
-        userUpdated.username = this.registerForm.value.username;
-        userUpdated.lastName = this.registerForm.value.lastName;
-        userUpdated.firstName = this.registerForm.value.firstName;
+      const p = this.model;
 
-        userUpdated.password = this.registerForm.value.password;
-        userUpdated.mail = this.registerForm.value.mail;
-        userUpdated.username = this.registerForm.value.username;
-        userUpdated.city = this.registerForm.value.city;
-        userUpdated.postalCode = this.registerForm.value.postalCode;
-
-        this.service.updateUser(userUpdated);
-        */
-      }
-    /*
+    }
     this.service.registerUser(this.registerForm.value)
       .pipe(first()).subscribe(
-        data => {
-          this.alertService.success('Inscription réussi', true);
-          this.router.navigate(['/']);
-        },
         error => {
-          this.alertService.error(error);
+          this.message = 'Echec de l\'inscription';
           this.add = false;
 
         });
-   */     
   }
-    
+  /*if else{
+     const p = this.model;
+     this.servic
+   }
 
-  }
+  this.service.addUser(this.registerForm.value).subscribe(
+               error => {
+                   this.alertService.error(error);
+                   this.add = false;
+               });
+                */
+
+}

@@ -2,12 +2,12 @@
 <br />
 <div class="p-grid p-dir-col p-col-2 p-offset-5" >
 
-  <form  *ngIf="!logged" (ngSubmit)="onSubmit()" class="p-col-align-center"  ngNativeValidate>
+  <form  (ngSubmit)="onSubmit()" class="p-col-align-center"  ngNativeValidate>
     <h2>Se connecter</h2>
     <div >
 
       <div>
-        <label for="username">nom d'utilisateur : </label>
+        <label for="username">Nom d'utilisateur : </label>
       </div>
       <input type="text" name="username"  [(ngModel)]="model.username" required/>
       <div *ngIf="subbmitted && f.username.invalid" class="invalid-feedback">
@@ -17,7 +17,7 @@
 
     <div>
       <div>
-        <label for="password">password : </label>
+        <label for="password">Mot de passe : </label>
       </div>
       <input type="password" name="password" [(ngModel)]="model.password" required/>
       
@@ -39,7 +39,7 @@
   </div>
  
   <div>
-    <a routerLink="/signIn">nouveau utilisateur</a>
+    <a routerLink="/signIn">Nouvel utilisateur</a>
   </div>
 </div>
 

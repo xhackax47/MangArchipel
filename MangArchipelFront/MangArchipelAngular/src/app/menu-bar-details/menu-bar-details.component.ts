@@ -4,6 +4,7 @@ import { Product } from '../product';
 import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-menu-bar-details',
@@ -11,7 +12,7 @@ import { UserService } from '../user.service';
   styleUrls: ['./menu-bar-details.component.css']
 })
 export class MenuBarDetailsComponent implements OnInit {
-
+  user = new User();
   @Input() product: Product[];
   checkValue: string;
   items: MenuItem[];
@@ -63,4 +64,6 @@ export class MenuBarDetailsComponent implements OnInit {
       this.userService.subjectLog.next(false);
     });
   }
+
+  
 }

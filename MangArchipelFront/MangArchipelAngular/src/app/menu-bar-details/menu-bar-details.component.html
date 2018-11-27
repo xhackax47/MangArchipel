@@ -1,5 +1,6 @@
 <p-menubar [model]="items">
   <div class="menuManga">
+    <button pButton routerLink="/update" label="update"></button>
     <button pButton routerLink="/login" label="Logout" (click)="logout()"></button>
     <input #gb type="text" pInputText placeholder="Recherche" [(ngModel)]="checkValue" [ngModelOptions]="{standalone: true}">
     <button pButton label="rechercher"></button>
