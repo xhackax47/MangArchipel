@@ -5,6 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject, Observable } from 'rxjs';
 import { Order } from './order';
 import { isNullOrUndefined } from 'util';
+import { User } from './user';
+// import { userInfo } from 'os';
 
 @Injectable({
   providedIn: 'root'
@@ -32,15 +34,31 @@ export class OrderService {
   constructor(private http: HttpClient) {}
 
   saveOrder(order: ProductOrders) {
-    return this.http.post(this.url + '/', order, this.httpOptions);
+    if (localStorage.getItem('USER')) {
+      const user: User = JSON.parse(localStorage.getItem('USER'));
+      return this.http.post(this.url + '/' + user.id, order, this.httpOptions);
+    }
   }
 
-  getOrders(): any {
-    return this.http.get(this.url + '/', this.httpOptions);
-  }
 
   getOrderById(id: number): Observable<Order> {
     return this.http.get<Order>(this.url + '/' + id, this.httpOptions);
+
+  getOrders(): Observable<Array<ProductOrder>> {
+    return this.http.get<Array<ProductOrder>>(this.url + '/', this.httpOptions);
+  }
+
+   getOrdersByUserId(id: number): Observable<Array<Order>> {
+    return this.http.get<Array<Order>>(this.url + '/ByUserId/' + id, this.httpOptions);
+  }
+
+  get SelectedProductOrder() {
+    return this.productOrder;
+  }
+
+  set SelectedProductOrder(value: ProductOrder) {
+    this.productOrder = value;
+    this.productOrderSubject.next(value);
   }
 
   get ProductOrders() {
@@ -93,4 +111,5 @@ export class OrderService {
     setTotal(productOrder: ProductOrder) {
       productOrder.totalPrice = productOrder.product.price * productOrder.quantity;
   }
+
 }

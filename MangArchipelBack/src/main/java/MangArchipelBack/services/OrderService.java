@@ -5,6 +5,7 @@ import org.springframework.validation.annotation.Validated;
 import MangArchipelBack.model.Order;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -17,5 +18,6 @@ public interface OrderService {
     Order save(@NotNull(message = "La commande ne peut pas être nulle.") @Valid Order order);
     Order update(@NotNull(message = "La commande ne peut pas être nulle.") @Valid Order order);
     void delete(Order order);
+	List<Order> getOrderByUserId(long id);
     
 }

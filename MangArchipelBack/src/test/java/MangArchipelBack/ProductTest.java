@@ -20,6 +20,7 @@ public class ProductTest {
 	private ProductController pC;
 	
 	
+	// TEST CREATION PRODUIT
 	@Test
 	public void create() {
 		Product p = new Product();
@@ -36,6 +37,7 @@ public class ProductTest {
 
 	}
 	
+	// TEST RECUPERATION PRODUIT ET STOCK/PRODUIT PAR ID
 	@Test
 	public void read() {		
 		Product p = new Product();
@@ -45,14 +47,14 @@ public class ProductTest {
 		p.setPrice(0.1);
 		p.setProductType("TEST");
 		p.setStock(0);
-		pC.createProduct(p);
-		pC.createProduct(p);
 		
+		assertThat(pC.createProduct(p));
 		assertThat(pC.getProductById(p.getId()));
 		assertThat(pC.getStockByProduct(p.getId()));
 
 	}
 	
+	// TEST MISE A JOUR DE PRODUIT
 	@Test
 	public void update() {
 		Product p = new Product();
@@ -62,7 +64,6 @@ public class ProductTest {
 		p.setPrice(0.1);
 		p.setProductType("TEST");
 		p.setStock(0);
-		pC.createProduct(p);
 		
 		Product pUpdate = new Product();
 		pUpdate.setProductName("TEST");
@@ -72,9 +73,11 @@ public class ProductTest {
 		pUpdate.setProductType("TEST");
 		pUpdate.setStock(0);
 		
+		assertThat(pC.createProduct(p));
 		assertThat(pC.updateProduct(p.getId(), pUpdate));
 	}
 	
+	// TEST SUPPRESSION DE PRODUIT
 	@Test
 	public void delete() {
 		// CREER PRODUIT ID 1000 DANS BDD POUR TEST
@@ -85,11 +88,12 @@ public class ProductTest {
 		p.setPrice(0.1);
 		p.setProductType("TEST");
 		p.setStock(0);
-		pC.createProduct(p);
 		
+		assertThat(pC.createProduct(p));
 		assertThat(pC.deleteProduct(p.getId()));
 	}
 	
+	// TEST DE RECHERCHE PAR CRITERES
 	@Test
 	public void criteria() {		
 		Product p = new Product();
@@ -99,14 +103,17 @@ public class ProductTest {
 		p.setPrice(0.1);
 		p.setProductType("TEST");
 		p.setStock(0);
-		pC.createProduct(p);
-
+		
+		assertThat(pC.createProduct(p));
 		assertThat(pC.getProducts(p.getProductName(), null, null, null, null, null));
 		assertThat(pC.getProducts(null, p.getBrand(), null, null, null, null));
 		assertThat(pC.getProducts(null, null, p.getPrice(), null, null, null));
 		assertThat(pC.getProducts(null, null, null, p.getProductType(), null, null));
 		assertThat(pC.getProducts(null, null, null, null, p.getStock(), null));
 		assertThat(pC.getProducts(null, null, null, null, null, p.getDescription()));
+		assertThat(pC.getProducts(p.getProductName(),  p.getBrand(), p.getPrice(), p.getProductType(), p.getStock(), p.getDescription()));
+		assertThat(pC.getProducts(null, null, null, null, null, null));
+		
 	}
 	
 

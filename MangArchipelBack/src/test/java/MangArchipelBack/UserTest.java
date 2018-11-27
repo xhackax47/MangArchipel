@@ -3,7 +3,6 @@ package MangArchipelBack;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertNotNull;
 
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +42,7 @@ public class UserTest {
 		LoginRequest lR = new LoginRequest();
 		lR.setUsername(u.getUsername());
 		lR.setPassword(u.getPassword());
+		
 		
 		assertThat(uC.authenticateUser(lR));
 		assertThat(uC.logout(lR));

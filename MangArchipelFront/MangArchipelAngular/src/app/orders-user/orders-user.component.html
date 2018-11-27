@@ -1,0 +1,13 @@
+<div class="p-grid p-col-6 p-offset-3 main">
+<h2 class="text-center  p-col-12">Commandes</h2>
+<div class="ui-card p-col-12" *ngFor="let order of orders">
+  <div class="ui-card-header">Date de la commande : {{order.dateCreated}}</div>
+<ul>
+    <li  *ngFor="let productOrder of order.orderProducts">
+        {{ productOrder.product.productName }} - {{ productOrder.product.price }}€ x {{ productOrder.quantity}} pcs.
+    </li>
+</ul>
+</div>
+</div>
+
+
