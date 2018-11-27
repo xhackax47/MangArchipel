@@ -61,8 +61,7 @@ export class UserService {
     return this.http.post(this.url + '/signIn', user, this.httpOptions);
   }
 
-  updateProduct(id: number, user: User): void {
-
+  updateUser(id: number, user: User): void {
     this.http.put(this.url + '/' + id, user, this.httpOptions).subscribe(() => this.router.navigate(['/']));
   }
   registerUser(user: User) {

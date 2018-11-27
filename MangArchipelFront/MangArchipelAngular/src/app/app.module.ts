@@ -28,11 +28,11 @@ import { UserComponent } from './user/user.component';
 import { ButtonModule } from 'primeng/button';
 import { AlertComponent } from './alert/alert.component';
 import { DropdownModule } from 'primeng/dropdown';
-import { MultiSelectModule} from 'primeng/multiselect';
-import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { OrdersComponent } from './orders/orders.component';
 import { ModifProductComponent } from './modif-product/modif-product.component';
-import {FileUploadModule} from 'primeng/fileupload';
+import { FileUploadModule } from 'primeng/fileupload';
 import { OrdersAdminComponent } from './orders-admin/orders-admin.component';
 import { OrdersUserComponent } from './orders-user/orders-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -49,7 +49,6 @@ const roads: Routes = [
   { path: 'signIn', component: UserComponent },
   { path: 'orders', component: OrdersComponent},
   { path: 'update', component: UserComponent },
-  { path: 'orders', component: OrdersComponent},
   { path: 'admin/orders', component: OrdersAdminComponent},
   { path: 'user/order/:id', component: OrdersUserComponent}
 ];

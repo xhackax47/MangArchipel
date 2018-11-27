@@ -30,7 +30,7 @@ export class OrdersComponent implements OnInit {
       this.sub = this.orderService.ordersChanged.subscribe(() => {
           this.orders = this.orderService.ProductOrders;
       });*/
-      // this.loadTotal(); 
+      // this.loadTotal();
   }
 
   pay() {

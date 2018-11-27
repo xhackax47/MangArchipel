@@ -11,19 +11,21 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class OrdersUserComponent implements OnInit {
   ProductOrderArray: ProductOrder[];
-  Orders: Order[];
+  orders: Order[];
 
   constructor(private orderService: OrderService, private route: ActivatedRoute, private router: Router) {
     const id = parseInt(this.route.snapshot.paramMap.get('id'), 0);
+    console.log(id);
     this.orderService.getOrdersByUserId(id).subscribe(Orders => {
-      this.Orders = Orders;
+      this.orders = Orders;
+      console.log(this.orders);
     });
   }
 
   ngOnInit() {
   }
 
-  details(id:number){
+  details(id: number ) {
     this.router.navigate(['/']);
   }
 

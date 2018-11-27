@@ -1,0 +1,9 @@
+li{
+    list-style-type: none;
+    padding:5px;
+}
+
+.ui-card{
+    margin:5px;
+    color: dimgray;
+}

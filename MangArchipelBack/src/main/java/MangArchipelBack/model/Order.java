@@ -52,7 +52,21 @@ public class Order {
         return sum;
     }
  
-    @Transient
+    
+    
+    public User getUser() {
+		return user;
+	}
+
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+
+	@Transient
     public int getNumberOfProducts() {
         return this.orderProducts.size();
     }
