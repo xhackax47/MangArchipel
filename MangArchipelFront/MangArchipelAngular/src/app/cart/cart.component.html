@@ -4,13 +4,13 @@
     <div class="objetDataView">
       {{order.image}}
       <div>Produit :  {{order.product.productName}}, Quantité : {{order.quantity}}</div>
-      <button type="button" pButton (click)="removeFromCart(order)"><i class="pi pi-trash"></i></button>
+      <button type="button" pButton (click)="removeFromCart(order)" icon="pi pi-trash"></button>
     </div>
     <h5 class="card-title">Total: {{order.total}}€</h5>
   </ng-template>
 </p-dataView>
 
-<button type="button" pButton (click)="validateCart()" routerLink="/orders"><i class="pi pi-shopping-cart"></i>Valider le panier</button>
+<button type="button" pButton (click)="validateCart()"><i class="pi pi-shopping-cart"></i>Valider le panier</button>
 <button type="button" pButton (click)="reset()"><i class="pi pi-trash"></i>Vider le panier</button>
 </div>
 

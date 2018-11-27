@@ -1,8 +1,9 @@
 <p-menubar [model]="items">
   <div class="menuManga">
-    <input #gb type="text" pInputText placeholder="Recherche" [(ngModel)]="checkValue" [ngModelOptions]="{standalone: true}">
-    <button pButton label="Rechercher"></button>
+    <form (ngSubmit)="onSubmit()" class="ui-g">
+      <input #gb type="text" pInputText placeholder="Recherche" [(ngModel)]="checkValue" [ngModelOptions]="{standalone: true}">
+    </form>
     <button pButton routerLink="/login" label="Logout" (click)="logout()"></button>
-    </div>
+  </div>
 
 </p-menubar>

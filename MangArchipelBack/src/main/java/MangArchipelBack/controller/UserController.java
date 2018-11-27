@@ -2,6 +2,7 @@ package MangArchipelBack.controller;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import MangArchipelBack.model.LoginRequest;
 import MangArchipelBack.model.Role;
 import MangArchipelBack.model.User;
+import MangArchipelBack.repository.RoleRepository;
 import MangArchipelBack.services.RoleService;
 
 import MangArchipelBack.services.UserService;
@@ -41,6 +43,9 @@ public class UserController {
 	RoleService roleService;
 	@Autowired
 	private UserService userservice;
+	
+	@Autowired
+	private RoleRepository roleRepository;
 
 	@CrossOrigin(origins = "*")
 	@GetMapping("/user")
@@ -84,6 +89,10 @@ public class UserController {
 	@PostMapping("/signIn")
 	// creation d'un utilisateur
 	public User addUser(@RequestBody User user) {
+		User userToSave=user;
+		Set<Role> hr = new HashSet<>();
+				hr.add(roleRepository.findById(2L).get());
+		userToSave.setRoles(hr);
 		return userservice.save(user);
 	}
 
@@ -116,18 +125,5 @@ public class UserController {
 		return userUpdate;
 	}
 	
-	 @CrossOrigin(origins = "*")
-	 @PostMapping("/signIn")
-	 // creation d'un utilisateur
-	 public User addUser(@RequestBody User user )
-	 {
-		 return userservice.save(user);
-	 }
-	 
-	 @CrossOrigin(origins = "*")
-		@GetMapping("/{username}")
-	 public User loadUserByuserName(@PathVariable String username)
-	 {
-		 return (User) userservice.loadUserByUsername(username);
-	 }
+
 }
