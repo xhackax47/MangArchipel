@@ -29,7 +29,7 @@ export class CartComponent implements OnInit {
 
   // Methode d'initialisation
   ngOnInit() {
-    this.orders.productOrders = JSON.parse(localStorage.getItem('commande'));
+    // this.orders.productOrders = JSON.parse(localStorage.getItem('commande'));
   }
 
 

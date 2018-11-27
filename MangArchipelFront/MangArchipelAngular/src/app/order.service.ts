@@ -5,6 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject, Observable } from 'rxjs';
 import { Order } from './order';
 import { isNullOrUndefined } from 'util';
+import { User } from './user';
+// import { userInfo } from 'os';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +34,10 @@ export class OrderService {
   constructor(private http: HttpClient) {}
 
   saveOrder(order: ProductOrders) {
-    return this.http.post(this.url + '/', order, this.httpOptions);
+    if (localStorage.getItem('USER')) {
+      const user: User = JSON.parse(localStorage.getItem('USER'));
+      return this.http.post(this.url + '/' + user.id, order, this.httpOptions);
+    }
   }
 
   getOrders(): Observable<Array<ProductOrder>> {
@@ -40,7 +45,7 @@ export class OrderService {
   }
 
    getOrdersByUserId(id: number): Observable<Array<Order>> {
-    return this.http.get<Array<Order>>(this.url + '/ByUserId/'+id, this.httpOptions);
+    return this.http.get<Array<Order>>(this.url + '/ByUserId/' + id, this.httpOptions);
   }
 
   get SelectedProductOrder() {
@@ -102,4 +107,5 @@ export class OrderService {
     setTotal(productOrder: ProductOrder) {
       productOrder.totalPrice = productOrder.product.price * productOrder.quantity;
   }
+
 }

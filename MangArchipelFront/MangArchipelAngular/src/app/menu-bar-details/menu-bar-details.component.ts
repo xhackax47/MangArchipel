@@ -4,6 +4,7 @@ import { Product } from '../product';
 import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-menu-bar-details',
@@ -11,14 +12,15 @@ import { UserService } from '../user.service';
   styleUrls: ['./menu-bar-details.component.css']
 })
 export class MenuBarDetailsComponent implements OnInit {
-
+  id: number ;
   @Input() product: Product[];
   checkValue: string;
   items: MenuItem[];
 
   constructor(private service: ProductService, private router: Router,
     private userService: UserService) {
-
+      const user: User = JSON.parse( localStorage.getItem('USER'));
+      this.id = user.id;
   }
 
   ngOnInit() {
@@ -36,7 +38,7 @@ export class MenuBarDetailsComponent implements OnInit {
           },
           {
             label: 'Mes commandes',
-            routerLink: '/orders'
+            routerLink: '/user/order/' + this.id
           }
         ]
       },

@@ -57,11 +57,6 @@ export class ProductsComponent implements OnInit {
     ];
   }
 
-  loadOrders() {
-    this.sub = this.orderService.ordersChanged.subscribe(() => {
-      this.cartOrders = this.orderService.ProductOrders;
-    });
-  }
 
   onRowSelect(event) {
     this.router.navigate(['product', this.product.id]);
