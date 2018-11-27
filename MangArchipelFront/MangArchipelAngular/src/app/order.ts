@@ -8,9 +8,11 @@ export class Order {
     user: User;
     orderProducts: ProductOrder[];
 
+
     constructor(dateCreated?: string, status?: string, user?: User) {
             this.dateCreated = dateCreated;
             this.status = status;
             this.user = user;
+
     }
 }

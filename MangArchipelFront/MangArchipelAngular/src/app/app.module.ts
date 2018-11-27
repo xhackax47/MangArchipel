@@ -7,6 +7,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { AppRoutingModule } from './app-routing.module';
 
 import { DataTableModule } from 'primeng/datatable';
+import {TableModule} from 'primeng/table';
 
 import { MenuBarDetailsComponent } from './menu-bar-details/menu-bar-details.component';
 
@@ -34,9 +35,16 @@ import { ProductsAdminComponent } from './products-admin/products-admin.componen
 import { SearchProductComponent } from './search-product/search-product.component';
 
 
-import {DataViewModule} from 'primeng/dataview';
+import { DataViewModule } from 'primeng/dataview';
 import { UserComponent } from './user/user.component';
+
+
+import { ButtonModule } from 'primeng/button';
+import { AlertComponent } from './alert/alert.component';
+
 import {ButtonModule} from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule} from 'primeng/multiselect';
 
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { OrdersComponent } from './orders/orders.component';
@@ -46,6 +54,8 @@ import {FileUploadModule} from 'primeng/fileupload';
 import { OrdersAdminComponent } from './orders-admin/orders-admin.component';
 import { OrdersUserComponent } from './orders-user/orders-user.component';
 
+
+import { ReactiveFormsModule } from '@angular/forms';
 const roads: Routes = [
   { path: '', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
@@ -56,6 +66,8 @@ const roads: Routes = [
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'search', component: SearchProductComponent },
   { path: 'signIn', component: UserComponent },
+  { path: 'orders', component: OrdersComponent},
+  { path: 'update', component: UserComponent },
   { path: 'orders', component: OrdersComponent},
   { path: 'admin/orders', component: OrdersAdminComponent},
   { path: 'user/order/:id', component: OrdersUserComponent}
@@ -77,6 +89,7 @@ const roads: Routes = [
     AddProductComponent,
     ProductsAdminComponent,
     UserComponent,
+    AlertComponent,
     OrdersComponent,
     ModifProductComponent,
     OrdersAdminComponent,
@@ -93,10 +106,19 @@ const roads: Routes = [
     NgbModule,
     DataTableModule,
     DataViewModule,
+
+    ButtonModule,
+    ReactiveFormsModule
+
     ConfirmDialogModule,
     BrowserAnimationsModule,
     ButtonModule,
+    CheckboxModule,
+    DropdownModule,
+    MultiSelectModule,
+    TableModule,
     FileUploadModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

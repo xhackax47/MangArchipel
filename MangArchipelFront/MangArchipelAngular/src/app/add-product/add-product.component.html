@@ -8,7 +8,15 @@
     <input type="text" placeholder="Marque" name="Brand" id="Brand" required [(ngModel)]="model.brand" /></div>
   <div>
     <label>Product Type : </label>
-    <input type="text" placeholder="Product type" name="productType" id="productType" required [(ngModel)]="model.productType" /></div>
+    <!-- <input type="text" placeholder="Product type" name="productType" id="productType" required [(ngModel)]="model.productType" /> -->
+    <select name="type" required [(ngModel)]="model.productType">
+        <option value="Mangas">Mangas</option>
+        <option value="Animes/Films">Animes/Films</option>
+        <option value="CD/Musiques">CD/Musiques</option>
+        <option value="Figurines">Figurines</option>
+        <option value="Jeux">Jeux</option>
+      </select>
+  </div>
   <div>
     <label> Prix : </label>
     <input type="text" placeholder="Prix" name="Prix" id="Prix" required [(ngModel)]="model.price" />

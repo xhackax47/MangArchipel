@@ -36,7 +36,8 @@ public class User implements Serializable , UserDetails {
 	
 	@Column(name="adress")
 	private String adress;
-	
+	@Column(name="mail")
+	private String email;
 	@Column(name="city")
 	private String city;
 	
