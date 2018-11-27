@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -80,6 +79,7 @@ public class UserController {
 		return null;
 	}
 
+
 	@CrossOrigin(origins = "*")
 	@PostMapping("/signIn")
 	// creation d'un utilisateur
@@ -115,4 +115,19 @@ public class UserController {
 		User userUpdate = userservice.save(u);
 		return userUpdate;
 	}
+	
+	 @CrossOrigin(origins = "*")
+	 @PostMapping("/signIn")
+	 // creation d'un utilisateur
+	 public User addUser(@RequestBody User user )
+	 {
+		 return userservice.save(user);
+	 }
+	 
+	 @CrossOrigin(origins = "*")
+		@GetMapping("/{username}")
+	 public User loadUserByuserName(@PathVariable String username)
+	 {
+		 return (User) userservice.loadUserByUsername(username);
+	 }
 }

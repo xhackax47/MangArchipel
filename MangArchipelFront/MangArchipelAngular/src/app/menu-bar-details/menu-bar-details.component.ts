@@ -12,14 +12,19 @@ import { User } from '../user';
   styleUrls: ['./menu-bar-details.component.css']
 })
 export class MenuBarDetailsComponent implements OnInit {
+
   user = new User();
+
+  id: number ;
+
   @Input() product: Product[];
   checkValue: string;
   items: MenuItem[];
 
   constructor(private service: ProductService, private router: Router,
     private userService: UserService) {
-
+      const user: User = JSON.parse( localStorage.getItem('USER'));
+      this.id = user.id;
   }
 
   ngOnInit() {
@@ -37,7 +42,7 @@ export class MenuBarDetailsComponent implements OnInit {
           },
           {
             label: 'Mes commandes',
-            routerLink: '/orders'
+            routerLink: '/user/order/' + this.id
           }
         ]
       },

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter, OnChanges } from '@angular/core';
 import { ProductOrders } from '../product-orders';
 import { Subscription } from 'rxjs';
 import { OrderService } from '../order.service';
@@ -11,83 +11,65 @@ import { Product } from '../product';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit, OnDestroy {
+export class CartComponent implements OnInit {
   orderFinished: boolean;
   orders: ProductOrders;
-  ordersBruno: ProductOrder[];
-  cartOrders: ProductOrders;
   total: number;
   sub: Subscription;
 
-  @Output() orderFinishedEvent: EventEmitter<boolean>;
 
-
-  constructor(private orderService: OrderService, private productService: ProductService) {
+  constructor(private orderService: OrderService) {
     this.total = 0;
-    this.orderFinished = false;
-    this.orderFinishedEvent = new EventEmitter<boolean>();
+    const orders = new ProductOrders(JSON.parse(localStorage.getItem('commande')));
+    orders.productOrders.forEach(orderProduct => {
+      orderService.setTotal(orderProduct);
+    });
+    this.orders = orders;
   }
 
+  // Methode d'initialisation
   ngOnInit() {
-    this.orders = new ProductOrders();
-    this.orders.productOrders = [];
-    this.loadCart();
-    this.orders = this.orderService.ProductOrders;
-    this.loadTotal();
+    // this.orders.productOrders = JSON.parse(localStorage.getItem('commande'));
   }
 
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
 
-  private calculateTotal(products: ProductOrder[] = []): number {
-    let sum = 0;
-    products.forEach(value => {
-      sum += (value.product.price * value.quantity);
-    });
-    return sum;
-  }
-
-  loadTotal() {
-    this.sub = this.orderService.ordersChanged.subscribe(() => {
-      this.total = this.calculateTotal(this.orders.productOrders);
-    });
-  }
-
-  loadCart() {
-    this.sub = this.orderService.productOrderChanged.subscribe(() => {
-      const productOrder = this.orderService.SelectedProductOrder;
-      if (productOrder) {
-        this.orders.productOrders.push(new ProductOrder(
-          productOrder.product, productOrder.quantity = 1));
-      }
-      this.orders = this.orderService.ProductOrders;
-      this.total = this.calculateTotal(this.orders.productOrders);
-      this.orders = JSON.parse(localStorage.getItem('commande'));
-
-    });
+  // Methode de retrait d'un produit du panier
+  removeFromCart(productOrder: ProductOrder) {
+    const index = this.getProductIndex(productOrder.product);
+    if (index > -1) {
+      this.orders.productOrders.splice(
+        this.getProductIndex(productOrder.product), 1);
+    }
+    this.orderService.ProductOrders = this.orders;
+    localStorage.setItem('commande', JSON.stringify(this.orders.productOrders));
     // this.orders = this.orderService.ProductOrders;
   }
 
-  loadOrders() {
-    this.sub = this.orderService.ordersChanged.subscribe (() => {
-      this.cartOrders = this.orderService.ProductOrders;
-    });
+  // Methode de chargement des commandes
+  loadProductOrders() {
     this.orders = this.orderService.ProductOrders;
   }
 
-  finishOrder() {
+  // Methode de validation du panier / finition de la commande
+  validateCart() {
     this.orderFinished = true;
     this.orderService.Total = this.total;
-    this.orderFinishedEvent.emit(this.orderFinished);
   }
 
+  // Methode de récupération de l'index d'un produit
+  getProductIndex(product: Product): number {
+    return this.orderService.ProductOrders.productOrders.findIndex(
+      value => value.product === product);
+  }
+
+  // Methode de remise à zéro du panier ou "Vider le panier"
   reset() {
     this.orderFinished = false;
     this.orders = new ProductOrders();
     this.orders.productOrders = [];
-    this.loadTotal();
+    localStorage.setItem('commande', '[]');
     this.total = 0;
   }
+
 
 }

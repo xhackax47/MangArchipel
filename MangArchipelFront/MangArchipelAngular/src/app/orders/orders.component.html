@@ -1,12 +1,45 @@
 <h2 class="text-center">Commande</h2>
 <ul>
     <li *ngFor="let order of orders.productOrders">
-        {{ order.product.productName }} - {{ order.product.price }}€ x {{ order.quantity}} pcs.
+        <p>Nom du produit : {{ order.product.productName }}</p>
+        <p>Prix par unité : {{ order.product.price }}€</p>
+        <p>{{ order.quantity}} pcs.</p>
     </li>
 </ul>
 <h3 class="text-right">TOTAL : {{ total }}€</h3>
- 
-<button class="btn btn-primary btn-block" (click)="pay()" *ngIf="!paid">Valider et payer la commande</button>
+
+<button pButton class="ui-button-rounded ui-button-success" (click)="pay()" *ngIf="!paid" label="Valider et payer la commande"></button>
+
 <div class="alert alert-success" role="alert" *ngIf="paid">
     <strong>Félicitations !</strong> Votre commande a bien été validée et effectuée.
 </div>
+
+
+
+<hr>
+
+<h3>Création tableau des commandes</h3>
+<p-table [columns]="cols" [value]="listOrders" [(selection)]="order" selectionMode="single" (onRowSelect)="onRowSelect($event)"
+    filteredValue="listOrders" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+        <tr>
+            <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                <p-multiSelect *ngSwitchCase="'productType'" [options]="types" defaultLabel="Tous les types" (onChange)="dt.filter($event.value, col.field, 'in')"></p-multiSelect>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [pSelectableRow]="rowData">
+            <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+            </td>
+        </tr>
+
+    </ng-template>
+</p-table>
+<app-orders-user></app-orders-user>

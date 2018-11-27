@@ -1,14 +1,21 @@
 <h2 class="text-center">Commandes</h2>
-<ul>
-  <li class="ui-card" *ngFor="let order of orders.productOrders">
-    <div class="ui-card-header">
-      <h4>Référence commande</h4> {{order.id}}
+
+<p-dataView #dv [value]="orders.productOrders" [paginator]="true" [rows]="10" filterBy="dateCreated">
+  <p-header>
+      <div style="position:relative">
+        <input type="search" pInputText placeholder="Recherche (date)" (keyup)="dv.filter($event.target.value)">
+      </div>
+  </p-header>
+  <ng-template let-p pTemplate="listItem">
+    <div class="ui-g-12 ui-md-3" style="padding: 2em;border-bottom: 1px solid #d9d9d9; text-align:center">
+      <div><b>Référence de commande : </b></div>
+      <div>{{p.id}}</div>
+      <br>
+      <div><b>Date de la commande : </b></div>
+      <div>{{p.dateCreated}}</div>
+      <br>
+      <div><b>STATUT COMMANDE : </b></div>
+      <div>{{p.status}}</div>
     </div>
-    <div class="ui-card-content">
-      <h4>Date de la commande : </h4> {{ order.dateCreated }}
-    </div>
-    <div class="ui-card-footer">
-      <h4>STATUT COMMANDE : </h4>{{ order.status }}
-    </div>
-  </li>
-</ul>
+  </ng-template>
+</p-dataView>
