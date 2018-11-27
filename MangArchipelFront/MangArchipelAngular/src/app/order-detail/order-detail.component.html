@@ -1,0 +1,9 @@
+<div *ngIf="order" class="p-grid p-col-6 p-offset-3 main">
+Date : {{order.dateCreated}}<br>
+Statut : {{order.status}}<br>
+<ul>
+    <li  *ngFor="let productOrder of order.orderProducts">
+        {{ productOrder.product.productName }} - {{ productOrder.product.price }}€ x {{ productOrder.quantity}} pcs.
+    </li>
+</ul>
+</div>

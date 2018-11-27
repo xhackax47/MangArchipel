@@ -26,7 +26,7 @@ export class OrdersUserComponent implements OnInit {
   }
 
   details(id: number ) {
-    this.router.navigate(['/']);
+    this.router.navigate(['/orders/' + id]);
   }
 
 }

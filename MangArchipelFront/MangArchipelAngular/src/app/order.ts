@@ -3,6 +3,7 @@ import { User } from './user';
 import { ProductOrder } from './product-order';
 
 export class Order {
+    id: number;
     dateCreated: string;
     status: string;
     user: User;
