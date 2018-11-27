@@ -70,5 +70,4 @@ export class MenuBarDetailsComponent implements OnInit {
     });
   }
 
-  
 }

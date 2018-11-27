@@ -81,12 +81,9 @@ const roads: Routes = [
     OrdersComponent,
     ModifProductComponent,
     OrdersAdminComponent,
-
-    ModifUserComponent
+    ModifUserComponent,
     OrderDetailComponent,
     OrdersUserComponent
-
-
   ],
   imports: [
     BrowserModule,
