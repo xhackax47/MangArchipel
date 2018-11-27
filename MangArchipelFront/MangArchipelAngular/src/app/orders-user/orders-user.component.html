@@ -2,7 +2,7 @@
 <h2 class="text-center  p-col-12">Commandes</h2>
 <div class="ui-card p-col-12" *ngFor="let order of orders">
   <div class="ui-card-header">Date de la commande : {{order.dateCreated}}</div>
-<button (click)="details(order.id)"></button>
+<button (click)="details(order.id)" label="Details">Details</button>
 </div>
 </div>
 
