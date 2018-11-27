@@ -12,7 +12,7 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class OrderService {
-  
+
   private url = 'http://localhost:8098/api/orders';
   httpOptions = {
     headers: new HttpHeaders().set('Content-type', 'application/json')
@@ -43,9 +43,6 @@ export class OrderService {
     return this.http.get<Order>(this.url + '/' + id, this.httpOptions);
   }
 
-
-  getOrderById(id: number): Observable<Order> {
-    return this.http.get<Order>(this.url + '/' + id, this.httpOptions);
 
   getOrders(): Observable<Array<ProductOrder>> {
     return this.http.get<Array<ProductOrder>>(this.url + '/', this.httpOptions);
