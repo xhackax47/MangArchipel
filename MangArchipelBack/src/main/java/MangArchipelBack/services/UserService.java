@@ -52,6 +52,9 @@ public class UserService implements UserDetailsService {
         	throw new UsernameNotFoundException("Utilisateur non trouvé");
         }
     }
-    
+    public User update(User user,Long id)
+    {
+    	return userRepository.save(user);
+    }
 
 }

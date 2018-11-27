@@ -12,7 +12,11 @@ import { User } from '../user';
   styleUrls: ['./menu-bar-details.component.css']
 })
 export class MenuBarDetailsComponent implements OnInit {
+
+  user = new User();
+
   id: number ;
+
   @Input() product: Product[];
   checkValue: string;
   items: MenuItem[];
@@ -65,4 +69,6 @@ export class MenuBarDetailsComponent implements OnInit {
       this.userService.subjectLog.next(false);
     });
   }
+
+  
 }

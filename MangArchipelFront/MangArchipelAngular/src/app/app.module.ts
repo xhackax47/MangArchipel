@@ -15,7 +15,7 @@ import { Route } from '@angular/router';
 import { ProductsComponent } from './products/products.component';
 import { CartComponent } from './cart/cart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CheckboxModule } from 'primeng/checkbox';
+
 import { MenuAdministrateurComponent } from './menu-administrateur/menu-administrateur.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
@@ -26,7 +26,7 @@ import { SearchProductComponent } from './search-product/search-product.componen
 import { DataViewModule } from 'primeng/dataview';
 import { UserComponent } from './user/user.component';
 import { ButtonModule } from 'primeng/button';
-import { AlertComponent } from './alert/alert.component';
+
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
@@ -36,7 +36,11 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { OrdersAdminComponent } from './orders-admin/orders-admin.component';
 import { OrdersUserComponent } from './orders-user/orders-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { ModifUserComponent } from './modif-user/modif-user.component';
+
 import { OrderDetailComponent } from './order-detail/order-detail.component';
+
 const roads: Routes = [
   { path: '', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
@@ -47,6 +51,8 @@ const roads: Routes = [
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'search', component: SearchProductComponent },
   { path: 'signIn', component: UserComponent },
+  { path: 'update', component: ModifUserComponent },
+
   { path: 'orders', component: OrdersComponent},
   { path: 'orders/:id', component: OrderDetailComponent},
   { path: 'update', component: UserComponent },
@@ -72,10 +78,11 @@ const roads: Routes = [
     AddProductComponent,
     ProductsAdminComponent,
     UserComponent,
-    AlertComponent,
     OrdersComponent,
     ModifProductComponent,
     OrdersAdminComponent,
+
+    ModifUserComponent
     OrderDetailComponent,
     OrdersUserComponent
 
@@ -93,10 +100,10 @@ const roads: Routes = [
     DataViewModule,
     ButtonModule,
     ReactiveFormsModule,
+
     ConfirmDialogModule,
     BrowserAnimationsModule,
     ButtonModule,
-    CheckboxModule,
     DropdownModule,
     MultiSelectModule,
     TableModule,
