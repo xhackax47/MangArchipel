@@ -9,6 +9,7 @@ import MangArchipelBack.repository.OrderRepository;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.List;
 
 @Service
 @Transactional
@@ -51,5 +52,11 @@ public class OrderServiceImpl implements OrderService {
     public void delete(Order order) {
         this.orderRepository.delete(order);
     }
+
+	@Override
+	public List<Order> getOrderByUserId(long id) {
+		// TODO Auto-generated method stub
+		return orderRepository.findAllByUserId(id);
+	}
     
 }

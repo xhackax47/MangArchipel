@@ -42,7 +42,6 @@ import { UserComponent } from './user/user.component';
 import { ButtonModule } from 'primeng/button';
 import { AlertComponent } from './alert/alert.component';
 
-import {ButtonModule} from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule} from 'primeng/multiselect';
 
@@ -68,7 +67,6 @@ const roads: Routes = [
   { path: 'signIn', component: UserComponent },
   { path: 'orders', component: OrdersComponent},
   { path: 'update', component: UserComponent },
-  { path: 'orders', component: OrdersComponent},
   { path: 'admin/orders', component: OrdersAdminComponent},
   { path: 'user/order/:id', component: OrdersUserComponent}
   // { path: 'profile', component: ProfileComponent},
@@ -108,8 +106,7 @@ const roads: Routes = [
     DataViewModule,
 
     ButtonModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
     ConfirmDialogModule,
     BrowserAnimationsModule,
     ButtonModule,
