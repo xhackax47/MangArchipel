@@ -38,7 +38,7 @@ export class MenuBarDetailsComponent implements OnInit {
         items: [
           {
             label: 'Profil',
-            routerLink: '/profile'
+            routerLink: '/update'
           },
           {
             label: 'Mes commandes',
