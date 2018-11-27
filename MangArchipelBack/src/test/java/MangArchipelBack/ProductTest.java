@@ -3,6 +3,8 @@ package MangArchipelBack;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertNotNull;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,19 +13,24 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import MangArchipelBack.controller.ProductController;
 import MangArchipelBack.model.Product;
+import MangArchipelBack.repository.ProductRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class ProductTest {
 	
+	private Product p;
+	
+	@Autowired
+	private ProductRepository pR;
+	
 	@Autowired
 	private ProductController pC;
 	
-	
-	// TEST CREATION PRODUIT
-	@Test
-	public void create() {
-		Product p = new Product();
+	@Before
+	public void init() {
+		
+		p = new Product();
 		p.setProductName("TEST");
 		p.setBrand("TEST");
 		p.setDescription("TEST");
@@ -31,39 +38,34 @@ public class ProductTest {
 		p.setProductType("TEST");
 		p.setStock(0);
 		
+		p = pR.save(p);
+	}
+	
+	@After
+	public void destroy() {
+		pR.delete(p);
+	}
+	
+	// TEST CREATION PRODUIT
+	@Test
+	public void create() {
+
 		assertNotNull(p);
 		assertThat(pC.createProduct(p));
-
-
 	}
 	
 	// TEST RECUPERATION PRODUIT ET STOCK/PRODUIT PAR ID
 	@Test
 	public void read() {		
-		Product p = new Product();
-		p.setProductName("TEST");
-		p.setBrand("TEST");
-		p.setDescription("TEST");
-		p.setPrice(0.1);
-		p.setProductType("TEST");
-		p.setStock(0);
 		
 		assertThat(pC.createProduct(p));
 		assertThat(pC.getProductById(p.getId()));
 		assertThat(pC.getStockByProduct(p.getId()));
-
 	}
 	
 	// TEST MISE A JOUR DE PRODUIT
 	@Test
 	public void update() {
-		Product p = new Product();
-		p.setProductName("TEST");
-		p.setBrand("TEST");
-		p.setDescription("TEST");
-		p.setPrice(0.1);
-		p.setProductType("TEST");
-		p.setStock(0);
 		
 		Product pUpdate = new Product();
 		pUpdate.setProductName("TEST");
@@ -80,29 +82,13 @@ public class ProductTest {
 	// TEST SUPPRESSION DE PRODUIT
 	@Test
 	public void delete() {
-		// CREER PRODUIT ID 1000 DANS BDD POUR TEST
-		Product p = new Product();
-		p.setProductName("TEST");
-		p.setBrand("TEST");
-		p.setDescription("TEST");
-		p.setPrice(0.1);
-		p.setProductType("TEST");
-		p.setStock(0);
 		
-		assertThat(pC.createProduct(p));
 		assertThat(pC.deleteProduct(p.getId()));
 	}
 	
 	// TEST DE RECHERCHE PAR CRITERES
 	@Test
 	public void criteria() {		
-		Product p = new Product();
-		p.setProductName("TEST");
-		p.setBrand("TEST");
-		p.setDescription("TEST");
-		p.setPrice(0.1);
-		p.setProductType("TEST");
-		p.setStock(0);
 		
 		assertThat(pC.createProduct(p));
 		assertThat(pC.getProducts(p.getProductName(), null, null, null, null, null));

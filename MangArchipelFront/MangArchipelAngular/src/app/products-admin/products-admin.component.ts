@@ -28,7 +28,7 @@ export class ProductsAdminComponent implements OnInit {
     this.productArray = [];
     this.message = '';
     this.logged = false;
-
+      
     const u: User = JSON.parse(localStorage.getItem('USER'));
     if (u !== null) {
       this.logged = true;
