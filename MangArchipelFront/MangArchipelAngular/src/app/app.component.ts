@@ -19,7 +19,7 @@ export class AppComponent {
 
   constructor(private userService: UserService) {
     this.logged = false;
-
+    
     const user: User = JSON.parse(localStorage.getItem('USER'));
     if (user !== null) {
       this.logged = true;

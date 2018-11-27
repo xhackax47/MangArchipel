@@ -2,7 +2,7 @@
 
 <div class="p-grid p-dir-col p-col-3 p-offset-5">
     <form  [formGroup]='registerForm' (ngSubmit)="onSubmit()" class="p-col-align-center">
-  <h2 >S'inscrire</h2>
+  <h2 *ngIf="!add">Modifier ses données</h2>
   
    
     <div>
@@ -11,7 +11,7 @@
         <input type="text" id="lastName" name="lastName" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
           required>
         <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-          <div *ngIf="f.lastName.errors.required">Le nom est obligatoire</div>
+          <div *ngIf="f.lastName.errors.required">le nom est obligatoire</div>
         </div>
       </div>
     </div>
@@ -24,7 +24,7 @@
         <input type="text" id="firstName" name="firstName" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
           required>
         <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-          <div *ngIf="f.firstName.errors.required">Le prénom est obligatoire</div>
+          <div *ngIf="f.firstName.errors.required">le prénom est obligatoire</div>
         </div>
       </div>
     </div>
@@ -32,7 +32,7 @@
     <br/>
 
     <div>
-      <p>Nom d'utilisateur :</p>
+      <p>nom d'utilisateur :</p>
       <div>
         <input type="text" id="username" name="username"  formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"required>
         <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
@@ -52,11 +52,11 @@
     <br/>
 
     <div>
-      <p>City :</p>
+      <p>city :</p>
       <div>
         <input type="text" id="city" name="city"  formControlName="city" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.city.errors }" required>
         <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
-          <div *ngIf="f.city.errors.required">La ville est obligatoire</div>
+          <div *ngIf="f.city.errors.required">la ville est obligatoire</div>
         </div>
       </div>
     </div>
@@ -67,7 +67,7 @@
       <div>
         <input type="text" id="adresse" name="adresse" formControlName="adress" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.adress.errors }" required>
         <div *ngIf="submitted && f.adress.errors" class="invalid-feedback">
-          <div *ngIf="f.adresse.errors.required">L'adresse est obligatoire</div>
+          <div *ngIf="f.adresse.errors.required">l'adresse est obligatoire</div>
         </div>
       </div>
     </div>
@@ -86,31 +86,28 @@
     <br>
 
     <div>
-      <p>Mot de passe :</p>
+      <p> Mot de passe :</p>
       <div>
         <input type="password" id="password" name="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" required>
         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-          <div *ngIf="f.password.errors.required">Le mot de passe est obligatoire</div>
-          <div *ngIf="f.password.errors.minlength">Le mot de passe doit contenir 6 caractères minimum</div>
+          <div *ngIf="f.password.errors.required">le mot de passe  est obligatoire</div>
+          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
         </div>
       </div>
     </div>
       <br/>
       
     <div>
-      <p>Confirmer le mot de passe :</p>
+      <p> confirmer le Mot de passe :</p>
       <div>
         <input type="password" id="confirmpassword" name="confirmpassword" formControlName="confirmpassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmpassword.errors }" required>
         <div *ngIf="submitted && f.comfirmpassword.errors" class="invalid-feedback">
-          <div *ngIf="f.password.errors.required">Le mot de passe est obligatoire</div>
-          <div *ngIf="f.password.errors.minlength">Les mot de passes doivent etre identique</div>
+          <div *ngIf="f.password.errors.required">le mot de passe  est obligatoire</div>
+          <div *ngIf="f.password.errors.minlength">les mot de passe doivent etre identique</div>
         </div>
       </div>
     </div>
 
-    <button pButton type="submit" class="ui-button-raised ui-button-secondary" *ngIf="add"  [disabled]='!registerForm.valid'>S'inscrire</button>
-
-    <button pButton type="submit" class="ui-button-raised ui-button-secondary" *ngIf="!add" label="Modifier"></button>
-
+    <button pButton type="submit" class="ui-button-raised ui-button-secondary" *ngIf="!add" [disabled]='!registerForm.valid'>Modifier</button>
   </form>
 </div>

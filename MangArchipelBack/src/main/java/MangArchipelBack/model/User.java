@@ -148,6 +148,22 @@ public class User implements Serializable , UserDetails {
 	public void setPostalCode(Integer postalCode) {
 		this.postalCode = postalCode;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", adress=" + adress + ", email=" + email + ", city=" + city
+				+ ", postalCode=" + postalCode + ", roles=" + roles + "]";
+	}
     
+	
     
 }

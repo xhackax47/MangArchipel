@@ -5,6 +5,7 @@ import { OrderService } from '../order.service';
 import { ProductService } from '../product.service';
 import { ProductOrder } from '../product-order';
 import { Product } from '../product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -18,7 +19,7 @@ export class CartComponent implements OnInit {
   sub: Subscription;
 
 
-  constructor(private orderService: OrderService) {
+  constructor(private orderService: OrderService, private router: Router) {
     this.total = 0;
     const orders = new ProductOrders(JSON.parse(localStorage.getItem('commande')));
     orders.productOrders.forEach(orderProduct => {
@@ -29,7 +30,7 @@ export class CartComponent implements OnInit {
 
   // Methode d'initialisation
   ngOnInit() {
-    this.orders.productOrders = JSON.parse(localStorage.getItem('commande'));
+    // this.orders.productOrders = JSON.parse(localStorage.getItem('commande'));
   }
 
 
@@ -52,8 +53,12 @@ export class CartComponent implements OnInit {
 
   // Methode de validation du panier / finition de la commande
   validateCart() {
-    this.orderFinished = true;
-    this.orderService.Total = this.total;
+    if (localStorage.getItem('USER')) {
+      this.orderFinished = true;
+      this.orderService.Total = this.total;
+      this.router.navigate(['/orders']);
+    }
+
   }
 
   // Methode de récupération de l'index d'un produit

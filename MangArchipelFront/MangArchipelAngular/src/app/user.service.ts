@@ -28,11 +28,11 @@ export class UserService {
     headers: new HttpHeaders().set('Content-type', 'application/json')
   };
 
-
-  getUserByLogin(login: string, password: string): Observable<User> {
-    return this.http.get<User>(this.url + login);
-  }
-
+  /*
+    getUserByLogin(login: string, password: string): Observable<User> {
+      return this.http.get<User>(this.url + login);
+    }
+  */
   loging(user: User): Observable<User> {
     return this.http.post<User>(this.url + '/login', user);
     // .pipe(catchError((err) => console.log(err)));
@@ -45,6 +45,9 @@ export class UserService {
 
   getUser(): Observable<User> {
     return this.http.get<User>(this.url + '/user');
+  }
+  getUserId(id: number): Observable<User> {
+    return this.http.get<User>(this.url + '/' + id, this.httpOptions);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -61,10 +64,11 @@ export class UserService {
     return this.http.post(this.url + '/signIn', user, this.httpOptions);
   }
 
-  updateProduct(id: number, user: User): void {
+  updateUser(id: number, user: User): void {
 
     this.http.put(this.url + '/' + id, user, this.httpOptions).subscribe(() => this.router.navigate(['/']));
   }
+
   registerUser(user: User) {
     return this.http.post(this.url + '/signIn', user, this.httpOptions);
   }
@@ -83,4 +87,8 @@ export class UserService {
   getUserIdByLogin(login: string): Observable<User> {
     return this.http.get<User>(this.url + '/username/' + login);
   }
+  updateUser2(id: number, user: User): Observable<User> {
+    return this.http.put<User>(this.url + '/update/' + id, user, this.httpOptions);
+  }
+
 }
