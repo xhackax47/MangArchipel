@@ -24,7 +24,6 @@ public class UserTest {
 	@Test
 	public void addUser() {
 		User u = new User();
-		u.setId(1000L);
 		u.setUsername("TEST");
 		
 		assertNotNull(u);
