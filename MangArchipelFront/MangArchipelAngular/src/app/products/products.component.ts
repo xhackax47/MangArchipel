@@ -57,7 +57,6 @@ export class ProductsComponent implements OnInit {
     ];
   }
 
-
   onRowSelect(event) {
     this.router.navigate(['product', this.product.id]);
   }

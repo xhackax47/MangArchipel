@@ -7,11 +7,11 @@
     <div >
 
       <div>
-        <label for="username">nom d'utilisateur : </label>
+        <label for="username">Nom d'utilisateur : </label>
       </div>
       <input type="text" name="username"  [(ngModel)]="model.username" required/>
       <div *ngIf="subbmitted && f.username.invalid" class="invalid-feedback">
-        <div *ngIf="f.username.errors.required"> Le nom d'utilisateur est obligatoire</div>
+        <div *ngIf="f.username.errors.required">Le nom d'utilisateur est obligatoire</div>
       </div> 
     </div>
 
@@ -30,10 +30,10 @@
     
     <br />
     <div class="button">
-      <button pButton type="submit" class="ui-button-rounded ui-button-secondary">Connexion</button>
+      <button pButton type="submit" class="ui-button-rounded ui-button-secondary" label="Connexion"></button>
     </div>
 
-    <button *ngIf="logged" pButton (click)="logout()" class="ui-button-rounded ui-button-secondary">Déconnexion</button>
+    <button *ngIf="logged" pButton (click)="logout()" class="ui-button-rounded ui-button-secondary" label="Déconnexion"></button>
 
   </form>
   <div>
@@ -41,7 +41,7 @@
   </div>
  
   <div>
-    <a routerLink="/signIn">nouveau utilisateur</a>
+    <a routerLink="/signIn">Nouvel utilisateur</a>
   </div>
 </div>
 

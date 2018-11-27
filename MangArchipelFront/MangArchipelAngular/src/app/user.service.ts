@@ -62,6 +62,7 @@ export class UserService {
   }
 
   updateUser(id: number, user: User): void {
+
     this.http.put(this.url + '/' + id, user, this.httpOptions).subscribe(() => this.router.navigate(['/']));
   }
   registerUser(user: User) {

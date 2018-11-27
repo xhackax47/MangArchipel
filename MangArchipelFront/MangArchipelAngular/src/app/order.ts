@@ -14,6 +14,5 @@ export class Order {
             this.dateCreated = dateCreated;
             this.status = status;
             this.user = user;
-
     }
 }
