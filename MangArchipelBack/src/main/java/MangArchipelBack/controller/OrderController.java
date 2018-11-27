@@ -54,7 +54,7 @@ public class OrderController {
 // Récupérer une commande par son ID
 	@CrossOrigin(origins = "*")
     @GetMapping("/{id}")
-	public Order getOrder(Long id) {
+	public Order getOrder(@PathVariable(value="id") Long id) {
 		return this.orderService.getOrderById(id);
 	}
 

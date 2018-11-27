@@ -51,7 +51,10 @@ const roads: Routes = [
   { path: 'orders/:id', component: OrderDetailComponent},
   { path: 'update', component: UserComponent },
   { path: 'admin/orders', component: OrdersAdminComponent},
-  { path: 'user/order/:id', component: OrdersUserComponent}
+  { path: 'user/order/:id', component: OrdersUserComponent},
+  { path: 'orders/:id', component: OrderDetailComponent}
+  // { path: 'profile', component: ProfileComponent},
+
 ];
 
 
@@ -75,6 +78,7 @@ const roads: Routes = [
     OrdersAdminComponent,
     OrderDetailComponent,
     OrdersUserComponent
+
 
   ],
   imports: [
